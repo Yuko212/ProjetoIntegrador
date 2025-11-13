@@ -5,7 +5,7 @@
 /* Estilos customizados para o gradiente de fundo da seção Hero */
 .seu-projeto {
     background: #0f172a; /* Cor de fallback */
-    background-image: linear-gradient(135deg, #0f172a 0%, #171d3a 30%, #0c4a6e 80%, #000000 100%);
+    background-image: linear-gradient(135deg, #29113b 0%, #e6d9f0 30%, #7a509b 80%, #391a50 100%);
     position: relative;
     overflow: hidden;
     color: #fff; /* Adicionado para texto branco */
@@ -20,8 +20,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: radial-gradient(circle at 10% 90%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
-                      radial-gradient(circle at 90% 10%, rgba(139, 92, 246, 0.2) 0%, transparent 50%),
+    background-image: radial-gradient(circle at 10% 90%, #38304733 0%, transparent 50%),
+                      radial-gradient(circle at 90% 10%, rgba(231, 246, 92, 0.2) 0%, transparent 50%),
                       radial-gradient(circle at 50% 50%, rgba(76, 29, 149, 0.3) 0%, transparent 70%);
     opacity: 0.8;
     z-index: -1; /* Corrigido para ficar atrás do conteúdo */
@@ -41,7 +41,7 @@
 .feature-card:hover {
     transform: translateY(-5px) scale(1.02);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.08);
-    border-color: #4f46e5;
+    border-color: #280446;
 }
 
 /* Ícones de Navegação (SVG) */
@@ -50,13 +50,13 @@
     height: 24px;
     stroke-width: 2.5;
     margin-bottom: 0.75rem; /* mb-3 */
-    color: #6366f1; /* text-indigo-500 */
+    color: #481e69; 
 }
 .icon-nav.icon-cyan {
-    color: #06b6d4; /* text-cyan-500 */
+    color: #481e69; 
 }
 .icon-nav.icon-purple {
-    color: #a855f7; /* text-purple-500 */
+    color: #481e69; 
 }
 
 
@@ -84,7 +84,7 @@ body {
 
 /* --- 1. Header --- */
 #main-header {
-    background-color: #af95c4;
+    background-color: #280446;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
     position: sticky;
     top: 0;
@@ -101,14 +101,10 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem; /* space-x-2 */
-    color: #1f2937; /* text-gray-900 */
+    color: #e6d9f0; /* text-gray-900 */
     text-decoration: none;
 }
-.logo-icon {
-    width: 2rem;  /* w-8 */
-    height: 2rem; /* h-8 */
-    color: #4f46e5; /* text-indigo-600 */
-}
+
 .logo-text {
     font-size: 1.5rem; /* text-2xl */
     font-weight: 800;  /* font-extrabold */
@@ -118,27 +114,27 @@ body {
     display: none; /* hidden */
 }
 .nav-link {
-    color: #4b5563; /* text-gray-600 */
-    font-weight: 500; /* font-medium */
+    color: #e6d9f0; /* text-gray-600 */
+    font-weight: 700; /* font-medium */
     text-decoration: none;
     transition: color 0.15s ease-in-out;
 }
 .nav-link:hover {
-    color: #4f46e5; /* hover:text-indigo-600 */
+    color: #aa94bd; /* hover:text-indigo-600 */
 }
 .cta-button {
     padding: 0.5rem 1.25rem; /* px-5 py-2 */
     font-weight: 700; /* font-bold */
     color: #fff;
     border-radius: 0.5rem; /* rounded-lg */
-    background-color: #4f46e5; /* bg-indigo-600 */
+    background-color: #460779; /* bg-indigo-600 */
     border: none;
     cursor: pointer;
     transition: background-color 0.15s ease-in-out;
-    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.5), 0 4px 6px -2px rgba(79, 70, 229, 0.5); /* shadow-lg shadow-indigo-500/50 */
+    box-shadow: 0 10px 15px -3px #460779, 0 4px 6px -2px #4f46e580; /* shadow-lg shadow-indigo-500/50 */
 }
 .cta-button:hover {
-    background-color: #4338ca; /* hover:bg-indigo-700 */
+    background-color: #654d78; /* hover:bg-indigo-700 */
 }
 .cta-button.large {
     padding: 0.75rem 2rem; /* px-8 py-3 */
@@ -171,12 +167,13 @@ body {
     margin: 0;
 }
 .hero-highlight {
-    color: #22d3ee; /* text-cyan-400 */
+    color: #280446;; /* text-cyan-400 */
 }
 .hero-subtitle {
     font-size: 1.125rem; /* text-lg */
-    color: #d1d5db; /* text-gray-300 */
+    color: #280446; /* text-gray-300 */
     margin: 0;
+    font-weight: 700;
 }
 .hero-cta-group {
     padding-top: 1rem; /* pt-4 */
@@ -198,7 +195,7 @@ body {
 .robot-svg {
     width: 100%;
     height: 100%;
-    color: #22d3ee; /* text-cyan-400 */
+    color: #280446;; /* text-cyan-400 */
     opacity: 0.9;
 }
 .conveyor-belt {
@@ -266,7 +263,8 @@ body {
 
 /* --- 4. Footer --- */
 #main-footer {
-    background-color: #1f2937; /* bg-gray-800 */
+    background-color: #280446;
+    box-shadow: 0 4px 6px -1px ; /* bg-gray-800 */
     color: #fff;
     padding-top: 2rem;    /* py-8 */
     padding-bottom: 2rem;
@@ -293,7 +291,7 @@ body {
     gap: 1rem; /* space-x-4 */
 }
 .footer-link {
-    color: #9ca3af; /* text-gray-400 */
+    color: #e6d9f0; /* text-gray-400 */
     text-decoration: none;
     font-size: 0.875rem; /* text-sm */
     transition: color 0.15s ease-in-out;
@@ -303,7 +301,7 @@ body {
 }
 .footer-copy {
     font-size: 0.875rem; /* text-sm */
-    color: #6b7280; /* text-gray-500 */
+    color: #e6d9f0; /* text-gray-500 */
     margin: 0;
 }
 
