@@ -1,0 +1,344 @@
+/* ========================================= */
+/* CSS DA PÁGINA DE CONFIGURAÇÃO DE PEÇA     */
+/* ========================================= */
+
+/* --- Importações e Reset Básico (Baseado no seu login.css) --- */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #C9B8E3; /* Cor de fundo roxa clara da imagem */
+    margin: 0;
+    min-height: 100vh;
+    color: #280446; /* Cor de texto padrão do seu projeto */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+input, button, select {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Esconde labels para acessibilidade */
+.sr-apenas {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* --- Estrutura Principal --- */
+.config-container {
+    display: grid;
+    /* Duas colunas de tamanho igual */
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    padding: 3rem 4rem; /* Padding geral para a container */
+    gap: 4rem; /* Espaçamento entre os painéis */
+}
+
+/* --- Painel Esquerdo --- */
+.config-painel-esquerdo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empurra o logo para baixo e botão para o meio */
+    align-items: flex-start; /* Alinha os itens à esquerda */
+    padding-top: 2rem; /* Ajuste para o conteúdo do card */
+}
+
+.config-card {
+    background-color: #e5e7eb; /* Cor de fundo dos cards (cinza claro) */
+    border-radius: 1rem; /* Bordas arredondadas */
+    padding: 2.5rem 3rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ocupa a largura total disponível */
+    max-width: 450px; /* Limite para não ficar muito largo */
+    margin-bottom: 3rem; /* Espaço entre o card e o botão Finalizar */
+}
+
+.config-card-titulo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #280446;
+}
+
+/* --- Estilização dos Checkboxes Personalizados --- */
+.opcao-radio {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    position: relative; /* Para posicionar o tick */
+    cursor: pointer;
+}
+
+.checkbox-custom {
+    /* Esconde o checkbox nativo */
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.label-custom {
+    background-color: #280446; /* Cor roxa clara do background na imagem */
+    color: #ffffff;
+    padding: 1.25rem 1.5rem 1.25rem 4rem; /* Aumenta o padding à esquerda para o tick */
+    border-radius: 0.75rem;
+    display: block; /* Para ocupar a largura total do container */
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    cursor: pointer;
+    box-sizing: border-box; /* Inclui padding na largura total */
+    position: relative;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* Estilo do quadrado do checkbox antes de ser marcado */
+.label-custom::before {
+    content: '';
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ffffff; /* Borda escura */
+    border-radius: 4px;
+    background-color: transparent;
+}
+
+/* Estilo do tick quando o checkbox está marcado */
+.checkbox-custom:checked + .label-custom::before {
+    background-color: #280446; /* Fundo escuro quando marcado */
+    border-color: #280446;
+}
+
+.checkbox-custom:checked + .label-custom::after {
+    content: '✔'; /* Símbolo de checkmark */
+    position: absolute;
+    left: 1.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #C9B8E3; /* Cor clara do tick */
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+/* --- Botão Finalizar --- */
+.botao-finalizar {
+    padding: 1rem 3rem;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #280446; /* Cor roxa clara do botão da imagem */
+    border: none;
+    cursor: pointer;
+    border-radius: 0.75rem;
+    font-size: 1.1rem;
+    transition: background-color 0.15s ease-in-out;
+    align-self: flex-start; /* Alinha o botão à esquerda */
+    margin-left: 2.5rem; /* Alinha com o conteúdo do card */
+}
+
+.botao-finalizar:hover {
+    background-color: #9f90c8;
+}
+
+/* Logo no Rodapé (reutilizando estilos do login) */
+.config-logo-rodape {
+    margin-top: auto; /* Empurra para o final do container flex */
+    padding-left: 2.5rem; /* Alinha com o conteúdo */
+}
+.config-logo-rodape .logo {
+    text-decoration: none;
+    color: #280446;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.config-logo-rodape .logo-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+/* --- Painel Direito (Dropdowns) --- */
+.config-painel-direito {
+    display: flex;
+    justify-content: flex-start; /* Alinha o card ao topo esquerdo */
+    align-items: flex-start;
+    padding-top: 2rem; /* Ajuste para o conteúdo do card */
+}
+
+.form-grupo {
+    margin-bottom: 2rem;
+    position: relative; /* Para o posicionamento das opções flutuantes */
+}
+
+.label-dropdown {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #280446;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.dropdown-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px; /* Largura máxima dos dropdowns */
+    background-color: #C9B8E3; /* Cor roxa clara do dropdown na imagem */
+    border-radius: 0.75rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    box-sizing: border-box;
+}
+
+.dropdown-select {
+   
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #280446;
+    cursor: pointer;
+    padding-right: 20px; 
+}
+
+
+.dropdown-select::-ms-expand {
+    display: none;
+}
+
+.dropdown-arrow {
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg); /* Rotação para simular a seta > */
+    color: #280446;
+    font-weight: 700;
+    pointer-events: none; /* Não interfere no clique do container */
+}
+
+/* --- Opções Flutuantes do Dropdown --- */
+.dropdown-opcoes {
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    max-width: 300px;
+    background-color: #e5e7eb; 
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    z-index: 1000; /* Garante que apareça sobre outros elementos */
+    margin-top: 0.5rem;
+    overflow: hidden; /* Para garantir que o border-radius funcione */
+    display: none; /* Inicia escondido, será controlado por JS */
+}
+
+.dropdown-item {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    color: #280446;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.dropdown-item:hover {
+    background-color: #C9B8E3; /* Destaca a opção ao passar o mouse */
+}
+
+.dropdown-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #280446;
+    pointer-events: none; /* não interfere no clique */
+}
+
+.dropdown-item.desabilitado {
+    /* Cor de fundo para indicar que está indisponível */
+    background-color: #f3f4f6; 
+    color: #9ca3af; 
+    cursor: not-allowed; 
+    opacity: 0.8;
+}
+
+/* Remove o efeito hover das opções desabilitadas */
+.dropdown-item.desabilitado:hover {
+    background-color: #f3f4f6; 
+}
+
+.dropdown-clear {
+    display: none;              /* aparece só quando tiver seleção */
+    margin-right: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    color: #4b2b4f;             /* mesma cor da seta */
+}
+
+.dropdown-container.has-value .dropdown-clear {
+    display: inline;
+}
+
+.dropdown-select {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    width: 0;
+}
+
+
+@media (max-width: 768px) {
+    .config-container {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+        gap: 2rem;
+    }
+
+    .config-painel-esquerdo,
+    .config-painel-direito {
+        align-items: center; 
+        padding-top: 0;
+    }
+
+    .config-card {
+        max-width: 100%; 
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .botao-finalizar {
+        align-self: center; /* Centraliza o botão */
+        margin-left: 0;
+        margin-bottom: 2rem;
+    }
+
+    .config-logo-rodape {
+        padding-left: 0;
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .dropdown-container,
+    .dropdown-opcoes {
+        max-width: 100%;
+    }
+}
