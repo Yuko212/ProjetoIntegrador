@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CiberTech - O Futuro da Personalização de Peças</title>
-    
+   
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
+   
     <link rel="stylesheet" href="../css/inicio.css">
 
 </head>
@@ -15,7 +15,7 @@
     <header id="main-header">
         <div class="cabeçalho">
             <a href="#" class="logo">
-                
+               
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9.75 15L14.25 15L14.25 17M12 21L12 17M21 12L17 12M17 12L12 12M12 12L3 12M12 3L12 7M12 7L12 12M7 12L3 12M17 12L12 17M12 17L7 17M7 17L3 17"></path>
                 </svg>
                 <span class="logo-text">CiberTech</span>
@@ -125,10 +125,10 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetSelector = this.getAttribute('href');
-                
+               
                 // Previne o comportamento padrão para gerenciar a rolagem
-                e.preventDefault(); 
-                
+                e.preventDefault();
+               
                 // Se o href for apenas '#', rola suavemente para o topo da página.
                 if (targetSelector === '#') {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
