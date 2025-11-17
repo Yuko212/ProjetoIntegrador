@@ -1,0 +1,208 @@
+/* ================================== */
+/* CSS DA PÁGINA DE LOGIN             */
+/* ================================== */
+
+/* --- Reset Básico e Padrões (Baseado no seu css.txt) --- */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6; /* Cor de fundo cinza claro da imagem */
+    margin: 0;
+    min-height: 100vh;
+    color: #1f2937; /* Cor de texto padrão */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Para garantir que os inputs herdem a fonte */
+input, button {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Classe de acessibilidade para esconder labels visualmente */
+.sr-apenas {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* --- Estrutura Principal --- */
+.login-container {
+    display: grid;
+    /* Duas colunas de tamanho igual */
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+/* --- 1. Painel Lateral (Esquerda) --- */
+.login-lateral {
+    /* Cor de fundo roxa clara, baseada na imagem */
+    background-color: #280446; 
+    
+    /* Cor do texto escura, do seu css.txt */
+    color: #c9b8e3; 
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Para empurrar o logo para o rodapé */
+    padding: 3rem 4rem;
+}
+
+.login-titulo {
+    font-size: 2.25rem; /* Similar ao .section-title */
+    font-weight: 800; /* Similar ao .font-extrabold */
+    line-height: 1.3;
+    margin: 0 0 1.5rem 0;
+}
+
+.login-subtitulo {
+    font-size: 1.125rem; /* Similar ao .hero-subtitle */
+    font-weight: 600;
+    max-width: 450px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* Logo no Rodapé (reutilizando seus estilos) */
+.login-logo-rodape .logo {
+    text-decoration: none;
+    color: #c9b8e3; /* */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem; /* */
+}
+
+.login-logo-rodape .logo-text {
+    font-size: 1.5rem; /* */
+    font-weight: 800; /* */
+}
+
+
+/* --- 2. Painel Formulário (Direita) --- */
+.login-formulario {
+    background-color: #f3f4f6; /* Cor da imagem (cinza claro) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 400px; /* Limita a largura do formulário */
+}
+
+/* Abas "Login" e "Criar conta" */
+.login-abas {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Aba "Login" (Ativa) */
+.login-aba-ativo {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #280446; /* Cor de texto cinza */
+    background-color: #b2a4d4; /* Cor do fundo do input */
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem; /* */
+    text-decoration: none;
+}
+
+/* Link "Criar conta" (Inativo) */
+.login-aba-link {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1f2937; /* Cor de texto padrão */
+    text-decoration: underline;
+    transition: color 0.15s ease-in-out;
+}
+.login-aba-link:hover {
+    color: #481e69; /* Cor do ícone */
+}
+
+/* Formulário e Inputs */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.login-input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border: none;
+    
+   /* Fundo cinza claro, como na imagem e no seu border-color */
+   background-color: #e5e7eb; 
+    
+   border-radius: 0.75rem; /* */
+   font-size: 1rem;
+   font-weight: 600;
+   color: #1f2937;
+   
+   /* Remove a borda padrão do navegador ao focar */
+   outline: none;
+   
+   /* Adiciona uma borda suave no foco */
+   transition: box-shadow 0.15s ease-in-out;
+   box-sizing: border-box; /* Garante que o padding não quebre o layout */
+}
+
+.login-input:focus {
+    box-shadow: 0 0 0 3px #c0b4d2; /* Um "anel" roxo claro no foco */
+}
+
+.login-input::placeholder {
+    color: #4b5563; /* */
+    font-weight: 600;
+}
+
+/* Botão "Entrar" */
+.botao-login {
+    width: 100%;
+    padding: 1rem;
+    font-weight: 700; /* */
+    color: #ffffff;
+    
+    /* Cor roxa clara da imagem */
+    background-color: #280446; 
+    
+    border: none;
+    cursor: pointer;
+    border-radius: 0.75rem; /* */
+    font-size: 1rem;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.botao-login:hover {
+    background-color: #9f90c8;
+    color: #280446; /* Um tom um pouco mais escuro */
+}
+
+
+/* --- 3. Responsividade (Mobile) --- */
+@media (max-width: 768px) {
+    .login-container {
+        /* Muda para coluna única em telas pequenas */
+        grid-template-columns: 1fr;
+    }
+    
+    .login-lateral {
+        /* Esconde o painel lateral em telas pequenas */
+        display: none;
+    }
+    
+    .login-formulario {
+        /* Centraliza o form na tela */
+        min-height: 100vh;
+        align-items: flex-start; /* Alinha no topo */
+        padding-top: 4rem;
+    }
+}
