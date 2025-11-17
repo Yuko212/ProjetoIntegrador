@@ -6,7 +6,6 @@
     <title>Login - CiberTech</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
@@ -39,7 +38,8 @@
                     <a href="cadastro.html" class="login-aba-link">Criar conta</a>
                 </nav>
 
-                <form class="login-form">
+                <!-- ADICIONEI id="formLogin" -->
+                <form class="login-form" id="formLogin">
                     
                     <div class="input-grupo">
                         <label for="email" class="sr-apenas">E-mail</label>
@@ -62,5 +62,43 @@
 
     </main>
 
-    </body>
+
+    <!-- SCRIPT QUE ENVIA PARA O NODE-RED -->
+    <script>
+        document.getElementById("formLogin").addEventListener("submit", async function(event) {
+            
+            event.preventDefault(); // impede reload
+
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+
+            try {
+                const resposta = await fetch("http://localhost:1880/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        senha: senha
+                    })
+                });
+
+                const data = await resposta.json();
+
+                if (data.status === "ok") {
+                    alert("Login realizado com sucesso!");
+                    window.location.href = "dashboard.html"; // coloque a página que quiser
+                } else {
+                    alert("E-mail ou senha incorretos.");
+                }
+
+            } catch (err) {
+                console.error("Erro na requisição:", err);
+                alert("Erro ao conectar com o servidor.");
+            }
+        });
+    </script>
+
+</body>
 </html>

@@ -72,5 +72,57 @@
 
     </main>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector(".login-form");
+
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const nome = document.getElementById("nome").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const senha = document.getElementById("senha").value.trim();
+        const confirma = document.getElementById("confirma-senha").value.trim();
+
+        if (!nome || !email || !senha || !confirma) {
+            alert("Preencha todos os campos.");
+            return;
+        }
+
+        if (senha !== confirma) {
+            alert("As senhas não coincidem.");
+            return;
+        }
+
+        try {
+            const resposta = await fetch("http://localhost:1880/cadastro", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nome,
+                    email,
+                    senha
+                })
+            });
+
+            const resultado = await resposta.json();
+
+            if (resultado.status === "ok") {
+                alert("Conta criada com sucesso!");
+                window.location.href = "login.html";
+            } else {
+                alert("Erro: " + resultado.msg);
+            }
+
+        } catch (erro) {
+            console.error("Erro ao enviar cadastro:", erro);
+            alert("Falha ao conectar ao servidor.");
+        }
+    });
+});
+</script>
+
 </body>
 </html>
