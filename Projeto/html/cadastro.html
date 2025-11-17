@@ -39,7 +39,7 @@
                     <span class="login-aba-ativo">Criar conta</span>
                 </nav>
 
-                <form class="login-form">
+                <form class="login-form" id="cadastroForm">
                    
                     <div class="input-grupo">
                         <label for="nome" class="sr-apenas">Nome completo</label>
@@ -109,11 +109,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const resultado = await resposta.json();
 
-            if (resultado.status === "ok") {
-                alert("Conta criada com sucesso!");
+            if (resultado.success === true) {
+                alert(resultado.message);
                 window.location.href = "login.html";
             } else {
-                alert("Erro: " + resultado.msg);
+                alert("Erro: " + (resultado.message || "Erro desconhecido"));
             }
 
         } catch (erro) {
