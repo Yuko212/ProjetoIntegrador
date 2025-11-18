@@ -1,18 +1,14 @@
-/* ================================== */
-/* SEU CSS CUSTOMIZADO (Mantido)      */
-/* ================================== */
 
-/* Estilos customizados para o gradiente de fundo da seção Hero */
 .seu-projeto {
-    background: #0f172a; /* Cor de fallback */
+    background: #0f172a; 
     background-image: linear-gradient(135deg, #29113b 0%, #e6d9f0 30%, #7a509b 80%, #391a50 100%);
     position: relative;
     overflow: hidden;
-    color: #fff; /* Adicionado para texto branco */
-    z-index: 1; /* Garante que o fundo esteja atrás do ::before */
+    color: #fff; 
+    z-index: 1; 
 }
 
-/* Efeito de ondas/brilhos (simulação do visual do anexo) */
+
 .seu-projeto::before {
     content: '';
     position: absolute;
@@ -28,14 +24,14 @@
     pointer-events: none;
 }
 
-/* Estilo do Card de Funcionalidade */
+
 .feature-card {
     transition: all 0.3s ease-in-out;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     background-color: #fff;
-    border: 1px solid #e5e7eb; /* border-gray-200 */
-    border-radius: 0.75rem; /* rounded-xl */
-    padding: 1.5rem; /* p-6 */
+    border: 1px solid #e5e7eb; 
+    border-radius: 0.75rem; 
+    padding: 1.5rem; 
     text-align: left;
 }
 .feature-card:hover {
@@ -44,7 +40,7 @@
     border-color: #280446;
 }
 
-/* Ícones de Navegação (SVG) */
+
 .icon-nav {
     width: 24px;
     height: 24px;
@@ -105,13 +101,22 @@ body {
     text-decoration: none;
 }
 
+.logo svg {
+    /* Garante que o ícone tenha a cor do texto do .logo */
+    stroke: currentColor; 
+    /* Define o tamanho */
+    width: 24px; 
+    height: 24px;
+}
+
 .logo-text {
     font-size: 1.5rem; /* text-2xl */
     font-weight: 800;  /* font-extrabold */
     letter-spacing: -0.025em; /* tracking-tight */
 }
 .main-nav {
-    display: none; /* hidden */
+    display: flex; /* Mude de 'none' para 'flex' */
+    gap: 1.5rem; /* Adicione um espaçamento entre os links (ex: 1.5rem) */
 }
 .nav-link {
     color: #e6d9f0; /* text-gray-600 */
@@ -167,7 +172,7 @@ body {
     margin: 0;
 }
 .hero-highlight {
-    color: #280446;; /* text-cyan-400 */
+    color: #280446; /* text-cyan-400 */
 }
 .hero-subtitle {
     font-size: 1.125rem; /* text-lg */

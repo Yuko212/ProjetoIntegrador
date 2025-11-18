@@ -1,14 +1,10 @@
-/* ========================================= */
-/* CSS DA PÁGINA DE CONFIGURAÇÃO DE PEÇA     */
-/* ========================================= */
 
-/* --- Importações e Reset Básico (Baseado no seu login.css) --- */
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #C9B8E3; /* Cor de fundo roxa clara da imagem */
+    background-color: #C9B8E3; 
     margin: 0;
     min-height: 100vh;
-    color: #280446; /* Cor de texto padrão do seu projeto */
+    color: #280446; 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

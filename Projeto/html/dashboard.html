@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - CiberTech</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+
+
+    <header id="main-header">
+        <div class="cabeçalho">
+            <a href="#" class="logo">
+                <span class="logo-text">CiberTech</span>
+                
+            </a>
+
+            <nav class="main-nav">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#design" class="nav-link">Design</a>
+                <a href="#acompanhamento" class="nav-link">Acompanhamento</a>
+                <a href="#historico" class="nav-link">Histórico</a>
+            </nav>
+
+            <a href="login.html" class="cta-button">
+                Login / Cadastro
+            </a>
+        </div>
+    </header>
+
+
+
+    <div class="container-principal">
+        <aside class="painel-perfil">
+            <div class="area-icone">
+                <img id="icone-usuario" src="../imagens/icone-padrao.jpg" alt="Ícone do Usuário" class="icone-perfil">
+                <p class="editar-conta">Editar conta</p>
+                <input type="file" id="input-arquivo-icone" accept="image/*" style="display: none;">
+                <button id="botao-mudar-icone" class="botao-icone">Mudar Ícone</button>
+            </div>
+            
+            <div class="modal-selecao-icone" id="modal-selecao">
+                <div class="conteudo-modal"> <h3>Selecione um Ícone</h3>
+                    <div class="galeria-icones">
+                        </div>
+                    <button id="fechar-selecao-icone" class="botao-fechar-modal">Fechar</button>
+                </div>
+            </div>
+
+            <div class="grupo-informacao">
+                <label for="nome" class="rotulo-info">Nome</label>
+                <div class="campo-info" id="campo-nome">
+                    <span class="valor-info">Carregando...</span>
+                    <span class="icone-seta">></span>
+                </div>
+            </div>
+
+            <div class="grupo-informacao">
+                <label for="sobrenome" class="rotulo-info">Sobrenome</label>
+                <div class="campo-info" id="campo-sobrenome">
+                    <span class="valor-info">Carregando...</span>
+                    <span class="icone-seta">></span>
+                </div>
+            </div>
+
+            <div class="grupo-informacao">
+                <label for="email" class="rotulo-info">E-mail</label>
+                <div class="campo-info" id="campo-email">
+                    <span class="valor-info">Carregando...</span>
+                    <span class="icone-seta">></span>
+                </div>
+            </div>
+
+            <div class="grupo-informacao">
+                <label for="senha" class="rotulo-info">Senha</label>
+                <div class="campo-info" id="campo-senha">
+                    <span class="valor-info">**********</span>
+                    <span class="icone-seta">></span>
+                </div>
+            </div>
+            
+            <div class="logotipo">
+                <img src="../img/cibertech-logo.png" alt="Logotipo CiberTech" class="icone-robo">
+                
+            </div>
+        </aside>
+
+        <main class="area-pedidos">
+            <button class="botao-acao">Criar um novo pedido</button>
+            <button class="botao-acao">Meu histórico de pedidos</button>
+            <button class="botao-acao">Detalhes do meu pedido</button>
+        </main>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+            
+            // ----------------------------------------------------
+            // 1. DADOS DO USUÁRIO (Simulação do Banco de Dados)
+            // ----------------------------------------------------
+            const dadosSimuladosUsuario = {
+                nome: "João",
+                sobrenome: "Silva",
+                email: "joao.silva@exemplo.com"
+            };
+
+            function carregarDadosUsuario() {
+                document.querySelector('#campo-nome .valor-info').textContent = dadosSimuladosUsuario.nome;
+                document.querySelector('#campo-sobrenome .valor-info').textContent = dadosSimuladosUsuario.sobrenome;
+                document.querySelector('#campo-email .valor-info').textContent = dadosSimuladosUsuario.email;
+            }
+
+            carregarDadosUsuario();
+
+            // ----------------------------------------------------
+            // 2. LÓGICA DE UPLOAD DE FOTO (ATUALIZADO)
+            // ----------------------------------------------------
+            const iconeUsuario = document.getElementById('icone-usuario');
+            const botaoMudarIcone = document.getElementById('botao-mudar-icone');
+            const inputArquivo = document.getElementById('input-arquivo-icone');
+
+            // Ação 1: Quando clicar no botão "Mudar Ícone", ativamos o input escondido
+            botaoMudarIcone.addEventListener('click', () => {
+                inputArquivo.click();
+            });
+
+            // Ação 2: Quando o usuário escolher um arquivo
+            inputArquivo.addEventListener('change', (evento) => {
+                const arquivo = evento.target.files[0]; // Pega o primeiro arquivo selecionado
+
+                if (arquivo) {
+                    // Cria um leitor de arquivos
+                    const leitor = new FileReader();
+
+                    // O que acontece quando a leitura termina:
+                    leitor.onload = (e) => {
+                        // Atualiza a imagem na tela com o resultado da leitura
+                        iconeUsuario.src = e.target.result;
+                    };
+
+                    // Começa a ler o arquivo como uma URL de dados
+                    leitor.readAsDataURL(arquivo);
+                }
+            });
+
+            // ----------------------------------------------------
+            // 3. INTERAÇÃO COM OS CAMPOS
+            // ----------------------------------------------------
+            document.querySelectorAll('.campo-info').forEach(campo => {
+                campo.addEventListener('click', () => {
+                    console.log(`Clicou em: ${campo.id}`);
+                });
+            });
+
+            // ----------------------------------------------------
+            // 3. INTERAÇÃO COM OS CAMPOS (Placeholder para edição)
+            // ----------------------------------------------------
+            document.querySelectorAll('.campo-info').forEach(campo => {
+                campo.addEventListener('click', () => {
+                    // Aqui futuramente você colocará a lógica para abrir o formulário de edição
+                    console.log(`Clicou em: ${campo.id}`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

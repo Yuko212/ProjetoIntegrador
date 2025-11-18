@@ -1,0 +1,294 @@
+:root {
+    --cor-fundo-claro: #F5F5F5; 
+    --cor-fundo-escuro: #E6E6FA; 
+    --cor-primaria: #6A5ACD; 
+    --cor-secundaria: #D8BFD8; 
+    --cor-botoes: #9370DB; 
+    --cor-texto-claro: #FFFFFF;
+    --cor-texto-escuro: #333333;
+    --sombra-leve: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body, html {
+    height: 100%;
+    background-color: var(--cor-fundo-claro);
+}
+
+.container-principal {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* --- PAINEL PERFIL (Lado Esquerdo) --- */
+.painel-perfil {
+    width: 40%; /* Ajuste para o seu layout */
+    background-color: #af95c4;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.area-icone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.icone-perfil {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--cor-primaria);
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.editar-conta {
+    color: var(--cor-primaria);
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.botao-icone {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8em;
+    margin-top: 5px;
+    transition: background-color 0.2s;
+}
+
+.botao-icone:hover {
+    background-color: #5548b8;
+}
+
+/* Estilo para os campos de informação (Nome, E-mail, etc) */
+.grupo-informacao {
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 15px;
+}
+
+.rotulo-info {
+    display: none; /* Mantemos o label por acessibilidade, mas escondemos se o layout não o mostra */
+}
+
+.campo-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: var(--sombra-leve);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    
+    background-color: #280446; 
+    color: #FFFFFF;           
+}
+
+.campo-info:hover {
+    background-color: #C0B0C0; 
+}
+
+.valor-info {
+    font-size: 1em;
+}
+
+.icone-seta {
+    font-weight: bold; 
+}
+
+
+.logotipo {
+    display: flex;
+    align-items: center;
+    margin-top: auto; 
+    align-self: flex-start;
+    padding-top: 20px;
+}
+
+.icone-robo {
+    width: 200px; 
+    height: 130px;
+    margin-right: 5px;
+}
+
+/* --- ÁREA DE PEDIDOS (Lado Direito) --- */
+.area-pedidos {
+    width: 60%;
+    background-color: var(--cor-fundo-escuro);
+    padding: 50px 70px;
+    
+    display: flex;
+    flex-direction: column;
+    
+    /* O SEGREDO ESTÁ AQUI EMBAIXO: */
+    justify-content: center; /* Centraliza na VERTICAL (altura) */
+    align-items: center;     /* Centraliza na HORIZONTAL (largura) */
+}
+
+.botao-acao {
+    /* Define a largura mínima para todos os botões, garantindo que sejam iguais. 
+       Você pode ajustar o valor (ex: 300px) se quiser botões maiores ou menores. */
+    width: 280px; 
+    
+    /* Adiciona margem entre os botões (espaçamento vertical). */
+    margin-bottom: 20px; 
+    
+    /* As demais propriedades que você já tinha: */
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: var(--cor-botoes);
+    color: var(--cor-texto-claro);
+    font-size: 1.1em;
+    box-shadow: var(--sombra-leve);
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+/* Opcional: Adicionar um efeito de hover para interatividade */
+.botao-acao:hover {
+    background-color: #8A5ACD; /* Um tom ligeiramente mais escuro */
+    transform: translateY(-2px);
+}
+
+.botao-acao:first-child {
+    text-decoration: none; 
+}
+
+
+
+/* --- MODAL DE SELEÇÃO DE ÍCONE --- */
+.modal-selecao-icone {
+    display: none; 
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-selecao-icone.ativo {
+    display: flex;
+}
+
+.modal-selecao-icone h3 {
+    margin-bottom: 15px;
+    color: var(--cor-primaria);
+}
+
+.galeria-icones {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    padding: 20px;
+    background-color: var(--cor-texto-claro);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+}
+
+.icone-opcao {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: border 0.2s, transform 0.2s;
+}
+
+.icone-opcao:hover {
+    transform: scale(1.1);
+}
+
+.icone-opcao.selecionado {
+    border-color: var(--cor-primaria);
+}
+
+/* HEADER INDEX*/
+
+
+
+
+#main-header {
+    background-color: #280446;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+.cabeçalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;    /* py-4 */
+    padding-bottom: 1rem; /* py-4 */
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; 
+    color: #e6d9f0; 
+    text-decoration: none;
+}
+
+.logo-text {
+    font-size: 1.5rem; 
+    font-weight: 800;  
+    letter-spacing: -0.025em; 
+}
+.main-nav {
+    display: none; 
+}
+.nav-link {
+    color: #e6d9f0; 
+    font-weight: 700; 
+    text-decoration: none;
+    transition: color 0.15s ease-in-out;
+}
+.nav-link:hover {
+    color: #aa94bd; 
+}
+.cta-button {
+    padding: 0.5rem 1.25rem; 
+    font-weight: 700;
+    color: #fff;
+    border-radius: 0.5rem; 
+    background-color: #460779; 
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+    box-shadow: 0 10px 15px -3px #460779, 0 4px 6px -2px #4f46e580; 
+}
+.cta-button:hover {
+    background-color: #654d78; 
+}
+.cta-button.large {
+    padding: 0.75rem 2rem; 
+    font-size: 1.125rem; 
+    font-weight: 800; 
+    border-radius: 0.75rem; 
+}
