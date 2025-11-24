@@ -87,6 +87,12 @@
                 const data = await resposta.json();
 
                 if (data.status === "ok") {
+                    // SALVA O USUÁRIO LOGADO
+                    localStorage.setItem("usuarioLogado", JSON.stringify({
+                        nome: data.usuario,
+                        email: email
+                    }));
+
                     alert("Login realizado com sucesso!");
                     window.location.href = "dashboard.html"; // coloque a página que quiser
                 } else {
