@@ -53,7 +53,8 @@
 
             <button type="submit" class="botao-finalizar">Finalizar</button>
 
-        
+            <img id="preview-peca" src="../img/pngs/Base.png" alt="Preview da Peça" class="preview-peca">
+
         </section>
 
         <section class="config-painel-direito" id="painel-configuracao">
@@ -270,6 +271,33 @@
                     });
                 }
 
+                function atualizarPreviewPino1() {
+                const primeira = document.querySelector('#coluna-pino-1 .form-grupo:nth-child(1) .dropdown-select').value;
+                const segunda  = document.querySelector('#coluna-pino-1 .form-grupo:nth-child(2) .dropdown-select').value;
+                const terceira = document.querySelector('#coluna-pino-1 .form-grupo:nth-child(3) .dropdown-select').value;
+
+                // Converte para a letra da imagem
+                const mapa = {
+                    circulo: 'C',
+                    quadrado: 'Q',
+                    octogono: 'O'
+                };
+
+                let codigo = "";
+
+                if (primeira) codigo += mapa[primeira];
+                if (segunda)  codigo += mapa[segunda];
+                if (terceira) codigo += mapa[terceira];
+
+                const img = document.getElementById("preview-peca");
+
+                if (codigo.length === 0) {
+                    img.src = "img/base.png";  // imagem vazia
+                } else {
+                    img.src = "img/" + codigo + ".png";  // exemplo: CQ.png, COQ.png, etc
+                }
+            }
+            
                 // Configurar eventos para cada dropdown DENTRO desta coluna
                 formGroups.forEach(group => {
                     const container = group.querySelector('.dropdown-container');
@@ -291,12 +319,9 @@
                             event.stopPropagation();
                             if (item.classList.contains('desabilitado')) return;
 
-                            // Atualiza o select real
                             selectElement.value = item.dataset.value;
 
-                            // Atualiza texto visível
-                            const textoDisplay = container.querySelector('.dropdown-text');
-                            textoDisplay.textContent = item.textContent;
+                            atualizarPreviewPino1();   // <-- AQUI
 
                             dropdownOpcoes.style.display = 'none';
                             updateAvailableOptions();
@@ -327,6 +352,7 @@
                     opcoes.style.display = 'none';
                 });
             });
+
         });
     </script>
 </body>

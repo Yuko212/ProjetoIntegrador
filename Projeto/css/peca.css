@@ -387,3 +387,9 @@ body {
 .clear-btn:hover {
     color: red;
 }
+
+.preview-peca {
+    width: 240px;
+    margin-top: 20px;
+    display: block;
+}
