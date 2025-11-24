@@ -1,169 +1,129 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - CiberTech</title>
-    <link rel="stylesheet" href="../css/dashboard.css">
-    <link rel="stylesheet" href="../css/logout.css">
+    <title>Criar Conta - CiberTech</title>
+   
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+   
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
-    <script src="../js/auth.js"></script>
-    <header id="main-header">
-        <div class="cabeçalho">
-            <a href="#" class="logo">
-                <span class="logo-text">CiberTech</span>
-                
-            </a>
 
-            <nav class="main-nav">
-                <a href="#" class="nav-link">Home</a>
-                <a href="#design" class="nav-link">Design</a>
-                <a href="#acompanhamento" class="nav-link">Acompanhamento</a>
-                <a href="#historico" class="nav-link">Histórico</a>
-            </nav>
-
-            <button class="botao-logout" onclick="logout()">
-                Sair
-            </button>            
-        </div>
-    </header>
-
-
-
-    <div class="container-principal">
-        <aside class="painel-perfil">
-            <div class="area-icone">
-                <img id="icone-usuario" src="../imagens/icone-padrao.jpg" alt="Ícone do Usuário" class="icone-perfil">
-                <p class="editar-conta">Editar conta</p>
-                <input type="file" id="input-arquivo-icone" accept="image/*" style="display: none;">
-                <button id="botao-mudar-icone" class="botao-icone">Mudar Ícone</button>
-            </div>
-            
-            <div class="modal-selecao-icone" id="modal-selecao">
-                <div class="conteudo-modal"> <h3>Selecione um Ícone</h3>
-                    <div class="galeria-icones">
-                        </div>
-                    <button id="fechar-selecao-icone" class="botao-fechar-modal">Fechar</button>
-                </div>
+    <main class="login-container">
+       
+        <section class="login-lateral">
+           
+            <div class="login-info">
+                <h1 class="login-titulo">CiberTech: <br>Seu pedido, do seu jeito!</h1>
+                <p class="login-subtitulo">
+                    Personalize o seu pedido, escolha entre blocos simples ou duplos e 3 cores de lâminas.
+                </p>
             </div>
 
-            <div class="grupo-informacao">
-                <label for="nome" class="rotulo-info">Nome</label>
-                <div class="campo-info" id="campo-nome">
-                    <span class="valor-info">Carregando...</span>
-                    <span class="icone-seta">></span>
-                </div>
+            <div class="login-logo-rodape">
+                <a href="index.html" class="logo">
+                    <span class="logo-text">CiberTech</span>
+                </a>
             </div>
 
-            <div class="grupo-informacao">
-                <label for="sobrenome" class="rotulo-info">Sobrenome</label>
-                <div class="campo-info" id="campo-sobrenome">
-                    <span class="valor-info">Carregando...</span>
-                    <span class="icone-seta">></span>
-                </div>
+        </section>
+
+        <section class="login-formulario">
+           
+            <div class="login-box">
+               
+                <nav class="login-abas">
+                    <a href="login.html" class="login-aba-link">Login</a>
+                    <span class="login-aba-ativo">Criar conta</span>
+                </nav>
+
+                <form class="login-form" id="cadastroForm">
+                   
+                    <div class="input-grupo">
+                        <label for="nome" class="sr-apenas">Nome completo</label>
+                        <input type="text" id="nome" placeholder="Nome completo" class="login-input" required>
+                    </div>
+
+                    <div class="input-grupo">
+                        <label for="email" class="sr-apenas">E-mail</label>
+                        <input type="email" id="email" placeholder="E-mail" class="login-input" required>
+                    </div>
+
+                    <div class="input-grupo">
+                        <label for="senha" class="sr-apenas">Crie uma senha</label>
+                        <input type="password" id="senha" placeholder="Crie uma senha" class="login-input" required>
+                    </div>
+
+                    <div class="input-grupo">
+                        <label for="confirma-senha" class="sr-apenas">Confirme sua senha</label>
+                        <input type="password" id="confirma-senha" placeholder="Confirme sua senha" class="login-input" required>
+                    </div>
+
+                    <button type="submit" class="botao-login">
+                        Criar conta
+                    </button>
+                </form>
+
             </div>
 
-            <div class="grupo-informacao">
-                <label for="email" class="rotulo-info">E-mail</label>
-                <div class="campo-info" id="campo-email">
-                    <span class="valor-info">Carregando...</span>
-                    <span class="icone-seta">></span>
-                </div>
-            </div>
+        </section>
 
-            <div class="grupo-informacao">
-                <label for="senha" class="rotulo-info">Senha</label>
-                <div class="campo-info" id="campo-senha">
-                    <span class="valor-info">**********</span>
-                    <span class="icone-seta">></span>
-                </div>
-            </div>
-            
-            <div class="logotipo">
-                <img src="../img/cibertech-logo.png" alt="Logotipo CiberTech" class="icone-robo">
-                
-            </div>
-        </aside>
+    </main>
 
-        <main class="area-pedidos">
-            <button class="botao-acao">Criar um novo pedido</button>
-            <button class="botao-acao">Meu histórico de pedidos</button>
-            <button class="botao-acao">Detalhes do meu pedido</button>
-        </main>
-    </div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector(".login-form");
 
-    <script>
-        verificarLogin();
-            document.addEventListener('DOMContentLoaded', () => {
-            
-            // ----------------------------------------------------
-            // 1. DADOS DO USUÁRIO (Simulação do Banco de Dados)
-            // ----------------------------------------------------
-            const dadosSimuladosUsuario = {
-                nome: "João",
-                sobrenome: "Silva",
-                email: "joao.silva@exemplo.com"
-            };
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
 
-            function carregarDadosUsuario() {
-                document.querySelector('#campo-nome .valor-info').textContent = dadosSimuladosUsuario.nome;
-                document.querySelector('#campo-sobrenome .valor-info').textContent = dadosSimuladosUsuario.sobrenome;
-                document.querySelector('#campo-email .valor-info').textContent = dadosSimuladosUsuario.email;
+        const nome = document.getElementById("nome").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const senha = document.getElementById("senha").value.trim();
+        const confirma = document.getElementById("confirma-senha").value.trim();
+
+        if (!nome || !email || !senha || !confirma) {
+            alert("Preencha todos os campos.");
+            return;
+        }
+
+        if (senha !== confirma) {
+            alert("As senhas não coincidem.");
+            return;
+        }
+
+        try {
+            const resposta = await fetch("http://localhost:1880/cadastro", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nome,
+                    email,
+                    senha
+                })
+            });
+
+            const resultado = await resposta.json();
+
+            if (resultado.success === true) {
+                alert(resultado.message);
+                window.location.href = "login.html";
+            } else {
+                alert("Erro: " + (resultado.message || "Erro desconhecido"));
             }
 
-            carregarDadosUsuario();
+        } catch (erro) {
+            console.error("Erro ao enviar cadastro:", erro);
+            alert("Falha ao conectar ao servidor.");
+        }
+    });
+});
+</script>
 
-            // ----------------------------------------------------
-            // 2. LÓGICA DE UPLOAD DE FOTO (ATUALIZADO)
-            // ----------------------------------------------------
-            const iconeUsuario = document.getElementById('icone-usuario');
-            const botaoMudarIcone = document.getElementById('botao-mudar-icone');
-            const inputArquivo = document.getElementById('input-arquivo-icone');
-
-            // Ação 1: Quando clicar no botão "Mudar Ícone", ativamos o input escondido
-            botaoMudarIcone.addEventListener('click', () => {
-                inputArquivo.click();
-            });
-
-            // Ação 2: Quando o usuário escolher um arquivo
-            inputArquivo.addEventListener('change', (evento) => {
-                const arquivo = evento.target.files[0]; // Pega o primeiro arquivo selecionado
-
-                if (arquivo) {
-                    // Cria um leitor de arquivos
-                    const leitor = new FileReader();
-
-                    // O que acontece quando a leitura termina:
-                    leitor.onload = (e) => {
-                        // Atualiza a imagem na tela com o resultado da leitura
-                        iconeUsuario.src = e.target.result;
-                    };
-
-                    // Começa a ler o arquivo como uma URL de dados
-                    leitor.readAsDataURL(arquivo);
-                }
-            });
-
-            // ----------------------------------------------------
-            // 3. INTERAÇÃO COM OS CAMPOS
-            // ----------------------------------------------------
-            document.querySelectorAll('.campo-info').forEach(campo => {
-                campo.addEventListener('click', () => {
-                    console.log(`Clicou em: ${campo.id}`);
-                });
-            });
-
-            // ----------------------------------------------------
-            // 3. INTERAÇÃO COM OS CAMPOS (Placeholder para edição)
-            // ----------------------------------------------------
-            document.querySelectorAll('.campo-info').forEach(campo => {
-                campo.addEventListener('click', () => {
-                    // Aqui futuramente você colocará a lógica para abrir o formulário de edição
-                    console.log(`Clicou em: ${campo.id}`);
-                });
-            });
-        });
-    </script>
 </body>
 </html>
+

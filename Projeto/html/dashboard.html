@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - CiberTech</title>
     <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/logout.css">
 </head>
 <body>
-
-
-
+    <script src="../js/auth.js"></script>
     <header id="main-header">
         <div class="cabeçalho">
             <a href="#" class="logo">
@@ -24,9 +23,9 @@
                 <a href="#historico" class="nav-link">Histórico</a>
             </nav>
 
-            <a href="login.html" class="cta-button">
-                Login / Cadastro
-            </a>
+            <button class="botao-logout" onclick="logout()">
+                Sair
+            </button>            
         </div>
     </header>
 
@@ -95,7 +94,8 @@
     </div>
 
     <script>
-document.addEventListener('DOMContentLoaded', () => {
+        verificarLogin();
+            document.addEventListener('DOMContentLoaded', () => {
             
             // ----------------------------------------------------
             // 1. DADOS DO USUÁRIO (Simulação do Banco de Dados)
