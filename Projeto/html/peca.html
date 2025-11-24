@@ -5,28 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configuração da Peça - CiberTech</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="../css/peca.css"> 
+    <link rel="stylesheet" href="../css/logout.css">
     
 </head>
 <body>
-
+    <script src="../js/auth.js"></script>
     <header id="main-header">
         <div class="cabeçalho">
-            <a href="#" class="logo">
-               
-                <span class="logo-text">CiberTech</span>
+            <a href="index.html" class="logo">
+                <span class="logo-text">CiberTech</span>                
             </a>
 
             <nav class="main-nav">
-                <a href="#" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link">Home</a>
                 <a href="#design" class="nav-link">Design</a>
                 <a href="#acompanhamento" class="nav-link">Acompanhamento</a>
                 <a href="#historico" class="nav-link">Histórico</a>
             </nav>
 
-            <a href="login.html" class="cta-button">
-                Login / Cadastro
-            </a>
+            <button class="botao-logout" onclick="logout()">
+                Sair
+            </button>
         </div>
     </header>
 
@@ -70,8 +70,15 @@
                     <div class="form-grupo">
                         <label class="label-dropdown">Primeira forma</label>
                         <div class="dropdown-container">
-                            <select class="dropdown-select"><option value="">Selecione...</option><option value="circulo">Círculo</option><option value="quadrado">Quadrado</option><option value="octogono">Octógono</option></select>
+                            <select class="dropdown-select">
+                                <option value="">Selecione...</option>
+                                <option value="circulo">Círculo</option>
+                                <option value="quadrado">Quadrado</option>
+                                <option value="octogono">Octógono</option>
+                            </select>
+                            <span class="dropdown-text">Selecione...</span>
                             <span class="dropdown-arrow">></span>
+                            <span class="clear-btn">×</span>
                         </div>
                         <div class="dropdown-opcoes">
                             <span class="dropdown-item" data-value="circulo">Círculo</span>
@@ -83,8 +90,15 @@
                     <div class="form-grupo">
                         <label class="label-dropdown">Segunda forma</label>
                         <div class="dropdown-container">
-                            <select class="dropdown-select"><option value="">Selecione...</option><option value="circulo">Círculo</option><option value="quadrado">Quadrado</option><option value="octogono">Octógono</option></select>
+                            <select class="dropdown-select">
+                                <option value="">Selecione...</option>
+                                <option value="circulo">Círculo</option>
+                                <option value="quadrado">Quadrado</option>
+                                <option value="octogono">Octógono</option>
+                            </select>
+                            <span class="dropdown-text">Selecione...</span>
                             <span class="dropdown-arrow">></span>
+                            <span class="clear-btn">×</span>
                         </div>
                         <div class="dropdown-opcoes">
                             <span class="dropdown-item" data-value="circulo">Círculo</span>
@@ -96,8 +110,15 @@
                     <div class="form-grupo">
                         <label class="label-dropdown">Terceira forma</label>
                         <div class="dropdown-container">
-                            <select class="dropdown-select"><option value="">Selecione...</option><option value="circulo">Círculo</option><option value="quadrado">Quadrado</option><option value="octogono">Octógono</option></select>
+                            <select class="dropdown-select">
+                                <option value="">Selecione...</option>
+                                <option value="circulo">Círculo</option>
+                                <option value="quadrado">Quadrado</option>
+                                <option value="octogono">Octógono</option>
+                            </select>
+                            <span class="dropdown-text">Selecione...</span>
                             <span class="dropdown-arrow">></span>
+                            <span class="clear-btn">×</span>
                         </div>
                         <div class="dropdown-opcoes">
                             <span class="dropdown-item" data-value="circulo">Círculo</span>
@@ -113,8 +134,15 @@
                     <div class="form-grupo">
                         <label class="label-dropdown">Primeira forma</label>
                         <div class="dropdown-container">
-                            <select class="dropdown-select"><option value="">Selecione...</option><option value="circulo">Círculo</option><option value="quadrado">Quadrado</option><option value="octogono">Octógono</option></select>
+                            <select class="dropdown-select">
+                                <option value="">Selecione...</option>
+                                <option value="circulo">Círculo</option>
+                                <option value="quadrado">Quadrado</option>
+                                <option value="octogono">Octógono</option>
+                            </select>
+                            <span class="dropdown-text">Selecione...</span>
                             <span class="dropdown-arrow">></span>
+                            <span class="clear-btn">×</span>
                         </div>
                         <div class="dropdown-opcoes">
                             <span class="dropdown-item" data-value="circulo">Círculo</span>
@@ -126,8 +154,15 @@
                     <div class="form-grupo">
                         <label class="label-dropdown">Segunda forma</label>
                         <div class="dropdown-container">
-                            <select class="dropdown-select"><option value="">Selecione...</option><option value="circulo">Círculo</option><option value="quadrado">Quadrado</option><option value="octogono">Octógono</option></select>
+                            <select class="dropdown-select">
+                                <option value="">Selecione...</option>
+                                <option value="circulo">Círculo</option>
+                                <option value="quadrado">Quadrado</option>
+                                <option value="octogono">Octógono</option>
+                            </select>
+                            <span class="dropdown-text">Selecione...</span>
                             <span class="dropdown-arrow">></span>
+                            <span class="clear-btn">×</span>
                         </div>
                         <div class="dropdown-opcoes">
                             <span class="dropdown-item" data-value="circulo">Círculo</span>
@@ -139,8 +174,15 @@
                     <div class="form-grupo">
                         <label class="label-dropdown">Terceira forma</label>
                         <div class="dropdown-container">
-                            <select class="dropdown-select"><option value="">Selecione...</option><option value="circulo">Círculo</option><option value="quadrado">Quadrado</option><option value="octogono">Octógono</option></select>
+                            <select class="dropdown-select">
+                                <option value="">Selecione...</option>
+                                <option value="circulo">Círculo</option>
+                                <option value="quadrado">Quadrado</option>
+                                <option value="octogono">Octógono</option>
+                            </select>
+                            <span class="dropdown-text">Selecione...</span>
                             <span class="dropdown-arrow">></span>
+                            <span class="clear-btn">×</span>
                         </div>
                         <div class="dropdown-opcoes">
                             <span class="dropdown-item" data-value="circulo">Círculo</span>
@@ -170,8 +212,9 @@
         </div>
     </footer>
 
-
+    <script src="../js/auth.js"></script>
     <script>
+        verificarLogin();
         document.addEventListener('DOMContentLoaded', function() {
             
             // --- 1. LÓGICA DE EXIBIR/OCULTAR COLUNA DUPLA ---
@@ -232,14 +275,15 @@
                     const container = group.querySelector('.dropdown-container');
                     const selectElement = group.querySelector('.dropdown-select');
                     const dropdownOpcoes = group.querySelector('.dropdown-opcoes');
+                    const clearBtn = group.querySelector('.clear-btn'); // <-- AGORA EXISTE
 
                     container.addEventListener('click', function(event) {
                         event.stopPropagation();
-                        // Fecha outros dropdowns da MESMA coluna
                         allOptionGroups.forEach(otherOptions => {
                             if (otherOptions !== dropdownOpcoes) otherOptions.style.display = 'none';
                         });
-                        dropdownOpcoes.style.display = dropdownOpcoes.style.display === 'none' ? 'block' : 'none';
+                        dropdownOpcoes.style.display =
+                            dropdownOpcoes.style.display === 'none' ? 'block' : 'none';
                     });
 
                     dropdownOpcoes.querySelectorAll('.dropdown-item').forEach(item => {
@@ -247,16 +291,29 @@
                             event.stopPropagation();
                             if (item.classList.contains('desabilitado')) return;
 
+                            // Atualiza o select real
                             selectElement.value = item.dataset.value;
-                            
-                            // Atualiza texto visual (opcional)
-                            const textoSelecionado = item.textContent;
-                            // container.querySelector('.dropdown-select').style.color = "#280446"; // Exemplo de feedback visual
+
+                            // Atualiza texto visível
+                            const textoDisplay = container.querySelector('.dropdown-text');
+                            textoDisplay.textContent = item.textContent;
 
                             dropdownOpcoes.style.display = 'none';
                             updateAvailableOptions();
                         });
                     });
+
+                    // ------ BOTÃO X ------
+                    if (clearBtn) {
+                        clearBtn.addEventListener('click', function(event) {
+                                event.stopPropagation();
+                                selectElement.value = "";
+                                const textoDisplay = container.querySelector('.dropdown-text');
+                                textoDisplay.textContent = "Selecione...";
+                                updateAvailableOptions();
+                            dropdownOpcoes.style.display = 'none';
+                        });
+                    }
                 });
             }
 
