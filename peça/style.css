@@ -1,340 +1,363 @@
 
+
+/* --- 1. Header --- */
+#main-header {
+    background-color: #280446;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+.cabeçalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;    /* py-4 */
+    padding-bottom: 1rem; /* py-4 */
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* space-x-2 */
+    color: #e6d9f0; /* text-gray-900 */
+    text-decoration: none;
+}
+
+.logo svg {
+    /* Garante que o ícone tenha a cor do texto do .logo */
+    stroke: currentColor; 
+    width: 24px; 
+    height: 24px;
+}
+
+.logo-text {
+    font-size: 1.5rem; 
+    font-weight: 800;  
+    letter-spacing: -0.025em; 
+    color: #fff;
+}
+.main-nav {
+    display: flex; /* Mude de 'none' para 'flex' */
+    gap: 1.5rem; /* Adicione um espaçamento entre os links (ex: 1.5rem) */
+}
+.nav-link {
+    color: #e6d9f0; /* text-gray-600 */
+    font-weight: 700; /* font-medium */
+    text-decoration: none;
+    transition: color 0.15s ease-in-out;
+}
+.nav-link:hover {
+    color: #aa94bd; /* hover:text-indigo-600 */
+}
+.cta-button {
+    padding: 0.5rem 1.25rem; /* px-5 py-2 */
+    font-weight: 700; /* font-bold */
+    color: #fff;
+    border-radius: 0.5rem; /* rounded-lg */
+    background-color: #460779; /* bg-indigo-600 */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+    box-shadow: 0 10px 15px -3px #460779, 0 4px 6px -2px #4f46e580; /* shadow-lg shadow-indigo-500/50 */
+}
+.cta-button:hover {
+    background-color: #654d78; /* hover:bg-indigo-700 */
+}
+.cta-button.large {
+    padding: 0.75rem 2rem; /* px-8 py-3 */
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 800; /* font-extrabold */
+    border-radius: 0.75rem; /* rounded-xl */
+}
+
+
+
 body {
+    /* Mantenha o que já tem, mas adicione o Flexbox para gerenciar o layout vertical */
     font-family: 'Inter', sans-serif;
-    background-color: #C9B8E3; 
+    background-color: #C9B8E3;
     margin: 0;
-    min-height: 100vh;
-    color: #280446; 
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    
+    /* Novo Flexbox para estruturar Header/Main/Footer */
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Garante altura total */
+    overflow: hidden; /* O body não rola */
+
+    color: #280446;
 }
 
-input, button, select {
-    font-family: 'Inter', sans-serif;
-}
-
-/* Esconde labels para acessibilidade */
-.sr-apenas {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-}
 
 /* --- Estrutura Principal --- */
 .config-container {
     display: grid;
-    /* Duas colunas de tamanho igual */
-    grid-template-columns: 1fr 1fr;
-    min-height: 100vh;
-    padding: 3rem 4rem; /* Padding geral para a container */
-    gap: 4rem; /* Espaçamento entre os painéis */
+    grid-template-columns: 35% 65%; 
+    flex-grow: 1; 
+    overflow-y: auto; 
+    overflow-x: hidden;
+    padding: 2rem 3rem;
+    gap: 2rem;
+    box-sizing: border-box;
 }
+
+
 
 /* --- Painel Esquerdo --- */
 .config-painel-esquerdo {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Empurra o logo para baixo e botão para o meio */
-    align-items: flex-start; /* Alinha os itens à esquerda */
-    padding-top: 2rem; /* Ajuste para o conteúdo do card */
+    padding-top: 2rem;
 }
 
 .config-card {
-    background-color: #e5e7eb; /* Cor de fundo dos cards (cinza claro) */
-    border-radius: 1rem; /* Bordas arredondadas */
-    padding: 2.5rem 3rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Ocupa a largura total disponível */
-    max-width: 450px; /* Limite para não ficar muito largo */
-    margin-bottom: 3rem; /* Espaço entre o card e o botão Finalizar */
+    background-color: transparent; 
 }
 
+/* Títulos */
 .config-card-titulo {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 700;
-    margin-top: 0;
-    margin-bottom: 2rem;
-    text-align: center;
+    margin-bottom: 1.5rem;
     color: #280446;
+    text-align: center;
 }
 
-/* --- Estilização dos Checkboxes Personalizados --- */
+/* --- Botões de Rádio (Estilo Card) --- */
 .opcao-radio {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    position: relative; /* Para posicionar o tick */
-    cursor: pointer;
+    margin-bottom: 1rem;
+    position: relative;
 }
 
 .checkbox-custom {
-    /* Esconde o checkbox nativo */
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    height: 0;
-    width: 0;
 }
 
 .label-custom {
-    background-color: #280446; /* Cor roxa clara do background na imagem */
-    color: #ffffff;
-    padding: 1.25rem 1.5rem 1.25rem 4rem; /* Aumenta o padding à esquerda para o tick */
-    border-radius: 0.75rem;
-    display: block; /* Para ocupar a largura total do container */
-    width: 100%;
-    font-size: 1rem;
+    background-color: #e5e7eb; /* Fundo claro padrão */
+    color: #280446;
+    padding: 1rem 1.5rem 1rem 3.5rem;
+    border-radius: 0.5rem;
+    display: block;
     font-weight: 600;
-    line-height: 1.4;
     cursor: pointer;
-    box-sizing: border-box; /* Inclui padding na largura total */
-    position: relative;
-    transition: background-color 0.2s ease-in-out;
+    
+    transition: all 0.2s;
 }
 
-/* Estilo do quadrado do checkbox antes de ser marcado */
+/* Estilo do quadrado (checkbox/radio visual) */
 .label-custom::before {
     content: '';
     position: absolute;
-    left: 1.5rem;
+    left: 1rem;
     top: 50%;
     transform: translateY(-50%);
     width: 20px;
     height: 20px;
-    border: 2px solid #ffffff; /* Borda escura */
+    border: 2px solid #280446;
     border-radius: 4px;
-    background-color: transparent;
 }
 
-/* Estilo do tick quando o checkbox está marcado */
-.checkbox-custom:checked + .label-custom::before {
-    background-color: #280446; /* Fundo escuro quando marcado */
+/* Quando selecionado (Checked) */
+.checkbox-custom:checked + .label-custom {
+    background-color: #e5e7eb; 
     border-color: #280446;
 }
 
+.checkbox-custom:checked + .label-custom::before {
+    background-color: #280446;
+}
+
 .checkbox-custom:checked + .label-custom::after {
-    content: '✔'; /* Símbolo de checkmark */
+    content: '✔';
     position: absolute;
-    left: 1.6rem;
+    left: 1.15rem;
     top: 50%;
     transform: translateY(-50%);
-    color: #C9B8E3; /* Cor clara do tick */
-    font-size: 1.2rem;
-    line-height: 1;
+    color: #fff;
+    font-size: 14px;
 }
 
-/* --- Botão Finalizar --- */
-.botao-finalizar {
-    padding: 1rem 3rem;
-    font-weight: 700;
-    color: #ffffff;
-    background-color: #280446; /* Cor roxa clara do botão da imagem */
-    border: none;
-    cursor: pointer;
-    border-radius: 0.75rem;
-    font-size: 1.1rem;
-    transition: background-color 0.15s ease-in-out;
-    align-self: flex-start; /* Alinha o botão à esquerda */
-    margin-left: 2.5rem; /* Alinha com o conteúdo do card */
-}
-
-.botao-finalizar:hover {
-    background-color: #9f90c8;
-}
-
-/* Logo no Rodapé (reutilizando estilos do login) */
-.config-logo-rodape {
-    margin-top: auto; /* Empurra para o final do container flex */
-    padding-left: 2.5rem; /* Alinha com o conteúdo */
-}
-.config-logo-rodape .logo {
-    text-decoration: none;
-    color: #280446;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-.config-logo-rodape .logo-text {
-    font-size: 1.5rem;
-    font-weight: 800;
-}
-
-/* --- Painel Direito (Dropdowns) --- */
+/* --- Painel Direito (Área dos Pinos) --- */
 .config-painel-direito {
     display: flex;
-    justify-content: flex-start; /* Alinha o card ao topo esquerdo */
-    align-items: flex-start;
-    padding-top: 2rem; /* Ajuste para o conteúdo do card */
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo */
+    padding-top: 2rem;
 }
 
-.form-grupo {
+.header-ordem {
+    width: 100%;
+    text-align: center;
     margin-bottom: 2rem;
-    position: relative; /* Para o posicionamento das opções flutuantes */
+}
+
+.container-pinos {
+    display: flex;
+    gap: 3rem; 
+    justify-content: center;
+    width: 100%;
+}
+
+.coluna-pino {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    transition: all 0.3s ease;
+}
+
+
+.oculto {
+    display: none;
+}
+
+/* Título de cada coluna (Ordem 1º pino) */
+.titulo-pino {
+    background-color: #280446; 
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+    text-align: center;
+    font-weight: 700;
+    color: #fff;
+    
+    
+}
+
+
+.form-grupo {
+    margin-bottom: 1.5rem;
+    position: relative;
 }
 
 .label-dropdown {
-    font-size: 1rem;
     font-weight: 600;
     color: #280446;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     display: block;
 }
 
 .dropdown-container {
+    background-color: #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 0.8rem;
     position: relative;
-    width: 100%;
-    max-width: 300px; /* Largura máxima dos dropdowns */
-    background-color: #C9B8E3; /* Cor roxa clara do dropdown na imagem */
-    border-radius: 0.75rem;
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1.25rem;
-    box-sizing: border-box;
 }
 
 .dropdown-select {
-   
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    width: 100%;
     background: transparent;
     border: none;
-    outline: none;
-    width: 100%;
-    font-size: 1rem;
     font-weight: 600;
     color: #280446;
+    appearance: none;
     cursor: pointer;
-    padding-right: 20px; 
-}
-
-
-.dropdown-select::-ms-expand {
-    display: none;
+    outline: none;
 }
 
 .dropdown-arrow {
-    position: absolute;
-    right: 1.25rem;
-    top: 50%;
-    transform: translateY(-50%) rotate(90deg); /* Rotação para simular a seta > */
-    color: #280446;
-    font-weight: 700;
-    pointer-events: none; /* Não interfere no clique do container */
+    font-weight: bold;
+    margin-left: auto;
 }
 
-/* --- Opções Flutuantes do Dropdown --- */
 .dropdown-opcoes {
     position: absolute;
-    top: 100%; 
+    top: 100%;
     left: 0;
     width: 100%;
-    max-width: 300px;
-    background-color: #e5e7eb; 
-    border-radius: 0.75rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    z-index: 1000; /* Garante que apareça sobre outros elementos */
-    margin-top: 0.5rem;
-    overflow: hidden; /* Para garantir que o border-radius funcione */
-    display: none; /* Inicia escondido, será controlado por JS */
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 10;
+    display: none;
+    margin-top: 5px;
+    overflow: hidden;
 }
 
 .dropdown-item {
-    display: block;
-    padding: 0.75rem 1.25rem;
-    color: #280446;
-    font-size: 1rem;
-    font-weight: 600;
+    padding: 10px 15px;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
+    display: block;
+    font-weight: 600;
 }
 
 .dropdown-item:hover {
-    background-color: #C9B8E3; /* Destaca a opção ao passar o mouse */
-}
-
-.dropdown-text {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #280446;
-    pointer-events: none; /* não interfere no clique */
+    background-color: #f0edfa;
 }
 
 .dropdown-item.desabilitado {
-    /* Cor de fundo para indicar que está indisponível */
-    background-color: #f3f4f6; 
-    color: #9ca3af; 
-    cursor: not-allowed; 
-    opacity: 0.8;
+    background-color: #f3f4f6;
+    color: #ccc;
+    cursor: not-allowed;
 }
 
-/* Remove o efeito hover das opções desabilitadas */
-.dropdown-item.desabilitado:hover {
-    background-color: #f3f4f6; 
-}
 
-.dropdown-clear {
-    display: none;              /* aparece só quando tiver seleção */
-    margin-right: 6px;
-    cursor: pointer;
+.botao-finalizar {
+    background-color: #280446;
+    color: #fff;
+    padding: 1rem 3rem;
+    border-radius: 0.5rem;
     font-weight: bold;
-    user-select: none;
-    color: #4b2b4f;             /* mesma cor da seta */
-}
-
-.dropdown-container.has-value .dropdown-clear {
-    display: inline;
-}
-
-.dropdown-select {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-    height: 0;
-    width: 0;
+    border: none;
+    cursor: pointer;
+    margin-top: 2rem;
 }
 
 
-@media (max-width: 768px) {
-    .config-container {
-        grid-template-columns: 1fr;
-        padding: 2rem;
-        gap: 2rem;
-    }
+.config-logo-rodape {
+    margin-top: auto;
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+.logo { text-decoration: none; color: #280446; }
 
-    .config-painel-esquerdo,
-    .config-painel-direito {
-        align-items: center; 
-        padding-top: 0;
-    }
+#main-footer {
+    /* ... propriedades de cor/padding ... */
+    flex-shrink: 0; /* Garante que o Footer mantenha seu tamanho e não encolha */
+}
 
-    .config-card {
-        max-width: 100%; 
-        padding: 2rem;
-        margin-bottom: 2rem;
-    }
-
-    .botao-finalizar {
-        align-self: center; /* Centraliza o botão */
-        margin-left: 0;
-        margin-bottom: 2rem;
-    }
-
-    .config-logo-rodape {
-        padding-left: 0;
-        text-align: center;
-        margin-top: 1rem;
-    }
-
-    .dropdown-container,
-    .dropdown-opcoes {
-        max-width: 100%;
-    }
+#main-footer {
+    background-color: #280446;
+    box-shadow: 0 4px 6px -1px ; 
+    color: #fff;
+    padding-top: 2rem;    
+    padding-bottom: 2rem;
+}
+.footer-container {
+    text-align: center;
+}
+.footer-top {
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #374151; 
+    padding-bottom: 1rem; 
+    margin-bottom: 1rem; 
+}
+.footer-logo {
+    font-size: 1.25rem; 
+    font-weight: 700; 
+    margin: 0 0 1rem 0; 
+}
+.footer-nav {
+    display: flex;
+    gap: 1rem; 
+}
+.footer-link {
+    color: #e6d9f0; 
+    text-decoration: none;
+    font-size: 0.875rem; 
+    transition: color 0.15s ease-in-out;
+}
+.footer-link:hover {
+    color: #fff; 
+}
+.footer-copy {
+    font-size: 0.875rem; 
+    color: #e6d9f0; 
+    margin: 0;
 }

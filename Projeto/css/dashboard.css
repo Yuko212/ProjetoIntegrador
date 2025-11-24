@@ -9,6 +9,15 @@
     --sombra-leve: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+body {
+    /* ... outras propriedades ... */
+    margin: 0; 
+    padding: 0;
+    overflow-x: hidden; /* <--- MUITO IMPORTANTE! */
+    
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -17,14 +26,34 @@
 }
 
 body, html {
-    height: 100%;
+
     background-color: var(--cor-fundo-claro);
+
+}
+
+/* APLIQUE ESTES DOIS BLOCOS DE CSS GLOBALMENTE */
+
+/* Bloco 1: Estrutura da página (CSS) */
+body, html {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Transforma o body em um contêiner flexível */
+    flex-direction: column; /* Empilha os filhos (Header, Main, Footer) */
+    overflow: hidden; /* O body não rola */
+}
+
+/* Bloco 2: O Conteúdo (CSS) */
+.container-principal {
+    flex-grow: 1; /* Ocupa todo o espaço vertical restante */
+    overflow-y: auto; /* Permite scroll vertical APENAS dentro desta div */
+    overflow-x: hidden; /* Evita scroll horizontal dentro desta div */
 }
 
 .container-principal {
     display: flex;
     width: 100%;
-    min-height: 100vh;
+    height: 100%;
 }
 
 /* --- PAINEL PERFIL (Lado Esquerdo) --- */
@@ -35,6 +64,7 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
+   
 }
 
 .area-icone {
@@ -132,13 +162,11 @@ body, html {
     width: 60%;
     background-color: var(--cor-fundo-escuro);
     padding: 50px 70px;
-    
+ 
     display: flex;
     flex-direction: column;
-    
-    /* O SEGREDO ESTÁ AQUI EMBAIXO: */
-    justify-content: center; /* Centraliza na VERTICAL (altura) */
-    align-items: center;     /* Centraliza na HORIZONTAL (largura) */
+    justify-content: center; 
+    align-items: center;  
 }
 
 .botao-acao {
@@ -226,69 +254,45 @@ body, html {
     border-color: var(--cor-primaria);
 }
 
-/* HEADER INDEX*/
-
-
-
-
-#main-header {
+#main-footer {
     background-color: #280446;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
-    position: sticky;
-    top: 0;
-    z-index: 50;
+    box-shadow: 0 4px 6px -1px ; 
+    color: #fff;
+    padding-top: 2rem;    
+    padding-bottom: 2rem;
 }
-.cabeçalho {
+.footer-container {
+    text-align: center;
+}
+.footer-top {
     display: flex;
+    flex-direction: column; 
     justify-content: space-between;
     align-items: center;
-    padding-top: 1rem;    /* py-4 */
-    padding-bottom: 1rem; /* py-4 */
+    border-bottom: 1px solid #374151; 
+    padding-bottom: 1rem; 
+    margin-bottom: 1rem; 
 }
-
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem; 
-    color: #e6d9f0; 
-    text-decoration: none;
-}
-
-.logo-text {
-    font-size: 1.5rem; 
-    font-weight: 800;  
-    letter-spacing: -0.025em; 
-}
-.main-nav {
-    display: none; 
-}
-.nav-link {
-    color: #e6d9f0; 
+.footer-logo {
+    font-size: 1.25rem; 
     font-weight: 700; 
+    margin: 0 0 1rem 0; 
+}
+.footer-nav {
+    display: flex;
+    gap: 1rem; 
+}
+.footer-link {
+    color: #e6d9f0; 
     text-decoration: none;
+    font-size: 0.875rem; 
     transition: color 0.15s ease-in-out;
 }
-.nav-link:hover {
-    color: #aa94bd; 
+.footer-link:hover {
+    color: #fff; 
 }
-.cta-button {
-    padding: 0.5rem 1.25rem; 
-    font-weight: 700;
-    color: #fff;
-    border-radius: 0.5rem; 
-    background-color: #460779; 
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.15s ease-in-out;
-    box-shadow: 0 10px 15px -3px #460779, 0 4px 6px -2px #4f46e580; 
-}
-.cta-button:hover {
-    background-color: #654d78; 
-}
-.cta-button.large {
-    padding: 0.75rem 2rem; 
-    font-size: 1.125rem; 
-    font-weight: 800; 
-    border-radius: 0.75rem; 
+.footer-copy {
+    font-size: 0.875rem; 
+    color: #e6d9f0; 
+    margin: 0;
 }

@@ -4,221 +4,273 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configuração da Peça - CiberTech</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="index.css"> 
+    <link rel="stylesheet" href="style.css"> 
+    
 </head>
 <body>
+
+    <header id="main-header">
+        <div class="cabeçalho">
+            <a href="#" class="logo">
+               
+                <span class="logo-text">CiberTech</span>
+            </a>
+
+            <nav class="main-nav">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#design" class="nav-link">Design</a>
+                <a href="#acompanhamento" class="nav-link">Acompanhamento</a>
+                <a href="#historico" class="nav-link">Histórico</a>
+            </nav>
+
+            <a href="login.html" class="cta-button">
+                Login / Cadastro
+            </a>
+        </div>
+    </header>
 
     <main class="config-container">
         
         <section class="config-painel-esquerdo">
-            
             <div class="config-card">
                 <h2 class="config-card-titulo">Peça simples ou Dupla?</h2>
                 
                 <div class="opcao-radio">
-                    <input type="checkbox" id="simples" name="tipo-peca" value="simples" class="checkbox-custom" checked>
+                    <input type="radio" id="simples" name="tipo-peca" value="simples" class="checkbox-custom" checked>
                     <label for="simples" class="label-custom">
                         Simples <br> (1 pino com 3 formas)
                     </label>
                 </div>
 
                 <div class="opcao-radio">
-                    <input type="checkbox" id="dupla" name="tipo-peca" value="dupla" class="checkbox-custom">
+                    <input type="radio" id="dupla" name="tipo-peca" value="dupla" class="checkbox-custom">
                     <label for="dupla" class="label-custom">
                         Dupla <br> (2 pinos com 3 formas cada)
                     </label>
                 </div>
             </div>
 
-            <button type="submit" class="botao-finalizar">
-                Finalizar
-            </button>
+            <button type="submit" class="botao-finalizar">Finalizar</button>
 
-            <div class="config-logo-rodape">
-                <a href="index.html" class="logo">
-                    <span class="logo-text">CiberTech</span>
-                </a>
-            </div>
-
+        
         </section>
 
-        <section class="config-painel-direito">
+        <section class="config-painel-direito" id="painel-configuracao">
             
-            <div class="config-card">
+            <div class="header-ordem">
                 <h2 class="config-card-titulo">Escolha a ordem da sua peça</h2>
+            </div>
+
+            <div class="container-pinos">
                 
-                <!-- PRIMEIRA FORMA -->
-                <div class="form-grupo">
-                    <label class="label-dropdown">Primeira forma</label>
-                    <div class="dropdown-container">
-                        <span class="dropdown-text">Selecione...</span>
-                        <span class="dropdown-clear">×</span>
-                        <select class="dropdown-select" id="forma-1">
-                            <option value="">Selecione...</option>
-                            <option value="circulo">Círculo</option>
-                            <option value="quadrado">Quadrado</option>
-                            <option value="octogono">Octógono</option>
-                        </select>
-                        <span class="dropdown-arrow">v</span>
+                <div class="coluna-pino" id="coluna-pino-1">
+                    <div class="titulo-pino">Ordem 1º pino</div>
+                    
+                    <div class="form-grupo">
+                        <label class="label-dropdown">Primeira forma</label>
+                        <div class="dropdown-container">
+                            <select class="dropdown-select"><option value="">Selecione...</option><option value="circulo">Círculo</option><option value="quadrado">Quadrado</option><option value="octogono">Octógono</option></select>
+                            <span class="dropdown-arrow">></span>
+                        </div>
+                        <div class="dropdown-opcoes">
+                            <span class="dropdown-item" data-value="circulo">Círculo</span>
+                            <span class="dropdown-item" data-value="quadrado">Quadrado</span>
+                            <span class="dropdown-item" data-value="octogono">Octógono</span>
+                        </div>
                     </div>
-                    <div class="dropdown-opcoes">
-                        <span class="dropdown-item" data-value="circulo">Círculo</span>
-                        <span class="dropdown-item" data-value="quadrado">Quadrado</span>
-                        <span class="dropdown-item" data-value="octogono">Octógono</span>
+
+                    <div class="form-grupo">
+                        <label class="label-dropdown">Segunda forma</label>
+                        <div class="dropdown-container">
+                            <select class="dropdown-select"><option value="">Selecione...</option><option value="circulo">Círculo</option><option value="quadrado">Quadrado</option><option value="octogono">Octógono</option></select>
+                            <span class="dropdown-arrow">></span>
+                        </div>
+                        <div class="dropdown-opcoes">
+                            <span class="dropdown-item" data-value="circulo">Círculo</span>
+                            <span class="dropdown-item" data-value="quadrado">Quadrado</span>
+                            <span class="dropdown-item" data-value="octogono">Octógono</span>
+                        </div>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label class="label-dropdown">Terceira forma</label>
+                        <div class="dropdown-container">
+                            <select class="dropdown-select"><option value="">Selecione...</option><option value="circulo">Círculo</option><option value="quadrado">Quadrado</option><option value="octogono">Octógono</option></select>
+                            <span class="dropdown-arrow">></span>
+                        </div>
+                        <div class="dropdown-opcoes">
+                            <span class="dropdown-item" data-value="circulo">Círculo</span>
+                            <span class="dropdown-item" data-value="quadrado">Quadrado</span>
+                            <span class="dropdown-item" data-value="octogono">Octógono</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- SEGUNDA FORMA -->
-                <div class="form-grupo">
-                    <label class="label-dropdown">Segunda forma</label>
-                    <div class="dropdown-container">
-                        <span class="dropdown-text">Selecione...</span>
-                        <span class="dropdown-clear">×</span>
-                        <select class="dropdown-select" id="forma-2">
-                            <option value="">Selecione...</option>
-                            <option value="circulo">Círculo</option>
-                            <option value="quadrado">Quadrado</option>
-                            <option value="octogono">Octógono</option>
-                        </select>
-                        <span class="dropdown-arrow">v</span>
+                <div class="coluna-pino oculto" id="coluna-pino-2">
+                    <div class="titulo-pino">Ordem 2º pino</div>
+                    
+                    <div class="form-grupo">
+                        <label class="label-dropdown">Primeira forma</label>
+                        <div class="dropdown-container">
+                            <select class="dropdown-select"><option value="">Selecione...</option><option value="circulo">Círculo</option><option value="quadrado">Quadrado</option><option value="octogono">Octógono</option></select>
+                            <span class="dropdown-arrow">></span>
+                        </div>
+                        <div class="dropdown-opcoes">
+                            <span class="dropdown-item" data-value="circulo">Círculo</span>
+                            <span class="dropdown-item" data-value="quadrado">Quadrado</span>
+                            <span class="dropdown-item" data-value="octogono">Octógono</span>
+                        </div>
                     </div>
-                    <div class="dropdown-opcoes">
-                        <span class="dropdown-item" data-value="circulo">Círculo</span>
-                        <span class="dropdown-item" data-value="quadrado">Quadrado</span>
-                        <span class="dropdown-item" data-value="octogono">Octógono</span>
-                    </div>
-                </div>
 
-                <!-- TERCEIRA FORMA -->
-                <div class="form-grupo">
-                    <label class="label-dropdown">Terceira forma</label>
-                    <div class="dropdown-container">
-                        <span class="dropdown-text">Selecione...</span>
-                        <span class="dropdown-clear">×</span>
-                        <select class="dropdown-select" id="forma-3">
-                            <option value="">Selecione...</option>
-                            <option value="circulo">Círculo</option>
-                            <option value="quadrado">Quadrado</option>
-                            <option value="octogono">Octógono</option>
-                        </select>
-                        <span class="dropdown-arrow">v</span>
+                    <div class="form-grupo">
+                        <label class="label-dropdown">Segunda forma</label>
+                        <div class="dropdown-container">
+                            <select class="dropdown-select"><option value="">Selecione...</option><option value="circulo">Círculo</option><option value="quadrado">Quadrado</option><option value="octogono">Octógono</option></select>
+                            <span class="dropdown-arrow">></span>
+                        </div>
+                        <div class="dropdown-opcoes">
+                            <span class="dropdown-item" data-value="circulo">Círculo</span>
+                            <span class="dropdown-item" data-value="quadrado">Quadrado</span>
+                            <span class="dropdown-item" data-value="octogono">Octógono</span>
+                        </div>
                     </div>
-                    <div class="dropdown-opcoes">
-                        <span class="dropdown-item" data-value="circulo">Círculo</span>
-                        <span class="dropdown-item" data-value="quadrado">Quadrado</span>
-                        <span class="dropdown-item" data-value="octogono">Octógono</span>
+
+                    <div class="form-grupo">
+                        <label class="label-dropdown">Terceira forma</label>
+                        <div class="dropdown-container">
+                            <select class="dropdown-select"><option value="">Selecione...</option><option value="circulo">Círculo</option><option value="quadrado">Quadrado</option><option value="octogono">Octógono</option></select>
+                            <span class="dropdown-arrow">></span>
+                        </div>
+                        <div class="dropdown-opcoes">
+                            <span class="dropdown-item" data-value="circulo">Círculo</span>
+                            <span class="dropdown-item" data-value="quadrado">Quadrado</span>
+                            <span class="dropdown-item" data-value="octogono">Octógono</span>
+                        </div>
                     </div>
                 </div>
 
             </div>
-
         </section>
-
     </main>
 
-    <!-- SCRIPT CORRIGIDO -->
+    <footer id="main-footer">
+        <div class="container footer-container">
+            <div class="footer-top">
+                <p class="footer-logo">CiberTech</p>
+                <nav class="footer-nav">
+                    <a href="#funcionalidades" class="footer-link">Funcionalidades</a>
+                    <a href="#" class="footer-link">Termos de Uso</a>
+                    <a href="#" class="footer-link">Contato</a>
+                </nav>
+            </div>
+            <p class="footer-copy">
+                &copy; 2025 CiberTech. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- 1. LÓGICA DE EXIBIR/OCULTAR COLUNA DUPLA ---
+            const radioSimples = document.getElementById('simples');
+            const radioDupla = document.getElementById('dupla');
+            const coluna2 = document.getElementById('coluna-pino-2');
+            const painelDireito = document.getElementById('painel-configuracao');
 
-        const formGroups = document.querySelectorAll('.form-grupo');
-        const allSelects = document.querySelectorAll('.dropdown-select');
-        const allOptionGroups = document.querySelectorAll('.dropdown-opcoes');
-
-        function updateAvailableOptions() {
-            const selectedValues = new Set();
-            allSelects.forEach(select => {
-                if (select.value) selectedValues.add(select.value);
-            });
-
-            allOptionGroups.forEach(optionsContainer => {
-                const currentSelect = optionsContainer.closest('.form-grupo').querySelector('.dropdown-select');
-
-                optionsContainer.querySelectorAll('.dropdown-item').forEach(item => {
-                    const itemValue = item.dataset.value;
-
-                    if (selectedValues.has(itemValue) && itemValue !== currentSelect.value) {
-                        item.classList.add('desabilitado');
-                    } else {
-                        item.classList.remove('desabilitado');
-                    }
-                });
-            });
-        }
-
-        formGroups.forEach(group => {
-
-            const container = group.querySelector('.dropdown-container');
-            const selectElement = group.querySelector('.dropdown-select');
-            const dropdownOpcoes = group.querySelector('.dropdown-opcoes');
-            const textSpan = group.querySelector('.dropdown-text');
-            const clearBtn = group.querySelector('.dropdown-clear');
-
-            dropdownOpcoes.style.display = 'none';
-
-            function refreshVisual() {
-                if (selectElement.value) {
-                    textSpan.textContent = selectElement.options[selectElement.selectedIndex].text;
+            function atualizarLayout() {
+                if (radioDupla.checked) {
+                    coluna2.classList.remove('oculto');
+                    painelDireito.classList.add('modo-duplo');
                 } else {
-                    textSpan.textContent = "Selecione...";
+                    coluna2.classList.add('oculto');
+                    painelDireito.classList.remove('modo-duplo');
                 }
             }
 
-            container.addEventListener('click', function(event) {
-                if (event.target === clearBtn) return;
+            radioSimples.addEventListener('change', atualizarLayout);
+            radioDupla.addEventListener('change', atualizarLayout);
+            
+            // Executa ao carregar para garantir o estado correto
+            atualizarLayout();
 
-                event.stopPropagation();
 
-                allOptionGroups.forEach(otherOptions => {
-                    if (otherOptions !== dropdownOpcoes) {
-                        otherOptions.style.display = 'none';
-                    }
-                });
+            // --- 2. LÓGICA DOS DROPDOWNS (COM ESCOPO POR PINO) ---
+            
+            // Esta função inicializa a lógica para uma coluna específica (pino 1 ou pino 2)
+            // assim o que acontece no pino 1 não bloqueia o pino 2.
+            function iniciarLogicaPino(idColuna) {
+                const coluna = document.getElementById(idColuna);
+                const formGroups = coluna.querySelectorAll('.form-grupo');
+                const allSelects = coluna.querySelectorAll('.dropdown-select');
+                const allOptionGroups = coluna.querySelectorAll('.dropdown-opcoes');
 
-                dropdownOpcoes.style.display =
-                    dropdownOpcoes.style.display === 'none' ? 'block' : 'none';
-            });
+                function updateAvailableOptions() {
+                    const selectedValues = new Set();
+                    allSelects.forEach(select => {
+                        if (select.value) selectedValues.add(select.value);
+                    });
 
-            dropdownOpcoes.querySelectorAll('.dropdown-item').forEach(item => {
-                item.addEventListener('click', function(event) {
-                    event.stopPropagation();
-
-                    if (item.classList.contains('desabilitado')) return;
-
-                    selectElement.value = item.dataset.value;
-                    textSpan.textContent = item.textContent;
-
-                    dropdownOpcoes.style.display = 'none';
-                    updateAvailableOptions();
-                });
-            });
-
-            clearBtn.addEventListener("click", function(event) {
-                event.stopPropagation();
-
-                selectElement.value = "";
-                textSpan.textContent = "Selecione...";
-                updateAvailableOptions();
-                dropdownOpcoes.style.display = "none";
-            });
-
-            refreshVisual();
-        });
-
-        document.addEventListener('click', function(event) {
-            allOptionGroups.forEach(options => {
-                const container = options.closest('.form-grupo').querySelector('.dropdown-container');
-
-                if (!container.contains(event.target)) {
-                    options.style.display = 'none';
+                    allOptionGroups.forEach(optionsContainer => {
+                        const currentSelect = optionsContainer.closest('.form-grupo').querySelector('.dropdown-select');
+                        
+                        optionsContainer.querySelectorAll('.dropdown-item').forEach(item => {
+                            const itemValue = item.dataset.value;
+                            if (selectedValues.has(itemValue) && itemValue !== currentSelect.value) {
+                                item.classList.add('desabilitado');
+                            } else {
+                                item.classList.remove('desabilitado');
+                            }
+                        });
+                    });
                 }
+
+                // Configurar eventos para cada dropdown DENTRO desta coluna
+                formGroups.forEach(group => {
+                    const container = group.querySelector('.dropdown-container');
+                    const selectElement = group.querySelector('.dropdown-select');
+                    const dropdownOpcoes = group.querySelector('.dropdown-opcoes');
+
+                    container.addEventListener('click', function(event) {
+                        event.stopPropagation();
+                        // Fecha outros dropdowns da MESMA coluna
+                        allOptionGroups.forEach(otherOptions => {
+                            if (otherOptions !== dropdownOpcoes) otherOptions.style.display = 'none';
+                        });
+                        dropdownOpcoes.style.display = dropdownOpcoes.style.display === 'none' ? 'block' : 'none';
+                    });
+
+                    dropdownOpcoes.querySelectorAll('.dropdown-item').forEach(item => {
+                        item.addEventListener('click', function(event) {
+                            event.stopPropagation();
+                            if (item.classList.contains('desabilitado')) return;
+
+                            selectElement.value = item.dataset.value;
+                            
+                            // Atualiza texto visual (opcional)
+                            const textoSelecionado = item.textContent;
+                            // container.querySelector('.dropdown-select').style.color = "#280446"; // Exemplo de feedback visual
+
+                            dropdownOpcoes.style.display = 'none';
+                            updateAvailableOptions();
+                        });
+                    });
+                });
+            }
+
+            // Inicializa a lógica independente para cada coluna
+            iniciarLogicaPino('coluna-pino-1');
+            iniciarLogicaPino('coluna-pino-2');
+
+            // Fechar dropdowns ao clicar fora (Global)
+            document.addEventListener('click', function(event) {
+                document.querySelectorAll('.dropdown-opcoes').forEach(opcoes => {
+                    opcoes.style.display = 'none';
+                });
             });
         });
-
-        updateAvailableOptions();
-    });
     </script>
-
 </body>
 </html>
