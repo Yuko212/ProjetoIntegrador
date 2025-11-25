@@ -388,8 +388,30 @@ body {
     color: red;
 }
 
-.preview-peca {
-    width: 240px;
+.preview-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+#painel-preview {
+    display: flex;
     margin-top: 20px;
-    display: block;
+    margin-left: 40px;
+    justify-content: center;   /* Centraliza horizontalmente */
+    align-items: center;        /* Centraliza verticalmente */
+    gap: 20px;                  /* Espaço entre os previews */
+    width: 100%;
+    padding: 10px 0;
+}
+
+.preview-peca {
+    width: 180px;
+    height: auto;
+    object-fit: contain;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.preview-peca.oculto {
+    display: none;
 }
