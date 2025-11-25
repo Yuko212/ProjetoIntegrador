@@ -1,0 +1,224 @@
+/* --- CONTAINER PRINCIPAL (Configuração de Altura) --- */
+.container-detalhes-principal {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Garante altura total da tela */
+    overflow: hidden; /* Evita scroll indesejado no body */
+    background-color: #C9B8E3; /* Cor de fundo principal da sua tela */
+    padding: 20px; /* Espaçamento geral */
+}
+
+/* --- HEADER e NÚMERO DO PEDIDO --- */
+.header-detalhes {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 0;
+    flex-shrink: 0; /* Não encolhe */
+}
+
+.botao-minha-conta {
+    background-color: #9370DB; /* Cor roxa dos botões */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.numero-pedido {
+    background-color: #9370DB;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+#valor-numero-pedido {
+    font-weight: bold;
+}
+
+/* --- CARTÃO PRINCIPAL DE DETALHES --- */
+.cartao-detalhes {
+    background-color: #E6E6FA; /* Roxo mais claro do cartão */
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 15px;
+    flex-grow: 1; /* Ocupa todo o espaço vertical restante */
+    overflow-y: auto; /* Permite scroll se o conteúdo for muito longo */
+}
+
+.titulo-pagina {
+    text-align: center;
+    color: #280446;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* --- GRID INTERNO (Blocos de Informação) --- */
+.grid-detalhes {
+    display: grid;
+    /* Divide o espaço em duas colunas, com a esquerda menor */
+    grid-template-columns: 1.5fr 2fr; 
+    grid-template-rows: auto auto; /* Ocupa duas linhas */
+    gap: 30px;
+}
+
+/* --- BLOCÃO DE INFORMAÇÕES PESSOAIS --- */
+.bloco-info-pessoal {
+    grid-row: 2; /* Fica na segunda linha */
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px 30px;
+}
+
+.titulo-bloco-secundario {
+    background-color: #C9B8E3; /* Cor roxa mais clara do fundo */
+    color: #280446;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: -35px 0 20px -10px; /* Efeito de 'flutuar' */
+}
+
+.grupo-campo-dado {
+    margin-bottom: 15px;
+}
+
+.rotulo-campo {
+    display: block;
+    font-size: 0.9em;
+    color: #280446;
+    margin-bottom: 5px;
+}
+
+.campo-dado-valor {
+    background-color: #e5e7eb; /* Cinza claro dos campos */
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: #280446;
+    font-weight: 600;
+    min-height: 1.2em; /* Garante que o campo tenha altura mesmo vazio */
+}
+
+/* --- BLOCO DA PEÇA (Tamanho e Ícone) --- */
+.bloco-peca {
+    grid-row: 1; /* Primeira linha */
+    grid-column: 1; /* Primeira coluna */
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icone-bloco-container {
+    position: relative;
+    margin-top: 10px;
+}
+
+.icone-bloco {
+    width: 80px;
+    height: 80px;
+    /* Defina o caminho real para o ícone 3D */
+}
+
+.quantidade-peca {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #280446;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 0.7em;
+    font-weight: bold;
+}
+
+/* --- BLOCO ORDEM ESCOLHIDA --- */
+.bloco-ordem-escolhida {
+    grid-row: 1 / span 2; /* Ocupa as duas linhas */
+    grid-column: 2; /* Segunda coluna */
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.titulo-ordem {
+    font-size: 1.2em;
+    color: #280446;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.subtitulo-pino {
+    font-size: 1.1em;
+    font-weight: 800;
+    color: #9370DB; /* Cor do PINO */
+    margin-bottom: 20px;
+}
+
+.grupo-formas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.item-forma {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rotulo-forma {
+    font-size: 1em;
+    color: #280446;
+    width: 80px;
+}
+
+.valor-forma {
+    flex-grow: 1;
+    background-color: #e5e7eb;
+    padding: 8px 15px;
+    border-radius: 20px; /* Bordas arredondadas do valor */
+    color: #280446;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* --- FOOTER SIMPLES --- */
+.footer-detalhes {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 20px;
+    flex-shrink: 0; /* Não encolhe */
+}
+
+.icone-robo-footer {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.texto-logo-footer {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #280446;
+}

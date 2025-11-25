@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Pedido - CiberTech</title>
+    <link rel="stylesheet" href="estilos.css"> </head>
+<body>
+    <div class="container-detalhes-principal">
+        
+        <header class="header-detalhes">
+            <a href="dashboard.html" class="botao-minha-conta">Minha conta</a>
+            <span class="numero-pedido">Nº do pedido: <span id="valor-numero-pedido">063</span></span>
+        </header>
+
+        <main class="cartao-detalhes">
+            <h1 class="titulo-pagina">Detalhes do pedido</h1>
+            
+            <div class="grid-detalhes">
+                
+                <section class="bloco-peca">
+                    <div class="info-principal">
+                        <span id="tipo-bloco" class="texto-principal">Bloco Simples</span>
+                        <div class="icone-bloco-container">
+                            <img src="caminho/para/icone_bloco.png" alt="Ícone Bloco Simples" class="icone-bloco">
+                            <span class="quantidade-peca">1</span>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="bloco-info-pessoal">
+                    <h2 class="titulo-bloco-secundario">Informações Pessoais</h2>
+                    
+                    <div class="grupo-campo-dado">
+                        <label for="endereco" class="rotulo-campo">Endereço</label>
+                        <p id="valor-endereco" class="campo-dado-valor"></p>
+                    </div>
+                    
+                    <div class="grupo-campo-dado">
+                        <label for="email" class="rotulo-campo">E-mail</label>
+                        <p id="valor-email" class="campo-dado-valor"></p>
+                    </div>
+                    
+                    <div class="grupo-campo-dado">
+                        <label for="data-pedido" class="rotulo-campo">Data do pedido</label>
+                        <p id="valor-data-pedido" class="campo-dado-valor"></p>
+                    </div>
+                </section>
+
+                <section class="bloco-ordem-escolhida">
+                    <h2 class="titulo-ordem">Ordem escolhida:</h2>
+                    
+                    <p class="subtitulo-pino">1º PINO</p>
+
+                    <div class="grupo-formas">
+                        <div class="item-forma">
+                            <span class="rotulo-forma">1ª Forma</span>
+                            <span id="forma-1-pino-1" class="valor-forma">Quadrado</span>
+                        </div>
+                        
+                        <div class="item-forma">
+                            <span class="rotulo-forma">2ª Forma</span>
+                            <span id="forma-2-pino-1" class="valor-forma"></span>
+                        </div>
+                        
+                        <div class="item-forma">
+                            <span class="rotulo-forma">3ª Forma</span>
+                            <span id="forma-3-pino-1" class="valor-forma"></span>
+                        </div>
+                        
+                        </div>
+                </section>
+                
+            </div>
+        </main>
+
+        <footer class="footer-detalhes">
+            <img src="caminho/para/icone_robo.png" alt="Ícone Robô CiberTech" class="icone-robo-footer">
+            <span class="texto-logo-footer">CiberTech</span>
+        </footer>
+
+    </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+    // Supondo que você recebeu os dados do pedido do servidor em um objeto:
+    const dadosPedido = {
+        numero: '063',
+        endereco: 'Rua das Flores, 123',
+        email: 'usuario@exemplo.com',
+        data: '24/11/2025',
+        tipoPeca: 'Bloco Simples',
+        formasPino1: ['Quadrado', 'Círculo', 'Octógono']
+    };
+
+    // Preenche as informações
+    document.getElementById('valor-numero-pedido').textContent = dadosPedido.numero;
+    document.getElementById('valor-endereco').textContent = dadosPedido.endereco;
+    document.getElementById('valor-email').textContent = dadosPedido.email;
+    document.getElementById('valor-data-pedido').textContent = dadosPedido.data;
+    document.getElementById('tipo-bloco').textContent = dadosPedido.tipoPeca;
+    
+    // Preenche a ordem escolhida (Pino 1)
+    document.getElementById('forma-1-pino-1').textContent = dadosPedido.formasPino1[0];
+    document.getElementById('forma-2-pino-1').textContent = dadosPedido.formasPino1[1];
+    document.getElementById('forma-3-pino-1').textContent = dadosPedido.formasPino1[2];
+});
+        </script>
+
+</body>
+</html>
