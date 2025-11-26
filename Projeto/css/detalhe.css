@@ -1,224 +1,254 @@
-/* --- CONTAINER PRINCIPAL (Configuração de Altura) --- */
-.container-detalhes-principal {
+/* 1. RESET FUNDAMENTAL */
+body {
+    background-color: #B5A0D6; /* <-- Corrigido: Fundo roxo aqui */
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #3e2060;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Garante altura total da tela */
-    overflow: hidden; /* Evita scroll indesejado no body */
-    background-color: #C9B8E3; /* Cor de fundo principal da sua tela */
-    padding: 20px; /* Espaçamento geral */
 }
 
-/* --- HEADER e NÚMERO DO PEDIDO --- */
-.header-detalhes {
+/* 2. O CONTAINER QUE DEVE OCUPAR TUDO */
+.container-geral {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 10px 0;
-    flex-shrink: 0; /* Não encolhe */
+    flex-direction: column;
+    min-height: 63.9vh;
+    padding: 0; 
+    box-sizing: border-box;
+    width: 100%;
 }
 
-.botao-minha-conta {
-    background-color: #9370DB; /* Cor roxa dos botões */
-    color: white;
-    padding: 8px 15px;
-    border-radius: 15px;
+
+.botao-voltar {
+    background-color: #d8b4fe; 
+    color: #3e2060;
     text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9em;
-    cursor: pointer;
-}
-
-.numero-pedido {
-    background-color: #9370DB;
-    color: white;
-    padding: 8px 15px;
-    border-radius: 15px;
-    font-size: 0.9em;
-    font-weight: 600;
-}
-
-#valor-numero-pedido {
-    font-weight: bold;
-}
-
-/* --- CARTÃO PRINCIPAL DE DETALHES --- */
-.cartao-detalhes {
-    background-color: #E6E6FA; /* Roxo mais claro do cartão */
+    font-weight: 700;
+    padding: 8px 20px;
     border-radius: 20px;
-    padding: 30px;
-    margin-top: 15px;
-    flex-grow: 1; /* Ocupa todo o espaço vertical restante */
-    overflow-y: auto; /* Permite scroll se o conteúdo for muito longo */
+    font-size: 0.9rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .titulo-pagina {
+    font-size: 2rem;
+    color: #3e2060;
+    font-weight: 800;
+    margin: 0;
+   margin-top: 10px; 
     text-align: center;
-    color: #280446;
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-bottom: 25px;
 }
 
-/* --- GRID INTERNO (Blocos de Informação) --- */
-.grid-detalhes {
-    display: grid;
-    /* Divide o espaço em duas colunas, com a esquerda menor */
-    grid-template-columns: 1.5fr 2fr; 
-    grid-template-rows: auto auto; /* Ocupa duas linhas */
-    gap: 30px;
+.numero-pedido-badge {
+    background-color: #d8b4fe;
+    color: #3e2060;
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-left: 20px; 
+    margin-right: 90%; 
+    margin-bottom: 20px; 
 }
 
-/* --- BLOCÃO DE INFORMAÇÕES PESSOAIS --- */
-.bloco-info-pessoal {
-    grid-row: 2; /* Fica na segunda linha */
-    background-color: white;
-    border-radius: 15px;
-    padding: 20px 30px;
-}
-
-.titulo-bloco-secundario {
-    background-color: #C9B8E3; /* Cor roxa mais clara do fundo */
-    color: #280446;
-    font-size: 1.1em;
-    font-weight: bold;
-    padding: 8px 15px;
-    border-radius: 10px;
-    width: fit-content;
-    margin: -35px 0 20px -10px; /* Efeito de 'flutuar' */
-}
-
-.grupo-campo-dado {
-    margin-bottom: 15px;
-}
-
-.rotulo-campo {
-    display: block;
-    font-size: 0.9em;
-    color: #280446;
-    margin-bottom: 5px;
-}
-
-.campo-dado-valor {
-    background-color: #e5e7eb; /* Cinza claro dos campos */
-    padding: 10px 15px;
-    border-radius: 8px;
-    color: #280446;
-    font-weight: 600;
-    min-height: 1.2em; /* Garante que o campo tenha altura mesmo vazio */
-}
-
-/* --- BLOCO DA PEÇA (Tamanho e Ícone) --- */
-.bloco-peca {
-    grid-row: 1; /* Primeira linha */
-    grid-column: 1; /* Primeira coluna */
-    background-color: white;
-    border-radius: 15px;
-    padding: 20px;
+/* --- ÁREA DE CONTEÚDO (GRID) --- */
+.area-conteudo {
     display: flex;
-    align-items: center;
+    gap: 30px;
+    flex-grow: 1; 
+    overflow-y: auto; 
+    padding-bottom: 20px;
     justify-content: center;
 }
 
-.info-principal {
+.coluna-esquerda {
+    width: 40%;
     display: flex;
     flex-direction: column;
+    gap: 20px;
+}
+
+.coluna-direita {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- ESTILOS DOS CARTÕES --- */
+.cartao {
+    background-color: #E6E1E8; 
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* --- CARTÃO 1: BLOCO --- */
+.cartao-bloco {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding: 30px 40px;
 }
 
-.icone-bloco-container {
-    position: relative;
-    margin-top: 10px;
-}
-
-.icone-bloco {
-    width: 80px;
-    height: 80px;
-    /* Defina o caminho real para o ícone 3D */
-}
-
-.quantidade-peca {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: #280446;
-    color: white;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    line-height: 20px;
-    font-size: 0.7em;
-    font-weight: bold;
-}
-
-/* --- BLOCO ORDEM ESCOLHIDA --- */
-.bloco-ordem-escolhida {
-    grid-row: 1 / span 2; /* Ocupa as duas linhas */
-    grid-column: 2; /* Segunda coluna */
-    background-color: white;
-    border-radius: 15px;
-    padding: 30px;
-}
-
-.titulo-ordem {
-    font-size: 1.2em;
-    color: #280446;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.subtitulo-pino {
-    font-size: 1.1em;
+.titulo-bloco {
+    font-size: 1.8rem;
     font-weight: 800;
-    color: #9370DB; /* Cor do PINO */
-    margin-bottom: 20px;
+    color: #3e2060;
 }
 
-.grupo-formas {
+.container-imagem-bloco {
+    position: relative;
+    background-color: #d1d1d1; 
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #999;
+}
+
+.imagem-peca {
+    width: 60px;
+    height: 60px;
+    display: block;
+}
+
+.badge-quantidade {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #7f8c8d; 
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+
+.titulo-secao-fundo-escuro {
+    background-color: #5D4A75; 
+    color: white;
+    text-align: center;
+    padding: 8px 20px;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    width: fit-content;
+    margin: 0 auto 20px auto; 
+    display: block;
+}
+
+/* --- CAMPOS DE LEITURA (ESTILO INPUT CINZA) --- */
+.grupo-campo {
+    margin-bottom: 15px;
+}
+
+.rotulo {
+    display: block;
+    font-weight: 700;
+    color: #888; 
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    margin-left: 10px; 
+}
+
+.campo-leitura {
+    background-color: #d1cbd6; 
+    height: 35px;
+    border-radius: 18px;
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    align-items: center;
+    padding: 0 20px;
+    font-weight: 600;
+    color: #3e2060;
 }
 
-.item-forma {
+/* --- CARTÃO 3: ORDEM ESCOLHIDA --- */
+.cartao-ordem {
+    flex-grow: 1; 
+}
+
+.titulo-pino {
+    text-align: center;
+    color: #3e2060;
+    font-weight: 800;
+    margin: 15px 0;
+    text-transform: uppercase;
+}
+
+.linha-forma {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.rotulo-forma {
+    width: 100px; 
+    font-weight: 700;
+    color: #3e2060;
+    font-size: 1rem;
+    text-align: right;
+    margin-right: 15px;
+}
+
+.campo-leitura-forma {
+    flex-grow: 1;
+    background-color: #d1cbd6;
+    height: 35px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    font-weight: 600;
+    color: #555;
+}
+
+/* --- RODAPÉ --- */
+.rodape {
+    padding: 10px 0;
+    flex-shrink: 0;
+}
+
+.logo-container {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.rotulo-forma {
-    font-size: 1em;
-    color: #280446;
-    width: 80px;
-}
-
-.valor-forma {
-    flex-grow: 1;
-    background-color: #e5e7eb;
-    padding: 8px 15px;
-    border-radius: 20px; /* Bordas arredondadas do valor */
-    color: #280446;
-    font-weight: 600;
-    text-align: center;
-}
-
-/* --- FOOTER SIMPLES --- */
-.footer-detalhes {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 20px;
-    flex-shrink: 0; /* Não encolhe */
-}
-
-.icone-robo-footer {
+.icone-robo {
     width: 40px;
-    height: 40px;
-    margin-right: 10px;
+    height: auto;
 }
 
-.texto-logo-footer {
+.texto-logo {
     font-weight: 800;
     font-size: 1.2rem;
-    color: #280446;
+    color: #222;
+}
+
+/* --- RESPONSIVIDADE (MOBILE) --- */
+@media (max-width: 850px) {
+    .area-conteudo {
+        flex-direction: column;
+        align-items: center;
+        overflow-y: scroll; 
+    }
+
+    .coluna-esquerda, .coluna-direita {
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    body {
+        overflow: auto;
+        height: auto;
+    }
+}
+
+/* O ELEMENTO QUE ENVOLVE TUDO ENTRE O HEADER E O FOOTER */
+.limitador-largura { 
+    flex-grow: 0.03; 
 }

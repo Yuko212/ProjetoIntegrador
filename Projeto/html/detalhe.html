@@ -4,108 +4,201 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhes do Pedido - CiberTech</title>
-    <link rel="stylesheet" href="estilos.css"> </head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/detalhe.css">
+    <link rel="stylesheet" href="../css/logout.css">
+    <link rel="stylesheet" href="../css/footer-header.css">
+</head>
 <body>
-    <div class="container-detalhes-principal">
-        
-        <header class="header-detalhes">
-            <a href="dashboard.html" class="botao-minha-conta">Minha conta</a>
-            <span class="numero-pedido">Nº do pedido: <span id="valor-numero-pedido">063</span></span>
-        </header>
 
-        <main class="cartao-detalhes">
-            <h1 class="titulo-pagina">Detalhes do pedido</h1>
-            
-            <div class="grid-detalhes">
-                
-                <section class="bloco-peca">
-                    <div class="info-principal">
-                        <span id="tipo-bloco" class="texto-principal">Bloco Simples</span>
-                        <div class="icone-bloco-container">
-                            <img src="caminho/para/icone_bloco.png" alt="Ícone Bloco Simples" class="icone-bloco">
-                            <span class="quantidade-peca">1</span>
-                        </div>
-                    </div>
-                </section>
-                
-                <section class="bloco-info-pessoal">
-                    <h2 class="titulo-bloco-secundario">Informações Pessoais</h2>
-                    
-                    <div class="grupo-campo-dado">
-                        <label for="endereco" class="rotulo-campo">Endereço</label>
-                        <p id="valor-endereco" class="campo-dado-valor"></p>
-                    </div>
-                    
-                    <div class="grupo-campo-dado">
-                        <label for="email" class="rotulo-campo">E-mail</label>
-                        <p id="valor-email" class="campo-dado-valor"></p>
-                    </div>
-                    
-                    <div class="grupo-campo-dado">
-                        <label for="data-pedido" class="rotulo-campo">Data do pedido</label>
-                        <p id="valor-data-pedido" class="campo-dado-valor"></p>
-                    </div>
-                </section>
+    <script src="../js/auth.js"></script> 
+    <header id="main-header">
+        <div class="cabeçalho">
+            <a href="index.html" class="logo">
+                <span class="logo-text">CiberTech</span>                
+            </a>
 
-                <section class="bloco-ordem-escolhida">
-                    <h2 class="titulo-ordem">Ordem escolhida:</h2>
-                    
-                    <p class="subtitulo-pino">1º PINO</p>
+            <nav class="main-nav">
+                <a href="dashboard.html" class="nav-link">Home</a>
+                <a href="peca.html" class="nav-link">Design</a>
+                <a href="#acompanhamento" class="nav-link">Acompanhamento</a>
+                <a href="#historico" class="nav-link">Histórico</a>
+            </nav>
 
-                    <div class="grupo-formas">
-                        <div class="item-forma">
-                            <span class="rotulo-forma">1ª Forma</span>
-                            <span id="forma-1-pino-1" class="valor-forma">Quadrado</span>
-                        </div>
-                        
-                        <div class="item-forma">
-                            <span class="rotulo-forma">2ª Forma</span>
-                            <span id="forma-2-pino-1" class="valor-forma"></span>
-                        </div>
-                        
-                        <div class="item-forma">
-                            <span class="rotulo-forma">3ª Forma</span>
-                            <span id="forma-3-pino-1" class="valor-forma"></span>
-                        </div>
-                        
-                        </div>
-                </section>
-                
+            <button class="botao-logout" onclick="logout()">
+                Sair
+            </button>
+        </div>
+    </header>
+
+    <h1 class="titulo-pagina">Detalhes do pedido</h1>
+            <div class="numero-pedido-badge"> Nº do pedido: <span id="id-pedido">000</span>
             </div>
-        </main>
-
-        <footer class="footer-detalhes">
-            <img src="caminho/para/icone_robo.png" alt="Ícone Robô CiberTech" class="icone-robo-footer">
-            <span class="texto-logo-footer">CiberTech</span>
-        </footer>
-
-    </div>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-    // Supondo que você recebeu os dados do pedido do servidor em um objeto:
-    const dadosPedido = {
-        numero: '063',
-        endereco: 'Rua das Flores, 123',
-        email: 'usuario@exemplo.com',
-        data: '24/11/2025',
-        tipoPeca: 'Bloco Simples',
-        formasPino1: ['Quadrado', 'Círculo', 'Octógono']
-    };
-
-    // Preenche as informações
-    document.getElementById('valor-numero-pedido').textContent = dadosPedido.numero;
-    document.getElementById('valor-endereco').textContent = dadosPedido.endereco;
-    document.getElementById('valor-email').textContent = dadosPedido.email;
-    document.getElementById('valor-data-pedido').textContent = dadosPedido.data;
-    document.getElementById('tipo-bloco').textContent = dadosPedido.tipoPeca;
     
-    // Preenche a ordem escolhida (Pino 1)
-    document.getElementById('forma-1-pino-1').textContent = dadosPedido.formasPino1[0];
-    document.getElementById('forma-2-pino-1').textContent = dadosPedido.formasPino1[1];
-    document.getElementById('forma-3-pino-1').textContent = dadosPedido.formasPino1[2];
-});
-        </script>
+   <div class="container-geral"><main class="limitador-largura"> </main><main>
 
+        <main class="area-conteudo">
+            
+            <section class="coluna-esquerda">
+                
+                <div class="cartao cartao-bloco">
+                    <span id="nome-bloco" class="titulo-bloco">Carregando...</span>
+                    
+                    <div class="container-imagem-bloco">
+                        <img src="https://placehold.co/80x80/cccccc/ffffff?text=Cubo" alt="Imagem do Bloco" class="imagem-peca">
+                        <span class="badge-quantidade" id="quantidade-peca">1</span>
+                    </div>
+                </div>
+
+                <div class="cartao cartao-pessoal">
+                    <div class="titulo-secao-fundo-escuro">
+                        Informações Pessoais
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label class="rotulo">E-mail</label>
+                        <div id="info-email" class="campo-leitura"></div>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label class="rotulo">Data do pedido</label>
+                        <div id="info-data" class="campo-leitura"></div>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="coluna-direita">
+                
+                <div class="cartao cartao-ordem">
+                    <div class="titulo-secao-fundo-escuro">
+                        Ordem escolhida:
+                    </div>
+
+                    <div class="grupo-pino">
+                        <h3 class="titulo-pino">1º PINO</h3>
+                        
+                        <div class="linha-forma">
+                            <span class="rotulo-forma">1º Forma</span>
+                            <div id="p1-forma1" class="campo-leitura-forma"></div>
+                        </div>
+                        <div class="linha-forma">
+                            <span class="rotulo-forma">2º Forma</span>
+                            <div id="p1-forma2" class="campo-leitura-forma"></div>
+                        </div>
+                        <div class="linha-forma">
+                            <span class="rotulo-forma">3º Forma</span>
+                            <div id="p1-forma3" class="campo-leitura-forma"></div>
+                        </div>
+                    </div>
+
+                    <div class="grupo-pino" id="container-pino-2">
+                        <h3 class="titulo-pino">2º PINO</h3>
+                        
+                        <div class="linha-forma">
+                            <span class="rotulo-forma">1º Forma</span>
+                            <div id="p2-forma1" class="campo-leitura-forma"></div>
+                        </div>
+                        <div class="linha-forma">
+                            <span class="rotulo-forma">2º Forma</span>
+                            <div id="p2-forma2" class="campo-leitura-forma"></div>
+                        </div>
+                        <div class="linha-forma">
+                            <span class="rotulo-forma">3º Forma</span>
+                            <div id="p2-forma3" class="campo-leitura-forma"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+</div>
+
+<footer id="main-footer">
+    <div class="container footer-container">
+        <div class="footer-top">
+            <p class="footer-logo">CiberTech</p>
+            <nav class="footer-nav">
+                <a href="#funcionalidades" class="footer-link">Funcionalidades</a>
+                <a href="#" class="footer-link">Termos de Uso</a>
+                <a href="#" class="footer-link">Contato</a>
+            </nav>
+        </div>
+        <p class="footer-copy">
+            &copy; 2025 CiberTech. Todos os direitos reservados.
+        </p>
+    </div>
+</footer>
+
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // SIMULAÇÃO DO BANCO DE DADOS
+            // Imagine que estes dados vieram do servidor baseados no login do usuário
+            const dadosDoBanco = {
+                pedido: {
+                    numero: "062",
+                    data: "24/11/2025",
+                    quantidade: 1
+                },
+                cliente: {
+                    endereco: "Rua das Camélias, 123 - Curitiba/PR",
+                    email: "mary.dev@cibertech.com"
+                },
+                peca: {
+                    tipo: "Bloco Duplo", // Poderia ser "Bloco Simples"
+                    imagemUrl: "caminho/para/imagem-cubo.png",
+                    pino1: {
+                        forma1: "Óctogno",
+                        forma2: "Quadrado",
+                        forma3: "Círculo"
+                    },
+                    pino2: { // Se for simples, isso viria vazio ou null
+                        forma1: "Círculo",
+                        forma2: "Círculo",
+                        forma3: "Quadrado"
+                    }
+                }
+            };
+
+            // FUNÇÃO PARA PREENCHER A TELA
+            function carregarDetalhes() {
+                // 1. Cabeçalho
+                document.getElementById('id-pedido').innerText = dadosDoBanco.pedido.numero;
+
+                // 2. Bloco e Quantidade
+                document.getElementById('nome-bloco').innerText = dadosDoBanco.peca.tipo;
+                document.getElementById('quantidade-peca').innerText = dadosDoBanco.pedido.quantidade;
+
+                // 3. Informações Pessoais
+                document.getElementById('info-endereco').innerText = dadosDoBanco.cliente.endereco;
+                document.getElementById('info-email').innerText = dadosDoBanco.cliente.email;
+                document.getElementById('info-data').innerText = dadosDoBanco.pedido.data;
+
+                // 4. Ordem - Pino 1
+                document.getElementById('p1-forma1').innerText = dadosDoBanco.peca.pino1.forma1;
+                document.getElementById('p1-forma2').innerText = dadosDoBanco.peca.pino1.forma2;
+                document.getElementById('p1-forma3').innerText = dadosDoBanco.peca.pino1.forma3;
+
+                // 5. Ordem - Pino 2 (Lógica para esconder se for simples)
+                const containerPino2 = document.getElementById('container-pino-2');
+                
+                if (dadosDoBanco.peca.tipo === "Bloco Simples" || !dadosDoBanco.peca.pino2) {
+                    containerPino2.style.display = 'none'; // Esconde o 2º pino se for simples
+                } else {
+                    containerPino2.style.display = 'block';
+                    document.getElementById('p2-forma1').innerText = dadosDoBanco.peca.pino2.forma1;
+                    document.getElementById('p2-forma2').innerText = dadosDoBanco.peca.pino2.forma2;
+                    document.getElementById('p2-forma3').innerText = dadosDoBanco.peca.pino2.forma3;
+                }
+            }
+
+            // Executa a função
+            carregarDetalhes();
+        });
+    </script>
 </body>
 </html>
