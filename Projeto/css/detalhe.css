@@ -14,7 +14,7 @@ body {
 .container-geral {
     display: flex;
     flex-direction: column;
-    min-height: 63.9vh;
+    min-height: 64.5vh;
     padding: 0; 
     box-sizing: border-box;
     width: 100%;
@@ -237,9 +237,17 @@ body {
         overflow-y: scroll; 
     }
 
-    .coluna-esquerda, .coluna-direita {
+    .coluna-direita {
         width: 100%;
         max-width: 500px;
+    }
+
+    .coluna-esquerda {
+        display: flex;
+        flex-direction: column; /* Empilha os cartões verticalmente */
+        gap: 20px; /* Espaçamento entre o bloco de imagem e o bloco de informações pessoais */
+        /* Garante que a coluna não ocupe largura desnecessária */
+        max-width: 450px; 
     }
     
     body {
@@ -251,4 +259,79 @@ body {
 /* O ELEMENTO QUE ENVOLVE TUDO ENTRE O HEADER E O FOOTER */
 .limitador-largura { 
     flex-grow: 0.03; 
+}
+
+/* --- Detalhes do Pedido (detalhe.html) --- */
+
+/* Contêiner que abriga o(s) bloco(s) de imagem. Permite que o pino 1 e pino 2 fiquem lado a lado. */
+.cartao-bloco-container {
+    display: flex;
+    flex-direction: row; /* Mantém os pinos lado a lado */
+    gap: 20px; /* Espaçamento entre o Pino 1 e o Pino 2 */
+    justify-content: flex-start; /* Alinha o grupo de blocos à esquerda */
+    align-items: flex-start; 
+    width: 90%;
+    /* Remova qualquer altura fixa que possa estar causando sobreposição */
+    height: auto; 
+}
+
+/* Ajuste no layout do cartão de bloco individual */
+.cartao.cartao-bloco {
+    /* Garante que o cartão em si não seja muito largo */
+    max-width: 250px; 
+    padding: 15px;
+    text-align: center;
+    /* Define uma largura base para os dois blocos serem uniformes */
+    width: 100%; 
+}
+
+/* Centraliza a imagem e o badge dentro do contêiner de imagem */
+.container-imagem-bloco {
+    position: relative;
+    display: inline-block; 
+    margin-top: 10px;
+    /* Adicione um espaçamento no topo e na base do contêiner da imagem, se necessário */
+}
+
+/* Estilo para garantir que os títulos de cada pino (Pino 1, Pino 2) fiquem em destaque */
+.titulo-bloco {
+    display: block;
+    font-size: 1.1em;
+    font-weight: bold;
+    /* 🛑 CORREÇÃO: Adiciona espaçamento entre o título e o elemento de imagem abaixo */
+    margin-bottom: 10px; 
+}
+
+.cartao.cartao-pessoal {
+    /* Define uma largura que respeite a coluna */
+    max-width: 100%; 
+    /* Garante que ele fique abaixo do cartao-bloco-container devido ao flex-direction: column */
+}
+
+/* --- Estilo do Botão de Finalizar/Acompanhar na Página de Detalhes --- */
+
+.botao-acompanhamento {
+    /* Define o alinhamento do contêiner do botão (centralizado na coluna esquerda) */
+    display: block; 
+    width: 100%;
+    margin-top: 15px; /* Espaço entre o cartão de Informações Pessoais e o botão */
+}
+
+.botao-acompanhamento button {
+    /* Estilo do botão em si (similar ao botao-finalizar de outras páginas) */
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #5b3e9b; /* Cor principal (roxo) */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-transform: uppercase;
+}
+
+.botao-acompanhamento button:hover {
+    background-color: #4a327e; /* Cor ligeiramente mais escura no hover */
 }
