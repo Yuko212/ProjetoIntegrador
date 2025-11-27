@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status dos Pinos</title>
+    <link rel="stylesheet" href="../css/statuspinos.css">
+    <link rel="stylesheet" href="../css/statuspedido.css">
+    <link rel="stylesheet" href="../css/footer-header.css">
+    <link rel="stylesheet" href="../css/logout.css">
+</head>
+<body>
+
+    
+    <script src="../js/auth.js"></script>
+    <header id="main-header">
+        <div class="cabeçalho">
+            <a href="index.html" class="logo">
+                <span class="logo-text">CiberTech</span>                
+            </a>
+
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="peca.html" class="nav-link">Design</a>
+                <a href="statuspedido.html" class="nav-link">Acompanhamento</a>
+                <a href="#historico" class="nav-link">Histórico</a>
+            </nav>
+
+            <button class="botao-logout" onclick="logout()">
+                Sair
+            </button>
+        </div>
+    </header>
+
+    <div class="barra-topo-pedido">
+        <button class="botao-branco-arredondado">Minha conta</button>
+        <h1 class="titulo-cabecalho">Status do seu pedido</h1>
+        <div class="caixa-numero-pedido">Nº do pedido: 063</div>
+    </div>
+
+    <main class="conteiner-principal">
+        
+        <div class="area-cartoes-pinos">
+
+            <div class="cartao-pino">
+                <h2 class="titulo-pino">1º PINO</h2>
+                
+                <div class="area-passos">
+                    <div class="passo-escudo pequeno">
+                        <p>1ª forma<br>quadrado<br>no pino</p>
+                    </div>
+                    <div class="passo-escudo pequeno">
+                        <p>2ª forma<br>círculo<br>no pino</p>
+                    </div>
+                    <div class="passo-escudo pequeno">
+                        <p>3ª forma</p>
+                    </div>
+                </div>
+
+                <div class="fundo-barra barra-pequena">
+                    <div class="barra-preenchida" id="barra-pino-1"></div>
+                    <span class="texto-porcentagem" id="texto-pino-1">0%</span>
+                </div>
+            </div>
+
+            <div class="cartao-pino">
+                <h2 class="titulo-pino">2º PINO</h2>
+                
+                <div class="area-passos">
+                    <div class="passo-escudo pequeno">
+                        <p>1ª forma</p>
+                    </div>
+                    <div class="passo-escudo pequeno">
+                        <p>2ª forma</p>
+                    </div>
+                    <div class="passo-escudo pequeno">
+                        <p>3ª forma</p>
+                    </div>
+                </div>
+
+                <div class="fundo-barra barra-pequena">
+                    <div class="barra-preenchida" id="barra-pino-2"></div>
+                    <span class="texto-porcentagem" id="texto-pino-2">0%</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="area-botao-central">
+            <a href="statuspedido.html">
+                <button class="botao-cinza-central">Status do pedido</button>
+            </a>
+            <a href="detalhe.html" class="botao-cinza-central">
+            Detalhes do pedido
+        </a>
+    
+        <a href="peca.html" class="botao-cinza-central">
+            Pedir novo produto
+        </a>
+        </div>
+
+    </main>
+
+        
+    
+
+    <footer id="main-footer">
+        <div class="container footer-container">
+            <div class="footer-top">
+                <p class="footer-logo">CiberTech</p>
+                <nav class="footer-nav">
+                    <a href="#funcionalidades" class="footer-link">Funcionalidades</a>
+                    <a href="#" class="footer-link">Termos de Uso</a>
+                    <a href="#" class="footer-link">Contato</a>
+                </nav>
+            </div>
+            <p class="footer-copy">
+                &copy; 2025 CiberTech. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+
+    <script>
+        // --- SIMULAÇÃO DO BANCO DE DADOS ---
+        const dadosPinos = {
+            pino1: 70, // 70% concluído
+            pino2: 0   // 0% concluído
+        };
+
+        window.onload = function() {
+            atualizarPinos();
+        };
+
+        function atualizarPinos() {
+            // Pino 1
+            const barra1 = document.getElementById('barra-pino-1');
+            const texto1 = document.getElementById('texto-pino-1');
+            
+            // Pino 2
+            const barra2 = document.getElementById('barra-pino-2');
+            const texto2 = document.getElementById('texto-pino-2');
+
+            // Animação com pequeno atraso
+            setTimeout(() => {
+                // Atualiza visualmente o Pino 1
+                barra1.style.width = dadosPinos.pino1 + "%";
+                texto1.innerText = dadosPinos.pino1 + "%";
+
+                // Atualiza visualmente o Pino 2
+                barra2.style.width = dadosPinos.pino2 + "%";
+                texto2.innerText = dadosPinos.pino2 + "%";
+            }, 100);
+
+            console.log("Dados dos pinos carregados.");
+        }
+    </script>
+</body>
+</html>

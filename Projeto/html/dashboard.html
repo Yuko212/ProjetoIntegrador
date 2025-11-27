@@ -12,15 +12,14 @@
     <script src="../js/auth.js"></script>
     <header id="main-header">
         <div class="cabeçalho">
-            <a href="#" class="logo">
-                <span class="logo-text">CiberTech</span>
-                
+            <a href="index.html" class="logo">
+                <span class="logo-text">CiberTech</span>                
             </a>
 
             <nav class="main-nav">
-                <a href="dashboard.html" class="nav-link">Home</a>
+                <a href="index.html" class="nav-link">Home</a>
                 <a href="peca.html" class="nav-link">Design</a>
-                <a href="#acompanhamento" class="nav-link">Acompanhamento</a>
+                <a href="statuspedido.html" class="nav-link">Acompanhamento</a>
                 <a href="#historico" class="nav-link">Histórico</a>
             </nav>
 
@@ -35,10 +34,19 @@
     <div class="container-principal">
         <aside class="painel-perfil">
             <div class="area-icone">
-                <img id="icone-usuario" src="../imagens/icone-padrao.jpg" alt="Ícone do Usuário" class="icone-perfil">
+                <img id="icone-usuario" src="../img/icone.png" alt="Ícone do Usuário" class="icone-perfil">
                 <p class="editar-conta">Editar conta</p>
                 <input type="file" id="input-arquivo-icone" accept="image/*" style="display: none;">
                 <button id="botao-mudar-icone" class="botao-icone">Mudar Ícone</button>
+            </div>
+        
+            <div id="modal-edicao" class="modal-edicao" style="display:none;">
+                <div class="modal-conteudo">
+                    <h3 id="titulo-edicao">Editar</h3>
+                    <input id="input-edicao" type="text" class="input-edicao">
+                    <button id="salvar-edicao" class="btn-salvar">Salvar</button>
+                    <button id="fechar-edicao" class="btn-fechar">Cancelar</button>
+                </div>
             </div>
             
             <div class="modal-selecao-icone" id="modal-selecao">
@@ -52,14 +60,6 @@
             <div class="grupo-informacao">
                 <label for="nome" class="rotulo-info">Nome</label>
                 <div class="campo-info" id="campo-nome">
-                    <span class="valor-info">Carregando...</span>
-                    <span class="icone-seta">></span>
-                </div>
-            </div>
-
-            <div class="grupo-informacao">
-                <label for="sobrenome" class="rotulo-info">Sobrenome</label>
-                <div class="campo-info" id="campo-sobrenome">
                     <span class="valor-info">Carregando...</span>
                     <span class="icone-seta">></span>
                 </div>
@@ -81,104 +81,153 @@
                 </div>
             </div>
             
-           
+            <div class="logotipo">
+                <img src="../img/cibertech-logo.png" alt="Logotipo CiberTech" class="icone-robo">
+                
+            </div>
         </aside>
 
         <main class="area-pedidos">
-            <button class="botao-acao">Criar um novo pedido</button>
-            <button class="botao-acao">Meu histórico de pedidos</button>
-            <button class="botao-acao">Detalhes do meu pedido</button>
+            <button class="botao-acao" onclick="window.location.href='peca.html'">
+                Criar um novo pedido
+            </button>
+        
+            <button class="botao-acao">
+                Meu histórico de pedidos
+            </button>
+        
+            <button class="botao-acao">
+                Detalhes do meu pedido
+            </button>
         </main>
     </div>
 
-    <footer id="main-footer">
-        <div class="container footer-container">
-            <div class="footer-top">
-                <p class="footer-logo">CiberTech</p>
-                <nav class="footer-nav">
-                    <a href="#funcionalidades" class="footer-link">Funcionalidades</a>
-                    <a href="#" class="footer-link">Termos de Uso</a>
-                    <a href="#" class="footer-link">Contato</a>
-                </nav>
-            </div>
-            <p class="footer-copy">
-                &copy; 2025 CiberTech. Todos os direitos reservados.
-            </p>
-        </div>
-    </footer>
-
-
+    <script src="../js/auth.js"></script>
     <script>
         verificarLogin();
-            document.addEventListener('DOMContentLoaded', () => {
-            
-            // ----------------------------------------------------
-            // 1. DADOS DO USUÁRIO (Simulação do Banco de Dados)
-            // ----------------------------------------------------
-            const dadosSimuladosUsuario = {
-                nome: "João",
-                sobrenome: "Silva",
-                email: "joao.silva@exemplo.com"
-            };
+    
+        document.addEventListener('DOMContentLoaded', () => {
+    
+            const usuarioLocal = getUsuario();
+    
+            async function carregarDadosUsuario() {
+                try {
+                    const resposta = await fetch(`http://localhost:1880/usuario?email=${usuarioLocal.email}`);
+                    const dados = await resposta.json();
 
-            function carregarDadosUsuario() {
-                document.querySelector('#campo-nome .valor-info').textContent = dadosSimuladosUsuario.nome;
-                document.querySelector('#campo-sobrenome .valor-info').textContent = dadosSimuladosUsuario.sobrenome;
-                document.querySelector('#campo-email .valor-info').textContent = dadosSimuladosUsuario.email;
+                    if (dados.status !== "ok") {
+                        alert("Erro ao carregar dados do usuário.");
+                        return;
+                    }
+
+                    // Aqui sim: salvar os dados completos para edição
+                    dadosUsuario = dados;
+
+                    // Preenchendo campos do dashboard
+                    document.querySelector('#campo-nome .valor-info').textContent = dados.nome;
+                    document.querySelector('#campo-email .valor-info').textContent = dados.email;
+
+                    const senhaMascarada = "*".repeat(dados.senha.length);
+                    document.querySelector('#campo-senha .valor-info').textContent = senhaMascarada;
+
+                } catch (erro) {
+                    console.error("Erro ao consultar o servidor:", erro);
+                    alert("Não foi possível carregar seus dados.");
+                }
             }
-
             carregarDadosUsuario();
 
-            // ----------------------------------------------------
-            // 2. LÓGICA DE UPLOAD DE FOTO (ATUALIZADO)
-            // ----------------------------------------------------
             const iconeUsuario = document.getElementById('icone-usuario');
             const botaoMudarIcone = document.getElementById('botao-mudar-icone');
             const inputArquivo = document.getElementById('input-arquivo-icone');
-
-            // Ação 1: Quando clicar no botão "Mudar Ícone", ativamos o input escondido
+    
             botaoMudarIcone.addEventListener('click', () => {
                 inputArquivo.click();
             });
-
-            // Ação 2: Quando o usuário escolher um arquivo
+    
             inputArquivo.addEventListener('change', (evento) => {
-                const arquivo = evento.target.files[0]; // Pega o primeiro arquivo selecionado
-
+                const arquivo = evento.target.files[0];
+    
                 if (arquivo) {
-                    // Cria um leitor de arquivos
                     const leitor = new FileReader();
-
-                    // O que acontece quando a leitura termina:
+    
                     leitor.onload = (e) => {
-                        // Atualiza a imagem na tela com o resultado da leitura
                         iconeUsuario.src = e.target.result;
                     };
-
-                    // Começa a ler o arquivo como uma URL de dados
+    
                     leitor.readAsDataURL(arquivo);
                 }
             });
+    
+            //Editar campos
+                let campoAtual = null; // para saber qual campo está sendo editado
+                let dadosUsuario = null; // salvar os dados carregados
 
-            // ----------------------------------------------------
-            // 3. INTERAÇÃO COM OS CAMPOS
-            // ----------------------------------------------------
-            document.querySelectorAll('.campo-info').forEach(campo => {
-                campo.addEventListener('click', () => {
-                    console.log(`Clicou em: ${campo.id}`);
-                });
-            });
+                function abrirEdicao(campo, valorInicial) {
+                    campoAtual = campo;
+                    document.getElementById("input-edicao").value = valorInicial;
+                    document.getElementById("modal-edicao").style.display = "flex";
+                }
 
-            // ----------------------------------------------------
-            // 3. INTERAÇÃO COM OS CAMPOS (Placeholder para edição)
-            // ----------------------------------------------------
-            document.querySelectorAll('.campo-info').forEach(campo => {
-                campo.addEventListener('click', () => {
-                    // Aqui futuramente você colocará a lógica para abrir o formulário de edição
-                    console.log(`Clicou em: ${campo.id}`);
+                function fecharModal() {
+                    document.getElementById("modal-edicao").style.display = "none";
+                }
+
+                // Clique nos campos para editar
+                document.querySelector('#campo-nome').addEventListener("click", () => {
+                    abrirEdicao("nome", dadosUsuario.nome);
                 });
-            });
+
+                document.querySelector('#campo-email').addEventListener("click", () => {
+                    abrirEdicao("email", dadosUsuario.email);
+                });
+
+                document.querySelector('#campo-senha').addEventListener("click", () => {
+                    abrirEdicao("senha", dadosUsuario.senha);
+                });
+
+                // Botões do modal
+                document.getElementById("fechar-edicao").addEventListener("click", fecharModal);
+
+                document.getElementById("salvar-edicao").addEventListener("click", async () => {
+                    const novoValor = document.getElementById("input-edicao").value.trim();
+
+                    if (!novoValor) {
+                        alert("Digite um valor válido.");
+                        return;
+                    }
+
+                    dadosUsuario[campoAtual] = novoValor; // atualiza localmente
+
+                    try {
+                        const resposta = await fetch("http://localhost:1880/atualizarUsuario", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify(dadosUsuario)
+                        });
+
+                        const data = await resposta.json();
+
+                        if (data.status === "ok") {
+                            alert("Atualizado com sucesso!");
+
+                            // Atualizar tela
+                            document.querySelector('#campo-nome .valor-info').textContent = dadosUsuario.nome;
+                            document.querySelector('#campo-email .valor-info').textContent = dadosUsuario.email;
+                            document.querySelector('#campo-senha .valor-info').textContent = "*".repeat(dadosUsuario.senha.length);
+
+                            fecharModal();
+                        } else {
+                            alert("Erro ao atualizar.");
+                        }
+
+                    } catch (err) {
+                        alert("Erro ao conectar com o servidor.");
+                        console.error(err);
+                    }
+                });
+    
         });
-    </script>
+    </script>    
 </body>
 </html>

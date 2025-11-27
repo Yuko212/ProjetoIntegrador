@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/peca.css"> 
     <link rel="stylesheet" href="../css/logout.css">
+    <link rel="stylesheet" href="../css/footer-header.css">
     
 </head>
 <body>
@@ -18,9 +19,9 @@
             </a>
 
             <nav class="main-nav">
-                <a href="dashboard.html" class="nav-link">Home</a>
+                <a href="index.html" class="nav-link">Home</a>
                 <a href="peca.html" class="nav-link">Design</a>
-                <a href="#acompanhamento" class="nav-link">Acompanhamento</a>
+                <a href="statuspedido.html" class="nav-link">Acompanhamento</a>
                 <a href="#historico" class="nav-link">Histórico</a>
             </nav>
 
@@ -414,90 +415,6 @@
                 btn.addEventListener("click", atualizarPreviewPino1);
             });
         });
-
-                    // Mapeamento das formas para números do banco
-            const mapForma = {
-                "quadrado": 1,
-                "circulo": 2,
-                "octogono": 3
-            };
-
-            function enviarPedido() {
-            // Verifica se o pedido é simples ou duplo
-            const tipoPedido = document.getElementById("simples").checked ? 1 : 2;
-
-            // Captura TODOS os selects na ordem que aparecem no HTML
-            const selects = document.querySelectorAll(".dropdown-select");
-
-            // Pino 1
-            const p1 = mapForma[selects[0].value] || null;
-            const p2 = mapForma[selects[1].value] || null;
-            const p3 = mapForma[selects[2].value] || null;
-
-            // Pino 2 (apenas se "dupla" estiver selecionado)
-            let p4 = null, p5 = null, p6 = null;
-
-            if (tipoPedido === 2) {
-                p4 = mapForma[selects[3].value] || null;
-                p5 = mapForma[selects[4].value] || null;
-                p6 = mapForma[selects[5].value] || null;
-            }
-
-            const user = getUsuario();
-
-            //VALIDAÇÃO DE SEGURANÇA: Checa se o usuário e o ID existem
-            if (!user || !user.id) {
-                alert("Erro: ID do cliente não encontrado. Por favor, faça login novamente.");
-                console.error("Tentativa de pedido sem ID de cliente válido.");
-                // Opcional: Redirecionar para o login
-                // window.location.href = "login.html"; 
-                return; // Interrompe a função se o ID for inválido
-            }
-            // -----------------------------------------------------------
-
-            // Monta o payload final a ser enviado ao Node-RED
-            const payload = {
-                id_cliente: user.id, // Agora 'user.id' tem um valor garantido
-                tipo_pedido: tipoPedido,
-                p1: p1,
-                p2: p2,
-                p3: p3,
-                p4: p4,
-                p5: p5,
-                p6: p6
-            };
-
-            console.log("Pedido montado:", payload);
-
-            // Envia o pedido ao Node-RED
-            fetch("http://127.0.0.1:1880/pedido", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload)
-            })
-            .then(res => {
-                // Checa se a resposta do servidor Node-RED é um sucesso HTTP (2xx)
-                if (!res.ok) {
-                    throw new Error(`Erro HTTP: ${res.status}`);
-                }
-                return res.json();
-            })
-            .then(res => {
-                console.log("Resposta do servidor:", res);
-                alert("Pedido enviado com sucesso!");
-                window.location.href = "detalhe.html"
-            })
-            .catch(err => {
-                console.error("Erro ao enviar:", err);
-                alert("Erro ao enviar o pedido. Verifique a conexão ou tente novamente.");
-            });
-            }
-
-            // Faz o botão "Finalizar" disparar o envio
-            document.querySelector(".botao-finalizar").addEventListener("click", function(e) {
-            e.preventDefault(); // Impede refresh da página
-            enviarPedido();
-            });
     </script>
 </body>
 </html>

@@ -19,9 +19,9 @@
             </a>
 
             <nav class="main-nav">
-                <a href="dashboard.html" class="nav-link">Home</a>
+                <a href="index.html" class="nav-link">Home</a>
                 <a href="peca.html" class="nav-link">Design</a>
-                <a href="#acompanhamento" class="nav-link">Acompanhamento</a>
+                <a href="statuspedido.html" class="nav-link">Acompanhamento</a>
                 <a href="#historico" class="nav-link">Histórico</a>
             </nav>
 
@@ -41,24 +41,14 @@
             
             <section class="coluna-esquerda">
                 
-                <div class="cartao cartao-bloco-container"> <div class="cartao cartao-bloco" id="bloco-pino-1">
-                    <span id="nome-bloco-pino-1" class="titulo-bloco">Pino 1: Carregando...</span>
+                <div class="cartao cartao-bloco">
+                    <span id="nome-bloco" class="titulo-bloco">Carregando...</span>
                     
                     <div class="container-imagem-bloco">
-                        <img src="../img/pngs/Base.png" alt="Imagem do Bloco" class="imagem-peca" id="imagem-pino-1">
-                        <span class="badge-quantidade" id="quantidade-peca-p1">1</span>
+                        <img src="https://placehold.co/80x80/cccccc/ffffff?text=Cubo" alt="Imagem do Bloco" class="imagem-peca">
+                        <span class="badge-quantidade" id="quantidade-peca">1</span>
                     </div>
                 </div>
-            
-                <div class="cartao cartao-bloco" id="bloco-pino-2" style="display: none;">
-                    <span id="nome-bloco-pino-2" class="titulo-bloco">Pino 2: Carregando...</span>
-                    
-                    <div class="container-imagem-bloco">
-                        <img src="../img/pngs/Base.png" alt="Imagem do Bloco" class="imagem-peca" id="imagem-pino-2">
-                        <span class="badge-quantidade" id="quantidade-peca-p2">1</span>
-                    </div>
-                </div>
-            </div>
 
                 <div class="cartao cartao-pessoal">
                     <div class="titulo-secao-fundo-escuro">
@@ -75,10 +65,6 @@
                         <div id="info-data" class="campo-leitura"></div>
                     </div>
                 </div>
-
-                <a href="statuspedido.html" class="botao-acompanhamento">
-                    <button type="button">Acompanhar Pedido</button>
-                </a>
 
             </section>
 
@@ -147,145 +133,72 @@
 
     
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // ... (MAP_FORMAS e MAP_LETRAS permanecem iguais) ...
-
-        verificarLogin();
-
-        const MAP_FORMAS = {
-            1: "Quadrado",
-            2: "Círculo",
-            3: "Octógono"
-        };
-
-        const MAP_LETRAS = {
-            1: "Q", // Quadrado
-            2: "C", // Círculo
-            3: "O"  // Octógono
-        };
-
-        // --- Funções de Utilitário ---
-
-        function getPedidoIdFromUrl() {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('id');
-        }
-
-        // Função para gerar o nome do arquivo PNG baseado na ordem das peças (P1, P2, P3)
-        function gerarNomeImagem(p1, p2, p3) {
-            const letraP1 = MAP_LETRAS[p1] || '';
-            const letraP2 = MAP_LETRAS[p2] || '';
-            const letraP3 = MAP_LETRAS[p3] || '';
-
-            const sequencia = letraP1 + letraP2 + letraP3;
-
-            if (sequencia.length === 0) {
-                 return "Cubo";
-            }
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
             
-            return sequencia; 
-        }
-
-
-        // --- Funções Principais ---
-
-        function carregarDetalhes() {
-            // ... (Lógica de obtenção e fetch do pedido permanece igual) ...
-            
-            const pedidoId = getPedidoIdFromUrl();
-
-            if (!pedidoId) {
-                document.getElementById('id-pedido').innerText = 'ERRO';
-                alert("ID do pedido não encontrado na URL. Redirecionando.");
-                window.location.href = "dashboard.html"; 
-                return;
-            }
-
-            document.getElementById('id-pedido').innerText = pedidoId;
-
-            fetch(`http://127.0.0.1:1880/pedido/${pedidoId}`) // 🛑 CORRIGIDO PARA /api/pedido/
-                .then(res => {
-                    if (!res.ok) throw new Error(`Falha ao buscar detalhes: ${res.status}`);
-                    return res.json();
-                })
-                .then(pedido => {
-                    if (!pedido || pedido.status === "error") {
-                        throw new Error(pedido.message || "Pedido não encontrado no banco de dados.");
+            // SIMULAÇÃO DO BANCO DE DADOS
+            // Imagine que estes dados vieram do servidor baseados no login do usuário
+            const dadosDoBanco = {
+                pedido: {
+                    numero: "062",
+                    data: "24/11/2025",
+                    quantidade: 1
+                },
+                cliente: {
+                    endereco: "Rua das Camélias, 123 - Curitiba/PR",
+                    email: "mary.dev@cibertech.com"
+                },
+                peca: {
+                    tipo: "Bloco Duplo", // Poderia ser "Bloco Simples"
+                    imagemUrl: "caminho/para/imagem-cubo.png",
+                    pino1: {
+                        forma1: "Óctogno",
+                        forma2: "Quadrado",
+                        forma3: "Círculo"
+                    },
+                    pino2: { // Se for simples, isso viria vazio ou null
+                        forma1: "Círculo",
+                        forma2: "Círculo",
+                        forma3: "Quadrado"
                     }
-                    
-                    exibirDetalhesNaTela(pedido);
-                })
-                .catch(err => {
-                    console.error("Erro na busca do pedido:", err);
-                    alert("Não foi possível carregar os detalhes do pedido.");
-                    document.getElementById('nome-bloco').innerText = 'ERRO';
-                });
-        }
+                }
+            };
 
-        function exibirDetalhesNaTela(pedido) {
-            
-            // Variáveis de controle de visibilidade
-            const isDuplo = pedido.tipo_pedido == 2;
-            const containerPino2 = document.getElementById('container-pino-2');
-            const blocoPino2 = document.getElementById('bloco-pino-2'); // Novo ID/Elemento
+            // FUNÇÃO PARA PREENCHER A TELA
+            function carregarDetalhes() {
+                // 1. Cabeçalho
+                document.getElementById('id-pedido').innerText = dadosDoBanco.pedido.numero;
 
-            // --- CONTROLE DE VISIBILIDADE GERAL ---
-            if (isDuplo) {
-                blocoPino2.style.display = 'flex'; // Mostra o bloco 2 na esquerda
-                containerPino2.style.display = 'block'; // Mostra a ordem 2 na direita
-            } else {
-                blocoPino2.style.display = 'none'; // Esconde o bloco 2 na esquerda
-                containerPino2.style.display = 'none'; // Esconde a ordem 2 na direita
+                // 2. Bloco e Quantidade
+                document.getElementById('nome-bloco').innerText = dadosDoBanco.peca.tipo;
+                document.getElementById('quantidade-peca').innerText = dadosDoBanco.pedido.quantidade;
+
+                // 3. Informações Pessoais
+                document.getElementById('info-endereco').innerText = dadosDoBanco.cliente.endereco;
+                document.getElementById('info-email').innerText = dadosDoBanco.cliente.email;
+                document.getElementById('info-data').innerText = dadosDoBanco.pedido.data;
+
+                // 4. Ordem - Pino 1
+                document.getElementById('p1-forma1').innerText = dadosDoBanco.peca.pino1.forma1;
+                document.getElementById('p1-forma2').innerText = dadosDoBanco.peca.pino1.forma2;
+                document.getElementById('p1-forma3').innerText = dadosDoBanco.peca.pino1.forma3;
+
+                // 5. Ordem - Pino 2 (Lógica para esconder se for simples)
+                const containerPino2 = document.getElementById('container-pino-2');
+                
+                if (dadosDoBanco.peca.tipo === "Bloco Simples" || !dadosDoBanco.peca.pino2) {
+                    containerPino2.style.display = 'none'; // Esconde o 2º pino se for simples
+                } else {
+                    containerPino2.style.display = 'block';
+                    document.getElementById('p2-forma1').innerText = dadosDoBanco.peca.pino2.forma1;
+                    document.getElementById('p2-forma2').innerText = dadosDoBanco.peca.pino2.forma2;
+                    document.getElementById('p2-forma3').innerText = dadosDoBanco.peca.pino2.forma3;
+                }
             }
 
-
-            // --- PINO 1 (Bloco Esquerda e Ordem Direita) ---
-            
-            // Título
-            document.getElementById('nome-bloco-pino-1').innerText = `Pino 1`;
-            document.getElementById('quantidade-peca-p1').innerText = 1;
-
-            // Imagem Pino 1
-            const nomeBasePino1 = gerarNomeImagem(pedido.p1, pedido.p2, pedido.p3);
-            document.getElementById('imagem-pino-1').src = `../img/pngs/${nomeBasePino1}.png`; 
-            document.getElementById('imagem-pino-1').alt = `Pino 1: ${nomeBasePino1}`;
-
-            // Ordem Pino 1
-            document.getElementById('p1-forma1').innerText = MAP_FORMAS[pedido.p1];
-            document.getElementById('p1-forma2').innerText = MAP_FORMAS[pedido.p2];
-            document.getElementById('p1-forma3').innerText = MAP_FORMAS[pedido.p3];
-
-
-            // --- PINO 2 (Bloco Esquerda e Ordem Direita) ---
-            if (isDuplo) {
-                // Título
-                document.getElementById('nome-bloco-pino-2').innerText = `Pino 2`;
-                document.getElementById('quantidade-peca-p2').innerText = 1;
-
-                // Imagem Pino 2
-                const nomeBasePino2 = gerarNomeImagem(pedido.p4, pedido.p5, pedido.p6);
-                document.getElementById('imagem-pino-2').src = `../img/pngs/${nomeBasePino2}.png`;
-                document.getElementById('imagem-pino-2').alt = `Pino 2: ${nomeBasePino2}`;
-
-                // Ordem Pino 2
-                document.getElementById('p2-forma1').innerText = MAP_FORMAS[pedido.p4];
-                document.getElementById('p2-forma2').innerText = MAP_FORMAS[pedido.p5];
-                document.getElementById('p2-forma3').innerText = MAP_FORMAS[pedido.p6];
-            }
-
-
-            // --- INFORMAÇÕES PESSOAIS (Comum) ---
-            document.getElementById('info-email').innerText = pedido.email || 'E-mail não disponível';
-            const dataOriginal = pedido.criado_em; 
-            const dataFormatada = new Date(dataOriginal).toLocaleDateString('pt-BR');
-            document.getElementById('info-data').innerText = dataFormatada;
-
-        }
-
-        // Executa o carregamento
-        carregarDetalhes();
-    });
-</script>
+            // Executa a função
+            carregarDetalhes();
+        });
+    </script>
 </body>
 </html>

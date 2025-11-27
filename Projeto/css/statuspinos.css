@@ -1,0 +1,48 @@
+
+.area-cartoes-pinos {
+    display: flex;
+    justify-content: center;
+    gap: 40px; 
+    margin-bottom: 40px;
+    flex-wrap: wrap; 
+}
+
+.cartao-pino {
+    border: 3px solid #9575cd;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: white;
+    
+
+    flex-basis: 450px; 
+    max-width: 45%;   
+    flex-grow: 1;     
+    min-width: 300px;  
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.titulo-pino {
+    color: #4a0072;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.passo-escudo.pequeno {
+    width: 100px;
+    height: 90px;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.fundo-barra.barra-pequena {
+    height: 40px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.fundo-barra.barra-pequena .texto-porcentagem {
+    font-size: 18px;
+    right: 15px;
+}
+
