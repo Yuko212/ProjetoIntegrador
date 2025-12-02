@@ -1,333 +1,138 @@
-/* 1. RESET FUNDAMENTAL */
-body {
-    background-color: #B5A0D6; /* <-- Corrigido: Fundo roxo aqui */
-    font-family: 'Inter', sans-serif;
+/* Reset básico */
+* {
     margin: 0;
     padding: 0;
-    color: #3e2060;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-/* 2. O CONTAINER QUE DEVE OCUPAR TUDO */
-.container-geral {
-    display: flex;
-    flex-direction: column;
-    min-height: 64.5vh;
-    padding: 0; 
     box-sizing: border-box;
-    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body {
+    background-color: #ffffff; /* Roxo bem clarinho do fundo */
+    color: #3e0a6d;
+    padding: 20px;
+}
 
-.botao-voltar {
-    background-color: #d8b4fe; 
-    color: #3e2060;
-    text-decoration: none;
-    font-weight: 700;
-    padding: 8px 20px;
+.btn-voltar {
+    position: absolute;
+    left: 0;
+    background-color: #f3eef7;
+    border: none;
+    padding: 10px 20px;
     border-radius: 20px;
-    font-size: 0.9rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-weight: bold;
+    color: #3e0a6d;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.titulo-pagina {
+h1 {
     font-size: 2rem;
-    color: #3e2060;
-    font-weight: 800;
-    margin: 0;
-   margin-top: 10px; 
-    text-align: center;
+    font-weight: bold;
+    color: #3e0a6d;
 }
 
-.numero-pedido-badge {
-    background-color: #d8b4fe;
-    color: #3e2060;
-    font-weight: 700;
-    padding: 8px 20px;
+/* Container Principal */
+.conteudo {
+    background-color: #dcd0e3; 
     border-radius: 20px;
-    font-size: 0.9rem;
-    margin-left: 20px; 
-    margin-right: 90%; 
-    margin-bottom: 20px; 
-}
-
-/* --- ÁREA DE CONTEÚDO (GRID) --- */
-.area-conteudo {
-    display: flex;
-    gap: 30px;
-    flex-grow: 1; 
-    overflow-y: auto; 
-    padding-bottom: 20px;
-    justify-content: center;
-}
-
-.coluna-esquerda {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.coluna-direita {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-}
-
-.cartao {
-    background-color: #E6E1E8; 
-    border-radius: 25px;
-    padding: 25px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    min-height: 700px; 
+    display: flex;
+    flex-direction: column;
 }
 
-/* --- CARTÃO 1: BLOCO --- */
-.cartao-bloco {
+/* Cabeçalho da Tabela (Labels) */
+.tabela-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 30px 40px;
-}
-
-.titulo-bloco {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: #3e2060;
-}
-
-.container-imagem-bloco {
-    position: relative;
-    background-color: #d1d1d1; 
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #999;
-}
-
-.imagem-peca {
-    width: 60px;
-    height: 60px;
-    display: block;
-}
-
-.badge-quantidade {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background-color: #7f8c8d; 
-    color: white;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 24px;
-    font-weight: bold;
-    font-size: 0.8rem;
-}
-
-
-.titulo-secao-fundo-escuro {
-    background-color: #5D4A75; 
-    color: white;
-    text-align: center;
-    padding: 8px 20px;
-    border-radius: 15px;
-    font-weight: 700;
-    font-size: 1.1rem;
-    width: fit-content;
-    margin: 0 auto 20px auto; 
-    display: block;
-}
-
-/* --- CAMPOS DE LEITURA (ESTILO INPUT CINZA) --- */
-.grupo-campo {
     margin-bottom: 15px;
-}
-
-.rotulo {
-    display: block;
-    font-weight: 700;
-    color: #888; 
-    margin-bottom: 5px;
-    font-size: 0.9rem;
-    margin-left: 10px; 
-}
-
-.campo-leitura {
-    background-color: #d1cbd6; 
-    height: 35px;
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    font-weight: 600;
-    color: #3e2060;
-}
-
-/* --- CARTÃO 3: ORDEM ESCOLHIDA --- */
-.cartao-ordem {
-    flex-grow: 1; 
-}
-
-.titulo-pino {
-    text-align: center;
-    color: #3e2060;
-    font-weight: 800;
-    margin: 15px 0;
-    text-transform: uppercase;
-}
-
-.linha-forma {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-}
-
-.rotulo-forma {
-    width: 100px; 
-    font-weight: 700;
-    color: #3e2060;
-    font-size: 1rem;
-    text-align: right;
-    margin-right: 15px;
-}
-
-.campo-leitura-forma {
-    flex-grow: 1;
-    background-color: #d1cbd6;
-    height: 35px;
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    font-weight: 600;
-    color: #555;
-}
-
-/* --- RODAPÉ --- */
-.rodape {
-    padding: 10px 0;
-    flex-shrink: 0;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
+    padding: 0 10px;
     gap: 10px;
 }
 
-.icone-robo {
-    width: 40px;
-    height: auto;
-}
-
-.texto-logo {
-    font-weight: 800;
-    font-size: 1.2rem;
-    color: #222;
-}
-
-/* --- RESPONSIVIDADE (MOBILE) --- */
-@media (max-width: 850px) {
-    .area-conteudo {
-        flex-direction: column;
-        align-items: center;
-        overflow-y: scroll; 
-    }
-
-    .coluna-direita {
-        width: 100%;
-        max-width: 500px;
-    }
-
-    .coluna-esquerda {
-        display: flex;
-        flex-direction: column; /* Empilha os cartões verticalmente */
-        gap: 20px; /* Espaçamento entre o bloco de imagem e o bloco de informações pessoais */
-        /* Garante que a coluna não ocupe largura desnecessária */
-        max-width: 450px; 
-    }
-    
-    body {
-        overflow: auto;
-        height: auto;
-    }
-}
-
-/* O ELEMENTO QUE ENVOLVE TUDO ENTRE O HEADER E O FOOTER */
-.limitador-largura { 
-    flex-grow: 0.03; 
-}
-
-/* --- Detalhes do Pedido (detalhe.html) --- */
-
-/* Contêiner que abriga o(s) bloco(s) de imagem. Permite que o pino 1 e pino 2 fiquem lado a lado. */
-.cartao-bloco-container {
-    display: flex;
-    flex-direction: row; /* Mantém os pinos lado a lado */
-    gap: 20px; /* Espaçamento entre o Pino 1 e o Pino 2 */
-    justify-content: flex-start; /* Alinha o grupo de blocos à esquerda */
-    align-items: flex-start; 
-    width: 90%;
-    /* Remova qualquer altura fixa que possa estar causando sobreposição */
-    height: auto; 
-}
-
-/* Ajuste no layout do cartão de bloco individual */
-.cartao.cartao-bloco {
-    /* Garante que o cartão em si não seja muito largo */
-    max-width: 250px; 
-    padding: 15px;
+.col {
+    background-color: #b49bc5;
+    color: #3e0a6d;
+    padding: 8px 15px;
+    border-radius: 15px;
+    font-weight: 500;
     text-align: center;
-    /* Define uma largura base para os dois blocos serem uniformes */
-    width: 100%; 
+    flex: 1; /* Todos ocupam o mesmo espaço inicialmente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Centraliza a imagem e o badge dentro do contêiner de imagem */
-.container-imagem-bloco {
-    position: relative;
-    display: inline-block; 
-    margin-top: 10px;
-    /* Adicione um espaçamento no topo e na base do contêiner da imagem, se necessário */
+.col-wide {
+    flex: 2; 
 }
 
-/* Estilo para garantir que os títulos de cada pino (Pino 1, Pino 2) fiquem em destaque */
-.titulo-bloco {
-    display: block;
-    font-size: 1.1em;
-    font-weight: bold;
-    /* 🛑 CORREÇÃO: Adiciona espaçamento entre o título e o elemento de imagem abaixo */
-    margin-bottom: 10px; 
+.tabela-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 10px;
 }
 
-.cartao.cartao-pessoal {
-    /* Define uma largura que respeite a coluna */
-    max-width: 100%; 
-    /* Garante que ele fique abaixo do cartao-bloco-container devido ao flex-direction: column */
-}
-
-/* --- Estilo do Botão de Finalizar/Acompanhar na Página de Detalhes --- */
-
-.botao-acompanhamento {
-    /* Define o alinhamento e largura do botão */
-    display: block; 
-    width: 100%;
-    margin-top: 15px; /* Espaço entre o cartão de Informações Pessoais e o botão */
-    
-    /* 🚀 ESTILOS DO BOTÃO APLICADOS DIRETAMENTE AQUI 🚀 */
-    padding: 12px 20px;
-    background-color: #5b3e9b; /* Cor principal (roxo) */
+.pill {
+    background-color: #3e0a6d; 
     color: white;
+    padding: 12px;
+    border-radius: 20px; 
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.formas {
+    flex: 2;
+    font-weight: normal;
+    font-size: 0.85rem;
+}
+
+/* Rodapé e Paginação */
+.paginacao-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+    margin-top: 20px;
+}
+
+.btn-nav {
+    background-color: #d1c4da;
     border: none;
-    border-radius: 8px;
-    font-size: 1.1em;
+    padding: 10px 20px;
+    border-radius: 15px;
+    color: #3e0a6d;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.2s;
-    text-transform: uppercase;
+    margin-bottom: 5px;
+    transition: background 0.2s;
 }
 
-.botao-acompanhamento:hover {
-    background-color: #4a327e; /* Cor ligeiramente mais escura no hover */
+.btn-nav{
+    background-color: #c4b5d0;
+}
+
+.contador-paginas {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #3e0a6d;
+    margin-right: 10px;
+}
+
+.lista-pedidos {
+    flex-grow: 1; 
+    margin-bottom: 20px;
+}
+
+footer{
+    padding
 }
