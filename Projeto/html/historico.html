@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Pedidos</title>
+    <link rel="stylesheet" href="../css/historico.css">
+    <link rel="stylesheet" href="../css/footer-header.css">
+    <link rel="stylesheet" href="../css/logout.css">
+</head>
+<body>
+
+        <script src="../js/auth.js"></script>
+
+        <header id="main-header">
+            <div class="cabeçalho">
+                <a href="index.html" class="logo">
+                    <span class="logo-text">CiberTech</span>                
+                </a>
+    
+                <nav class="main-nav">
+                    <a href="dashboard.html" class="nav-link">Home</a>
+                    <a href="peca.html" class="nav-link">Design</a>
+                    <a href="#acompanhamento" class="nav-link">Acompanhamento</a>
+                    <a href="#historico" class="nav-link">Histórico</a>
+                </nav>
+    
+                <button class="botao-logout" onclick="logout()">
+                    Sair
+                </button>
+            </div>
+        </header>
+
+    <main class="conteudo">
+        <div class="tabela-header">
+            <div class="col">Pedido</div>
+            <div class="col col-wide">Formas escolhidas</div>
+            <div class="col">Tempo de produção</div>
+            <div class="col">ID cliente</div>
+        </div>
+
+        <div id="lista-pedidos" class="lista-pedidos">
+            </div>
+
+            <div class="paginacao-container">
+                <button id="btn-anterior" class="btn-nav" style="display: none;">&lt; Voltar</button>
+                <span id="contador-paginas" class="contador-paginas"></span>
+                <button id="btn-proximo" class="btn-nav">Ver mais &gt;</button>
+            </div>
+    </main>
+
+    <footer id="main-footer">
+        <div class="container footer-container">
+            <div class="footer-top">
+                <p class="footer-logo">CiberTech</p>
+                <nav class="footer-nav">
+                    <a href="#funcionalidades" class="footer-link">Funcionalidades</a>
+                    <a href="#" class="footer-link">Termos de Uso</a>
+                    <a href="#" class="footer-link">Contato</a>
+                </nav>
+            </div>
+            <p class="footer-copy">
+                &copy; 2025 CiberTech. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+       // --- SIMULAÇÃO DE DADOS (15 itens para gerar 2 páginas) ---
+    const mockBancoDeDados = [
+        { id: '065', formas: 'Quadrado, círculo e octógono', tempo: '00:25:52', cliente: '10' },
+        { id: '064', formas: 'Círculo, quadrado e octógono', tempo: '00:24:52', cliente: '09' },
+        { id: '063', formas: 'Octógono, círculo e quadrado', tempo: '00:25:12', cliente: '08' },
+        { id: '062', formas: 'Quadrado, octógono e círculo', tempo: '00:26:01', cliente: '07' },
+        { id: '061', formas: 'Círculo, octógono e quadrado', tempo: '00:49:50', cliente: '06' },
+        { id: '060', formas: 'Quadrado, círculo e octógono', tempo: '00:25:53', cliente: '05' },
+        { id: '059', formas: 'Círculo, quadrado e octógono', tempo: '00:23:59', cliente: '04' },
+        { id: '058', formas: 'Quadrado, círculo e octógono', tempo: '00:49:05', cliente: '03' },
+        { id: '057', formas: 'Quadrado, círculo e octógono', tempo: '00:25:53', cliente: '05' },
+        { id: '056', formas: 'Círculo, quadrado e octógono', tempo: '00:23:59', cliente: '04' },
+        
+        { id: '055', formas: 'Triângulo, quadrado e círculo', tempo: '00:30:00', cliente: '11' },
+        { id: '054', formas: 'Octógono, octógono e círculo', tempo: '00:15:20', cliente: '12' },
+        { id: '053', formas: 'Quadrado, quadrado e quadrado', tempo: '00:10:05', cliente: '13' },
+        { id: '052', formas: 'Círculo, triângulo e quadrado', tempo: '00:45:30', cliente: '14' },
+        { id: '051', formas: 'Octógono, círculo e triângulo', tempo: '00:22:15', cliente: '15' }
+    ];
+
+ 
+    const ITENS_POR_PAGINA = 10;
+    let paginaAtual = 1;
+
+ 
+    const listaPedidosEl = document.getElementById('lista-pedidos');
+    const btnAnterior = document.getElementById('btn-anterior');
+    const btnProximo = document.getElementById('btn-proximo');
+    const contadorPaginas = document.getElementById('contador-paginas');
+
+    function renderizarPagina(pagina) {
+     
+        listaPedidosEl.innerHTML = '';
+
+        const inicio = (pagina - 1) * ITENS_POR_PAGINA;
+        const fim = inicio + ITENS_POR_PAGINA;
+        const pedidosDaPagina = mockBancoDeDados.slice(inicio, fim);
+
+        pedidosDaPagina.forEach(pedido => {
+            const linha = document.createElement('div');
+            linha.className = 'tabela-row';
+            linha.innerHTML = `
+                <div class="pill id-pedido">${pedido.id}</div>
+                <div class="pill formas">${pedido.formas}</div>
+                <div class="pill tempo">${pedido.tempo}</div>
+                <div class="pill id-cliente">${pedido.cliente}</div>
+            `;
+            listaPedidosEl.appendChild(linha);
+        });
+
+        atualizarControles(pagina);
+    }
+
+    function atualizarControles(pagina) {
+        const totalPaginas = Math.ceil(mockBancoDeDados.length / ITENS_POR_PAGINA);
+        
+        contadorPaginas.innerText = `pag ${pagina} de ${totalPaginas}`;
+
+        btnAnterior.style.display = (pagina === 1) ? 'none' : 'inline-block';
+
+        btnProximo.style.display = (pagina >= totalPaginas) ? 'none' : 'inline-block';
+    }
+
+    btnProximo.addEventListener('click', () => {
+        paginaAtual++;
+        renderizarPagina(paginaAtual);
+    });
+
+    btnAnterior.addEventListener('click', () => {
+        paginaAtual--;
+        renderizarPagina(paginaAtual);
+    });
+
+    renderizarPagina(1);
+
+    </script>
+</body>
+</html>
