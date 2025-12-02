@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Status dos Pinos</title>
-    <link rel="stylesheet" href="../css/statuspinos.css">
-    <link rel="stylesheet" href="../css/statuspedido.css">
+    <title>Status dos Pinos - CiberTech</title>
     <link rel="stylesheet" href="../css/footer-header.css">
+    <link rel="stylesheet" href="../css/statuspinos.css">
     <link rel="stylesheet" href="../css/logout.css">
 </head>
 <body>
 
-    
+    <!-- Cabeçalho (Header) - Presume-se estilizado por footer-header.css -->
     <script src="../js/auth.js"></script>
     <header id="main-header">
         <div class="cabeçalho">
             <a href="index.html" class="logo">
-                <span class="logo-text">CiberTech</span>                
+                <span class="logo-text">CiberTech</span>
             </a>
 
             <nav class="main-nav">
@@ -32,78 +31,75 @@
         </div>
     </header>
 
+    <!-- Barra Topo Pedido -->
     <div class="barra-topo-pedido">
-        <button class="botao-branco-arredondado">Minha conta</button>
-        <h1 class="titulo-cabecalho">Status do seu pedido</h1>
-        <div class="caixa-numero-pedido">Nº do pedido: 063</div>
+        <button id="btn-minha-conta" class="botao-branco-arredondado">Minha conta</button>
+        <h1 class="titulo-cabecalho">Status dos Pinos</h1>
+        <div id="numero-pedido-display" class="caixa-numero-pedido">
+            Nº do pedido: Carregando
+        </div>
     </div>
 
+    <!-- Conteúdo Principal -->
     <main class="conteiner-principal">
+        <h2 id="titulo-bloco" class="titulo-bloco">
+            Status do Pedido: <span id="pedido-status-titulo"></span>
+        </h2>
         
-        <div class="area-cartoes-pinos">
+        <!-- Mensagem de Status/Erro/Carregando -->
+        <p id="status-message" style="color: red; font-weight: bold; margin-top: 20px;" class="hidden">
+            Carregando dados...
+        </p>
 
-            <div class="cartao-pino">
+        <!-- Área onde os Cartões de Pinos serão renderizados -->
+        <div id="area-cartoes-pinos" class="area-cartoes-pinos duplo hidden">
+            
+            <!-- PINO 1 (p1, p2, p3) -->
+            <div id="pino-1-container" class="cartao-pino hidden">
                 <h2 class="titulo-pino">1º PINO</h2>
                 
-                <div class="area-passos">
-                    <div class="passo-escudo pequeno">
-                        <p>1ª forma<br>quadrado<br>no pino</p>
-                    </div>
-                    <div class="passo-escudo pequeno">
-                        <p>2ª forma<br>círculo<br>no pino</p>
-                    </div>
-                    <div class="passo-escudo pequeno">
-                        <p>3ª forma</p>
-                    </div>
+                <div id="passos-pino-1" class="area-passos-pinos">
+                    <!-- Passos do pino 1 serão preenchidos pelo JS -->
                 </div>
 
-                <div class="fundo-barra barra-pequena">
-                    <div class="barra-preenchida" id="barra-pino-1"></div>
-                    <span class="texto-porcentagem" id="texto-pino-1">0%</span>
+                <div class="fundo-barra-pino">
+                    <div class="barra-preenchida-pino" id="barra-pino-1"></div>
+                    <span class="texto-porcentagem-pino" id="texto-pino-1">0%</span>
                 </div>
             </div>
 
-            <div class="cartao-pino">
+            <!-- PINO 2 (p4, p5, p6) -->
+            <div id="pino-2-container" class="cartao-pino hidden">
                 <h2 class="titulo-pino">2º PINO</h2>
                 
-                <div class="area-passos">
-                    <div class="passo-escudo pequeno">
-                        <p>1ª forma</p>
-                    </div>
-                    <div class="passo-escudo pequeno">
-                        <p>2ª forma</p>
-                    </div>
-                    <div class="passo-escudo pequeno">
-                        <p>3ª forma</p>
-                    </div>
+                <div id="passos-pino-2" class="area-passos-pinos">
+                    <!-- Passos do pino 2 serão preenchidos pelo JS -->
                 </div>
 
-                <div class="fundo-barra barra-pequena">
-                    <div class="barra-preenchida" id="barra-pino-2"></div>
-                    <span class="texto-porcentagem" id="texto-pino-2">0%</span>
+                <div class="fundo-barra-pino">
+                    <div class="barra-preenchida-pino" id="barra-pino-2"></div>
+                    <span class="texto-porcentagem-pino" id="texto-pino-2">0%</span>
                 </div>
             </div>
-
+            
         </div>
 
+        <!-- Área de Botões Centrais -->
         <div class="area-botao-central">
-            <a href="statuspedido.html">
+            <a href="#" id="link-status-pedido">
                 <button class="botao-cinza-central">Status do pedido</button>
             </a>
-            <a href="detalhe.html" class="botao-cinza-central">
-            Detalhes do pedido
-        </a>
-    
-        <a href="peca.html" class="botao-cinza-central">
-            Pedir novo produto
-        </a>
+            <a href="#" id="link-detalhes-pedido" class="botao-cinza-central">
+                Detalhes do pedido
+            </a>
+            <a href="peca.html" class="botao-cinza-central">
+                Pedir novo produto
+            </a>
         </div>
 
     </main>
 
-        
-    
-
+    <!-- Rodapé (Footer) - Presume-se estilizado por footer-header.css -->
     <footer id="main-footer">
         <div class="container footer-container">
             <div class="footer-top">
@@ -120,40 +116,235 @@
         </div>
     </footer>
 
-
     <script>
-        // --- SIMULAÇÃO DO BANCO DE DADOS ---
-        const dadosPinos = {
-            pino1: 70, // 70% concluído
-            pino2: 0   // 0% concluído
+        // --- Variáveis Globais de Controle ---
+        const STATUS_INTERVAL_MS = 2000; // 2 segundos para o polling
+        let pollingInterval; // Variável para controlar a repetição
+    
+        // --- Mapeamentos ---
+        const MAP_TIPOS = {
+            1: "Pino Simples",
+            2: "Pino Duplo"
         };
-
-        window.onload = function() {
-            atualizarPinos();
-        };
-
-        function atualizarPinos() {
-            // Pino 1
-            const barra1 = document.getElementById('barra-pino-1');
-            const texto1 = document.getElementById('texto-pino-1');
-            
-            // Pino 2
-            const barra2 = document.getElementById('barra-pino-2');
-            const texto2 = document.getElementById('texto-pino-2');
-
-            // Animação com pequeno atraso
-            setTimeout(() => {
-                // Atualiza visualmente o Pino 1
-                barra1.style.width = dadosPinos.pino1 + "%";
-                texto1.innerText = dadosPinos.pino1 + "%";
-
-                // Atualiza visualmente o Pino 2
-                barra2.style.width = dadosPinos.pino2 + "%";
-                texto2.innerText = dadosPinos.pino2 + "%";
-            }, 100);
-
-            console.log("Dados dos pinos carregados.");
+    
+        // ===================================================================
+        // FUNÇÕES DE UTILIDADE E CONTROLE
+        // ===================================================================
+    
+        function getPedidoIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id');
         }
+    
+        function iniciarPolling(id) {
+            // 1. Atualiza o número do pedido no topo
+            const caixaNumeroPedido = document.getElementById("numero-pedido-display");
+            if (caixaNumeroPedido) {
+                caixaNumeroPedido.textContent = `Nº do pedido: ${id}`;
+            }
+            
+            // 2. Cria os links dinâmicos para outras páginas
+            const linkStatus = document.getElementById("link-status-pedido");
+            const linkDetalhes = document.getElementById("link-detalhes-pedido");
+            if (linkStatus) linkStatus.href = `statuspedido.html?id=${id}`;
+            if (linkDetalhes) linkDetalhes.href = `detalhes.html?id=${id}`;
+    
+            // 3. Inicia o Polling
+            if (!pollingInterval) {
+                carregarStatusPinos(id); // Executa a primeira busca imediatamente
+                pollingInterval = setInterval(() => carregarStatusPinos(id), STATUS_INTERVAL_MS);
+            }
+        }
+    
+    
+        // ===================================================================
+        // BUSCA O STATUS DOS PINOS (Polling Function)
+        // ===================================================================
+        async function carregarStatusPinos(id) {
+            try {
+                const url = `http://127.0.0.1:1880/status_pinos?id=${id}`; 
+                const resposta = await fetch(url);
+    
+                if (!resposta.ok) throw new Error(`Erro ${resposta.status} ao consultar pinos na API.`);
+    
+                const dados = await resposta.json();
+                
+                // Verifica a validade mínima
+                if (!dados || dados.tipo_pedido === undefined) {
+                    console.error("ERRO: O Node-RED NÃO RETORNOU dados válidos!");
+                    document.getElementById("status-message").textContent = "ERRO: Dados inválidos da API (tipo_pedido ausente).";
+                    document.getElementById("status-message").classList.remove('hidden');
+                    return;
+                }
+    
+                document.getElementById("status-message").classList.add('hidden');
+    
+                atualizarInterface(dados);
+                verificarConclusao(dados);
+                
+            } catch (erro) {
+                console.error("Falha na comunicação com o backend:", erro);
+                document.getElementById("status-message").textContent = "Erro de comunicação com o servidor.";
+                document.getElementById("status-message").classList.remove('hidden');
+            }
+        }
+    
+    
+        // ===================================================================
+        // ATUALIZAÇÃO VISUAL DOS PINOS E DA BARRA DE PROGRESSO
+        // ===================================================================
+        function atualizarInterface(dados) {
+            const tipo = Number(dados.tipo_pedido);
+    
+            // A) Atualiza o título e exibe a área de cartões
+            const tituloBloco = document.getElementById("titulo-bloco");
+            const areaCartoesPinos = document.getElementById("area-cartoes-pinos");
+            const pino1Container = document.getElementById("pino-1-container");
+            const pino2Container = document.getElementById("pino-2-container");
+    
+            if (tituloBloco) tituloBloco.textContent = `Status do Pedido: ${MAP_TIPOS[tipo] || "Desconhecido"}`;
+            areaCartoesPinos.classList.remove('hidden');
+            
+            // B) Exibição dos cartões (Simples vs. Duplo)
+            pino1Container.classList.remove('hidden');
+    
+            if (tipo === 1) {
+                pino2Container.classList.add('hidden');
+                areaCartoesPinos.classList.remove('duplo');
+            } 
+            else if (tipo === 2) {
+                pino2Container.classList.remove('hidden');
+                areaCartoesPinos.classList.add('duplo');
+            }
+    
+            // C) Atualiza os passos e barras
+            
+            // Pino 1 (p1, p2, p3)
+            // Usamos (dados.pX || 0) para tratar NULL como 0.
+            atualizarCartaoPino(1, dados.p1, dados.p2, dados.p3);
+            
+            // Pino 2 (p4, p5, p6) - Só para tipo Duplo. Também trata NULL como 0.
+            if (tipo === 2) {
+                atualizarCartaoPino(2, dados.p4, dados.p5, dados.p6);
+            }
+        }
+    
+        /**
+         * Função auxiliar para atualizar um cartão de pino específico (barra + passos).
+         * @param {number} pinoNum - 1 ou 2.
+         * @param {*} val1, val2, val3 - Valores dos sub-pinos (0, 1, ou null).
+         */
+        function atualizarCartaoPino(pinoNum, val1, val2, val3) {
+            
+            const passosContainer = document.getElementById(`passos-pino-${pinoNum}`);
+            const barraEl = document.getElementById(`barra-pino-${pinoNum}`);
+            const textoEl = document.getElementById(`texto-pino-${pinoNum}`);
+            
+            if (!passosContainer || !barraEl || !textoEl) return;
+            
+            // 🚨 CORREÇÃO: Usa Number() em combinação com o operador OR (||) para garantir que:
+            // Se o valor for NULL (ou undefined, ou 0, ou '0'), ele usa 0.
+            // Se for 1, ele usa 1.
+            const v1 = Number(val1 || 0);
+            const v2 = Number(val2 || 0);
+            const v3 = Number(val3 || 0);
+    
+            // Contador de sub-passos concluídos (a soma de 0s e 1s)
+            const passosConcluidos = v1 + v2 + v3; 
+            
+            // Calcula a porcentagem
+            const porcentagem = (passosConcluidos / 3) * 100;
+    
+            // 1. Atualiza a Barra de Progresso
+            barraEl.style.width = porcentagem + "%";
+            textoEl.textContent = Math.round(porcentagem) + "%";
+    
+            // 2. Atualiza os Passos
+            passosContainer.innerHTML = `
+                <p>1º Sub-Passo: ${v1 === 1 ? '✅ Concluído' : '⏳ Pendente'}</p>
+                <p>2º Sub-Passo: ${v2 === 1 ? '✅ Concluído' : '⏳ Pendente'}</p>
+                <p>3º Sub-Passo: ${v3 === 1 ? '✅ Concluído' : '⏳ Pendente'}</p>
+            `;
+        }
+    
+    
+        // ===================================================================
+        // VERIFICAÇÃO DE CONCLUSÃO (SIMPLES OU DUPLO)
+        // ===================================================================
+        function verificarConclusao(dados) {
+            
+            const tipo = Number(dados.tipo_pedido); // 1 = simples, 2 = duplo
+            let isConcluido = false;
+            
+            // Prepara os dados, garantindo que tudo é Number e tratando NULL como 0
+            const p = {};
+            for (let i = 1; i <= 6; i++) {
+                // Usa Number(dados['pX'] || 0) para segurança
+                p[`p${i}`] = Number(dados[`p${i}`] || 0);
+            }
+    
+            // Condição base para ambos: Pinos 1, 2 e 3 concluídos
+            const concluidoPino1 = p.p1 === 1 && p.p2 === 1 && p.p3 === 1;
+    
+            if (tipo === 1) {
+                // Lógica SIMPLES: Apenas P1, P2 e P3
+                isConcluido = concluidoPino1;
+            }
+            
+            if (tipo === 2) {
+                // Lógica DUPLO: P1-P3 E P4, P5, P6
+                const concluidoPino2 = p.p4 === 1 && p.p5 === 1 && p.p6 === 1;
+                isConcluido = concluidoPino1 && concluidoPino2;
+            }
+    
+            if (isConcluido) {
+                marcarConcluido();
+                if (pollingInterval) {
+                    clearInterval(pollingInterval); // Para a atualização automática
+                    pollingInterval = null;
+                }
+            }
+        }
+    
+    
+        // ===================================================================
+        // Função FINAL de conclusão dos pinos
+        // ===================================================================
+        function marcarConcluido() {
+            const el = document.getElementById("status-final");
+            const titulo = document.getElementById("pedido-status-titulo");
+            
+            if (el) {
+                el.textContent = "✅ Produção dos Pinos Concluída!";
+                el.style.color = "green";
+                el.style.fontWeight = "bold";
+            }
+             if (titulo) {
+                titulo.textContent = "CONCLUÍDO";
+            }
+            
+            console.log("PINOS CONCLUÍDOS! Polling parado.");
+        }
+    
+    
+        // ===================================================================
+        // CHAMADA DE INICIALIZAÇÃO
+        // ===================================================================
+        document.addEventListener("DOMContentLoaded", function () {
+            const pedidoId = getPedidoIdFromUrl();
+            
+            if (!pedidoId) {
+                alert("ID do pedido não encontrado na URL. Redirecionando.");
+                window.location.href = "dashboard.html";
+                return;
+            }
+            
+            console.log("ID do Pedido recebido:", pedidoId);
+            
+            // Inicia o Polling e atualiza os links
+            iniciarPolling(pedidoId);
+        });
     </script>
+        
 </body>
 </html>

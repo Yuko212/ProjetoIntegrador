@@ -40,7 +40,7 @@
 
     <main class="conteiner-principal">
         
-        <h2 class="titulo-bloco">Bloco Duplo</h2>
+        <h2 class="titulo-bloco">Pino Duplo</h2>
 
         <div class="area-passos">
             <div class="passo-escudo">
@@ -63,9 +63,8 @@
         </div>
 
         <div class="area-botao-central">
-            <a href="statuspedido.html">
-                <button class="botao-cinza-central">Status do pedido</button>
-            </a>
+            <button class="botao-cinza-central" id="btn-status-pinos">Status dos Pinos</button>
+
             <a href="detalhe.html" class="botao-cinza-central">
             Detalhes do pedido
         </a>
@@ -94,33 +93,124 @@
     </footer>
 
     <script>
-        // --- SIMULAÇÃO DO BANCO DE DADOS ---
-        // Mary, mude este número para testar a barra crescendo (ex: 20, 50, 90)
-        const dadosDoBanco = {
-            porcentagemAtual: 43 
-        };
-
-        // Função que roda assim que a tela abre
-        window.onload = function() {
-            atualizarBarraDeProgresso();
-        };
-
-        function atualizarBarraDeProgresso() {
-            // Pega os elementos do HTML
-            const barra = document.getElementById('minha-barra-progresso');
-            const texto = document.getElementById('texto-porcentagem');
-            const valor = dadosDoBanco.porcentagemAtual;
-
-            // Aplica a largura e o texto dinamicamente
-            // Um pequeno atraso (setTimeout) ajuda a animação visual acontecer suavemente
-            setTimeout(() => {
-                barra.style.width = valor + "%";
-                texto.innerText = valor + "%";
-            }, 100);
-
-            console.log("Dados recebidos do banco: " + valor + "%");
-        }
-    </script>
+        document.addEventListener('DOMContentLoaded', function() {
+        
+            // --- Constantes ---
+            const STATUS_INTERVAL_MS = 2000;
+            
+            // Elementos do DOM
+            const barraProgresso = document.getElementById("minha-barra-progresso");
+            const textoPorcentagem = document.getElementById("texto-porcentagem");
+            const tituloBloco = document.querySelector(".titulo-bloco");
+            const caixaNumeroPedido = document.querySelector(".caixa-numero-pedido");
+            const passos = document.querySelectorAll(".passo-escudo");
+        
+            // BOTÃO DE STATUS DOS PINOS (NOVO!)
+            const btnPinos = document.getElementById("btn-status-pinos");
+        
+            // --- Mapeamentos ---
+            const MAP_TIPOS = {
+                1: "Pino Simples",
+                2: "Pino Duplo"
+            };
+            
+            const MAP_PROGRESSO = {
+                0: 0,
+                1: 25,
+                2: 50,
+                3: 75,
+                4: 100
+            };
+        
+            // --- Utilitário ---
+            function getPedidoIdFromUrl() {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get('id');
+            }
+        
+            // --- Atualização visual ---
+            function atualizarBarraEPassos(estado) {
+                const valorProgresso = MAP_PROGRESSO[estado] ?? 0;
+                
+                setTimeout(() => {
+                    barraProgresso.style.width = valorProgresso + "%";
+                    textoPorcentagem.textContent = valorProgresso + "%";
+                }, 150);
+                
+                passos.forEach((passo, index) => {
+                    let ativo = false;
+                    
+                    if (index === 0 && estado >= 0) ativo = true;
+                    else if (index === 1 && estado >= 1) ativo = true;
+                    else if (index === 2 && estado >= 2) ativo = true;
+                    else if (index === 3 && estado >= 4) ativo = true;
+        
+                    passo.classList.toggle('passo-ativo', ativo);
+                });
+        
+                console.log(`Status: ${estado} (${valorProgresso}%)`);
+            }
+        
+            let pollingInterval;
+        
+            async function buscarStatusEIniciarPolling() {
+                const pedidoId = getPedidoIdFromUrl();
+                
+                if (!pedidoId) {
+                    alert("ID do pedido não encontrado na URL. Redirecionando.");
+                    window.location.href = "dashboard.html";
+                    return;
+                }
+        
+                // 🔥 NOVO: botão de status dos pinos agora envia o ID corretamente!
+                if (btnPinos) {
+                    btnPinos.addEventListener("click", () => {
+                        window.location.href = `statuspinos.html?id=${pedidoId}`;
+                    });
+                }
+        
+                caixaNumeroPedido.textContent = `Nº do pedido: ${pedidoId}`;
+        
+                if (!pollingInterval) {
+                    pollingInterval = setInterval(buscarStatus, STATUS_INTERVAL_MS);
+                    buscarStatus();
+                }
+            }
+        
+            async function buscarStatus() {
+                const pedidoId = getPedidoIdFromUrl();
+                const url = `http://127.0.0.1:1880/status_pedido?id=${pedidoId}`;
+                
+                try {
+                    const resposta = await fetch(url);
+                    if (!resposta.ok) throw new Error(`Falha na API: ${resposta.status}`);
+                    
+                    const dados = await resposta.json();
+                    
+                    if (dados.estado !== null) {
+                        const tipoTexto = MAP_TIPOS[dados.tipo_pedido] || "Pino Desconhecido";
+                        tituloBloco.textContent = tipoTexto;
+        
+                        atualizarBarraEPassos(dados.estado);
+        
+                        if (dados.estado == 4) {
+                            clearInterval(pollingInterval);
+                            console.log("Polling finalizado: Pedido concluído.");
+                        }
+                    } else {
+                        atualizarBarraEPassos(0);
+                    }
+        
+                } catch (erro) {
+                    console.error("Erro ao buscar status:", erro);
+                }
+            }
+        
+            verificarLogin();
+            buscarStatusEIniciarPolling();
+        });
+        </script>
+        
 
 </body>
 </html>
