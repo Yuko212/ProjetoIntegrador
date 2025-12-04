@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Pedidos - CiberTech</title>
+    <link rel="stylesheet" href="../css/meuspedidos.css">
+    <link rel="stylesheet" href="../css/footer-header.css">
+    <link rel="stylesheet" href="../css/logout.css">
+</head>
+<body>
+<script src="../js/auth.js"></script>
+   
+<header id="main-header">
+    <div class="cabeçalho">
+        <a href="index.html" class="logo">
+            <span class="logo-text">CiberTech</span>                
+        </a>
+
+        <nav class="main-nav">
+            <a href="dashboard.html" class="nav-link">Home</a>
+            <a href="peca.html" class="nav-link">Design</a>
+            <a href="statuspedido.html" class="nav-link">Acompanhamento</a>
+            <a href="historico.html" class="nav-link">Histórico</a>
+        </nav>
+
+        <button class="botao-logout" onclick="logout()">
+            Sair
+        </button>
+    </div>
+</header>
+
+        
+        <h1>Meus pedidos</h1>
+   
+
+    <main class="container-principal">
+        <div id="lista-pedidos" class="lista-pedidos">
+            </div>
+    </main>
+
+    <footer id="main-footer">
+        <div class="container footer-container">
+            <div class="footer-top">
+                <p class="footer-logo">CiberTech</p>
+                <nav class="footer-nav">
+                    <a href="#funcionalidades" class="footer-link">Funcionalidades</a>
+                    <a href="#" class="footer-link">Termos de Uso</a>
+                    <a href="#" class="footer-link">Contato</a>
+                </nav>
+            </div>
+            <p class="footer-copy">
+                &copy; 2025 CiberTech. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Simulação do Banco de Dados (JSON)
+const bancoDeDadosPedidos = [
+    { numero: '010', status: 'EM ANDAMENTO', concluido: false },
+    { numero: '009', status: 'CONCLUÍDO',    concluido: true },
+    { numero: '008', status: 'CONCLUÍDO',    concluido: true },
+    { numero: '007', status: 'CONCLUÍDO',    concluido: true }
+];
+
+// 2. Selecionar onde vamos colocar os pedidos na tela
+const listaContainer = document.getElementById('lista-pedidos');
+
+// 3. Função para desenhar os pedidos na tela
+function carregarPedidos() {
+    listaContainer.innerHTML = ''; // Limpa antes de começar
+
+    bancoDeDadosPedidos.forEach(pedido => {
+        // Cria a div do cartão
+        const divPedido = document.createElement('div');
+        divPedido.className = 'cartao-pedido';
+
+        // Lógica: Decide o que mostrar na direita (Botão ou Texto)
+        let htmlLadoDireito = '';
+        
+        if (pedido.concluido === false) {
+            // Se NÃO está concluído, mostra botão Acompanhar
+            htmlLadoDireito = `<button class="btn-acompanhar">ACOMPANHAR</button>`;
+        } else {
+            // Se está concluído, mostra texto Finalizado
+            htmlLadoDireito = `<span class="texto-finalizado">FINALIZADO ✓</span>`;
+        }
+
+        // Monta o HTML interno do cartão
+        divPedido.innerHTML = `
+            <div class="etiqueta-branca">Nº ${pedido.numero}</div>
+            <div class="etiqueta-branca">Status: ${pedido.status}</div>
+            <div>${htmlLadoDireito}</div>
+        `;
+
+        // Adiciona na tela
+        listaContainer.appendChild(divPedido);
+    });
+}
+
+// 4. Executa a função ao carregar
+carregarPedidos();
+    </script>
+    
+</body>
+</html>
