@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
    
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/footer-header.css">
+    <link rel="stylesheet" href="../css/logout.css">
 
 </head>
 <body>
@@ -15,19 +17,19 @@
     <header id="main-header">
         <div class="cabeçalho">
             <a href="index.html" class="logo">
-                <span class="logo-text">CiberTech</span>
+                <span class="logo-text">CiberTech</span>                
             </a>
 
             <nav class="main-nav">
-                <a href="index.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link">Home</a>
                 <a href="peca.html" class="nav-link">Design</a>
                 <a href="statuspedido.html" class="nav-link">Acompanhamento</a>
-                <a href="#historico" class="nav-link">Histórico</a>
+                <a href="historico.html" class="nav-link">Histórico</a>
             </nav>
 
-            <a href="login.html" class="cta-button">
-                Login / Cadastro
-            </a>
+            <button class="botao-logout" onclick="logout()">
+                Sair
+            </button>
         </div>
     </header>
 

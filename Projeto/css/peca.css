@@ -1,94 +1,17 @@
 
-
-/* --- 1. Header --- */
-#main-header {
-    background-color: #280446;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
-    position: sticky;
-    top: 0;
-    z-index: 50;
-}
-.cabeçalho {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 1rem;    /* py-4 */
-    padding-bottom: 1rem; /* py-4 */
-}
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem; /* space-x-2 */
-    color: #e6d9f0; /* text-gray-900 */
-    text-decoration: none;
-}
-
-.logo svg {
-    /* Garante que o ícone tenha a cor do texto do .logo */
-    stroke: currentColor; 
-    width: 24px; 
-    height: 24px;
-}
-
-.logo-text {
-    font-size: 1.5rem; 
-    font-weight: 800;  
-    letter-spacing: -0.025em; 
-    color: #fff;
-}
-.main-nav {
-    display: flex; /* Mude de 'none' para 'flex' */
-    gap: 1.5rem; /* Adicione um espaçamento entre os links (ex: 1.5rem) */
-}
-.nav-link {
-    color: #e6d9f0; /* text-gray-600 */
-    font-weight: 700; /* font-medium */
-    text-decoration: none;
-    transition: color 0.15s ease-in-out;
-}
-.nav-link:hover {
-    color: #aa94bd; /* hover:text-indigo-600 */
-}
-.cta-button {
-    padding: 0.5rem 1.25rem; /* px-5 py-2 */
-    font-weight: 700; /* font-bold */
-    color: #fff;
-    border-radius: 0.5rem; /* rounded-lg */
-    background-color: #460779; /* bg-indigo-600 */
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.15s ease-in-out;
-    box-shadow: 0 10px 15px -3px #460779, 0 4px 6px -2px #4f46e580; /* shadow-lg shadow-indigo-500/50 */
-}
-.cta-button:hover {
-    background-color: #654d78; /* hover:bg-indigo-700 */
-}
-.cta-button.large {
-    padding: 0.75rem 2rem; /* px-8 py-3 */
-    font-size: 1.125rem; /* text-lg */
-    font-weight: 800; /* font-extrabold */
-    border-radius: 0.75rem; /* rounded-xl */
-}
-
-
-
 body {
-    /* Mantenha o que já tem, mas adicione o Flexbox para gerenciar o layout vertical */
+   
     font-family: 'Inter', sans-serif;
     background-color: #C9B8E3;
     margin: 0;
-    
-    /* Novo Flexbox para estruturar Header/Main/Footer */
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Garante altura total */
-    overflow: hidden; /* O body não rola */
-
+    height: 100vh; 
+    overflow: hidden; 
     color: #280446;
 }
 
 
-/* --- Estrutura Principal --- */
 .config-container {
     display: grid;
     grid-template-columns: 35% 65%; 
@@ -100,9 +23,6 @@ body {
     box-sizing: border-box;
 }
 
-
-
-/* --- Painel Esquerdo --- */
 .config-painel-esquerdo {
     display: flex;
     flex-direction: column;
@@ -113,7 +33,7 @@ body {
     background-color: transparent; 
 }
 
-/* Títulos */
+
 .config-card-titulo {
     font-size: 1.4rem;
     font-weight: 700;
@@ -122,7 +42,7 @@ body {
     text-align: center;
 }
 
-/* --- Botões de Rádio (Estilo Card) --- */
+
 .opcao-radio {
     margin-bottom: 1rem;
     position: relative;
@@ -135,7 +55,7 @@ body {
 }
 
 .label-custom {
-    background-color: #e5e7eb; /* Fundo claro padrão */
+    background-color: #e5e7eb; 
     color: #280446;
     padding: 1rem 1.5rem 1rem 3.5rem;
     border-radius: 0.5rem;
@@ -146,7 +66,7 @@ body {
     transition: all 0.2s;
 }
 
-/* Estilo do quadrado (checkbox/radio visual) */
+
 .label-custom::before {
     content: '';
     position: absolute;
@@ -159,7 +79,7 @@ body {
     border-radius: 4px;
 }
 
-/* Quando selecionado (Checked) */
+
 .checkbox-custom:checked + .label-custom {
     background-color: #e5e7eb; 
     border-color: #280446;
@@ -183,11 +103,11 @@ body {
     display: none;
 }
 
-/* --- Painel Direito (Área dos Pinos) --- */
+
 .config-painel-direito {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza o conteúdo */
+    align-items: center; 
     padding-top: 2rem;
 }
 
@@ -216,7 +136,7 @@ body {
     display: none;
 }
 
-/* Título de cada coluna (Ordem 1º pino) */
+
 .titulo-pino {
     background-color: #280446; 
     border-radius: 0.5rem;
@@ -224,8 +144,6 @@ body {
     text-align: center;
     font-weight: 700;
     color: #fff;
-    
-    
 }
 
 .form-grupo
@@ -236,7 +154,7 @@ body {
 }
 
 #coluna-pino-2 .form-grupo {
-    margin-bottom: 1.5rem; /* Ajuste fino */
+    margin-bottom: 1.5rem; 
 }
 
 .label-dropdown {
@@ -323,53 +241,7 @@ body {
 }
 .logo { text-decoration: none; color: #280446; }
 
-#main-footer {
-    /* ... propriedades de cor/padding ... */
-    flex-shrink: 0; /* Garante que o Footer mantenha seu tamanho e não encolha */
-}
 
-#main-footer {
-    background-color: #280446;
-    box-shadow: 0 4px 6px -1px ; 
-    color: #fff;
-    padding-top: 2rem;    
-    padding-bottom: 2rem;
-}
-.footer-container {
-    text-align: center;
-}
-.footer-top {
-    display: flex;
-    flex-direction: column; 
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #374151; 
-    padding-bottom: 1rem; 
-    margin-bottom: 1rem; 
-}
-.footer-logo {
-    font-size: 1.25rem; 
-    font-weight: 700; 
-    margin: 0 0 1rem 0; 
-}
-.footer-nav {
-    display: flex;
-    gap: 1rem; 
-}
-.footer-link {
-    color: #e6d9f0; 
-    text-decoration: none;
-    font-size: 0.875rem; 
-    transition: color 0.15s ease-in-out;
-}
-.footer-link:hover {
-    color: #fff; 
-}
-.footer-copy {
-    font-size: 0.875rem; 
-    color: #e6d9f0; 
-    margin: 0;
-}
 
 .clear-btn {
     position: absolute;
@@ -398,9 +270,9 @@ body {
     display: flex;
     margin-top: 20px;
     margin-left: 40px;
-    justify-content: center;   /* Centraliza horizontalmente */
-    align-items: center;        /* Centraliza verticalmente */
-    gap: 20px;                  /* Espaço entre os previews */
+    justify-content: center;   
+    align-items: center;        
+    gap: 20px;                
     width: 100%;
     padding: 10px 0;
 }

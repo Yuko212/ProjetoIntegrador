@@ -89,9 +89,8 @@
                 if (data.status === "ok") {
                     // SALVA O USUÁRIO LOGADO
                     localStorage.setItem("usuarioLogado", JSON.stringify({
-                        id: data.id, 
-                        nome: data.nome,
-                        email: data.email
+                        nome: data.usuario,
+                        email: email
                     }));
 
                     alert("Login realizado com sucesso!");

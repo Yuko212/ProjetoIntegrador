@@ -9,15 +9,6 @@
     --sombra-leve: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-body {
-    /* ... outras propriedades ... */
-    margin: 0; 
-    padding: 0;
-    overflow-x: hidden; /* <--- MUITO IMPORTANTE! */
-    
-}
-
-
 * {
     margin: 0;
     padding: 0;
@@ -26,45 +17,24 @@ body {
 }
 
 body, html {
-
+    height: 100%;
     background-color: var(--cor-fundo-claro);
-
-}
-
-/* APLIQUE ESTES DOIS BLOCOS DE CSS GLOBALMENTE */
-
-/* Bloco 1: Estrutura da página (CSS) */
-body, html {
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    display: flex; /* Transforma o body em um contêiner flexível */
-    flex-direction: column; /* Empilha os filhos (Header, Main, Footer) */
-    overflow: hidden; /* O body não rola */
-}
-
-/* Bloco 2: O Conteúdo (CSS) */
-.container-principal {
-    flex-grow: 1; /* Ocupa todo o espaço vertical restante */
-    overflow-y: auto; /* Permite scroll vertical APENAS dentro desta div */
-    overflow-x: hidden; /* Evita scroll horizontal dentro desta div */
 }
 
 .container-principal {
     display: flex;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
 }
 
-/* --- PAINEL PERFIL (Lado Esquerdo) --- */
+
 .painel-perfil {
-    width: 40%; /* Ajuste para o seu layout */
+    width: 40%; 
     background-color: #af95c4;
     padding: 30px 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
-   
 }
 
 .area-icone {
@@ -105,7 +75,6 @@ body, html {
     background-color: #5548b8;
 }
 
-/* Estilo para os campos de informação (Nome, E-mail, etc) */
 .grupo-informacao {
     width: 100%;
     max-width: 350px;
@@ -113,7 +82,7 @@ body, html {
 }
 
 .rotulo-info {
-    display: none; /* Mantemos o label por acessibilidade, mas escondemos se o layout não o mostra */
+    display: none; 
 }
 
 .campo-info {
@@ -157,27 +126,23 @@ body, html {
     margin-right: 5px;
 }
 
-/* --- ÁREA DE PEDIDOS (Lado Direito) --- */
+
 .area-pedidos {
     width: 60%;
     background-color: var(--cor-fundo-escuro);
     padding: 50px 70px;
- 
+    
     display: flex;
     flex-direction: column;
+    
+   
     justify-content: center; 
-    align-items: center;  
+    align-items: center;    
 }
 
 .botao-acao {
-    /* Define a largura mínima para todos os botões, garantindo que sejam iguais. 
-       Você pode ajustar o valor (ex: 300px) se quiser botões maiores ou menores. */
     width: 280px; 
-    
-    /* Adiciona margem entre os botões (espaçamento vertical). */
     margin-bottom: 20px; 
-    
-    /* As demais propriedades que você já tinha: */
     padding: 15px 30px;
     border: none;
     border-radius: 25px;
@@ -189,9 +154,9 @@ body, html {
     transition: background-color 0.2s, transform 0.1s;
 }
 
-/* Opcional: Adicionar um efeito de hover para interatividade */
+
 .botao-acao:hover {
-    background-color: #8A5ACD; /* Um tom ligeiramente mais escuro */
+    background-color: #8A5ACD; 
     transform: translateY(-2px);
 }
 
@@ -199,9 +164,6 @@ body, html {
     text-decoration: none; 
 }
 
-
-
-/* --- MODAL DE SELEÇÃO DE ÍCONE --- */
 .modal-selecao-icone {
     display: none; 
     position: fixed;
@@ -254,45 +216,91 @@ body, html {
     border-color: var(--cor-primaria);
 }
 
-#main-footer {
-    background-color: #280446;
-    box-shadow: 0 4px 6px -1px ; 
-    color: #fff;
-    padding-top: 2rem;    
-    padding-bottom: 2rem;
-}
-.footer-container {
-    text-align: center;
-}
-.footer-top {
+.modal-edicao {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
     display: flex;
-    flex-direction: column; 
-    justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #374151; 
-    padding-bottom: 1rem; 
-    margin-bottom: 1rem; 
+    justify-content: center;
+    backdrop-filter: blur(3px);
+    z-index: 9999;
 }
-.footer-logo {
-    font-size: 1.25rem; 
-    font-weight: 700; 
-    margin: 0 0 1rem 0; 
-}
-.footer-nav {
+
+.modal-conteudo {
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    width: 350px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.25);
+    animation: modalAparecer 0.25s ease-out;
     display: flex;
-    gap: 1rem; 
+    flex-direction: column;
+    gap: 15px;
 }
-.footer-link {
-    color: #e6d9f0; 
-    text-decoration: none;
-    font-size: 0.875rem; 
-    transition: color 0.15s ease-in-out;
+
+@keyframes modalAparecer {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
-.footer-link:hover {
-    color: #fff; 
+
+.modal-conteudo h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
 }
-.footer-copy {
-    font-size: 0.875rem; 
-    color: #e6d9f0; 
-    margin: 0;
+
+.input-edicao {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #d3d3d3;
+    font-size: 16px;
+    background: #f7f7f7;
+    transition: 0.2s;
+}
+
+.input-edicao:focus {
+    outline: none;
+    border-color: #0d6efd;
+    background: #fff;
+}
+
+.btn-salvar, 
+.btn-fechar {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.25s;
+    font-weight: 600;
+}
+
+.btn-salvar {
+    background: #0d6efd;
+    color: white;
+}
+
+.btn-salvar:hover {
+    background: #004fc4;
+}
+
+.btn-fechar {
+    background: #dcdcdc;
+}
+
+.btn-fechar:hover {
+    background: #c8c8c8;
 }
