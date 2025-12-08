@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
-
+    <script src="../js/auth.js"></script>
     <main class="login-container">
         
         <section class="login-lateral">
@@ -38,7 +38,7 @@
                     <a href="cadastro.html" class="login-aba-link">Criar conta</a>
                 </nav>
 
-                <!-- ADICIONEI id="formLogin" -->
+                
                 <form class="login-form" id="formLogin">
                     
                     <div class="input-grupo">
@@ -63,11 +63,11 @@
     </main>
 
 
-    <!-- SCRIPT QUE ENVIA PARA O NODE-RED -->
+
     <script>
         document.getElementById("formLogin").addEventListener("submit", async function(event) {
             
-            event.preventDefault(); // impede reload
+            event.preventDefault();
 
             const email = document.getElementById("email").value;
             const senha = document.getElementById("senha").value;
@@ -87,14 +87,14 @@
                 const data = await resposta.json();
 
                 if (data.status === "ok") {
-                    // SALVA O USUÁRIO LOGADO
+                  
                     localStorage.setItem("usuarioLogado", JSON.stringify({
                         nome: data.usuario,
                         email: email
                     }));
 
                     alert("Login realizado com sucesso!");
-                    window.location.href = "dashboard.html"; // coloque a página que quiser
+                    window.location.href = "dashboard.html"; 
                 } else {
                     alert("E-mail ou senha incorretos.");
                 }

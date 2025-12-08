@@ -23,6 +23,7 @@
                 <a href="peca.html" class="nav-link">Design</a>
                 <a href="statuspedido.html" class="nav-link">Acompanhamento</a>
                 <a href="historico.html" class="nav-link">Histórico</a>
+                <a href="meuspedidos.html" class="nav-link">Meus Pedidos</a>
             </nav>
 
             <button class="botao-logout" onclick="logout()">
@@ -63,8 +64,8 @@
         </div>
 
         <div class="area-botao-central">
-            <a href="statuspedido.html">
-                <button class="botao-cinza-central">Status do pedido</button>
+            <a href="statuspinos.html">
+                <button class="botao-cinza-central">Status dos Pinos</button>
             </a>
             <a href="detalhe.html" class="botao-cinza-central">
             Detalhes do pedido
@@ -94,25 +95,22 @@
     </footer>
 
     <script>
-        // --- SIMULAÇÃO DO BANCO DE DADOS ---
-        // Mary, mude este número para testar a barra crescendo (ex: 20, 50, 90)
+       
         const dadosDoBanco = {
             porcentagemAtual: 43 
         };
 
-        // Função que roda assim que a tela abre
+    
         window.onload = function() {
             atualizarBarraDeProgresso();
         };
 
         function atualizarBarraDeProgresso() {
-            // Pega os elementos do HTML
             const barra = document.getElementById('minha-barra-progresso');
             const texto = document.getElementById('texto-porcentagem');
             const valor = dadosDoBanco.porcentagemAtual;
 
-            // Aplica a largura e o texto dinamicamente
-            // Um pequeno atraso (setTimeout) ajuda a animação visual acontecer suavemente
+           
             setTimeout(() => {
                 barra.style.width = valor + "%";
                 texto.innerText = valor + "%";

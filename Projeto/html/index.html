@@ -8,12 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
    
     <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/footer-header.css">
+   
     <link rel="stylesheet" href="../css/logout.css">
 
 </head>
 <body>
-
+    <script src="../js/auth.js"></script>
     <header id="main-header">
         <div class="cabeçalho">
             <a href="index.html" class="logo">
@@ -25,6 +25,7 @@
                 <a href="peca.html" class="nav-link">Design</a>
                 <a href="statuspedido.html" class="nav-link">Acompanhamento</a>
                 <a href="historico.html" class="nav-link">Histórico</a>
+                <a href="meuspedidos.html" class="nav-link">Meus Pedidos</a>
             </nav>
 
             <button class="botao-logout" onclick="logout()">
@@ -120,21 +121,20 @@
     </footer>
 
     <script>
-        // Função para implementar a rolagem suave para links de seção.
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetSelector = this.getAttribute('href');
                
-                // Previne o comportamento padrão para gerenciar a rolagem
+                
                 e.preventDefault();
                
-                // Se o href for apenas '#', rola suavemente para o topo da página.
+                
                 if (targetSelector === '#') {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     return;
                 }
 
-                // Tenta rolar para o elemento da seção.
                 const targetElement = document.querySelector(targetSelector);
                 if (targetElement) {
                     targetElement.scrollIntoView({

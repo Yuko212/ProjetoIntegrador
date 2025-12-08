@@ -9,34 +9,38 @@
     <link rel="stylesheet" href="../css/logout.css">
 </head>
 <body>
-<script src="../js/auth.js"></script>
-   
-<header id="main-header">
-    <div class="cabeçalho">
-        <a href="index.html" class="logo">
-            <span class="logo-text">CiberTech</span>                
-        </a>
+    <script src="../js/auth.js"></script>
+    <header id="main-header">
+        <div class="cabeçalho">
+            <a href="index.html" class="logo">
+                <span class="logo-text">CiberTech</span>                
+            </a>
 
-        <nav class="main-nav">
-            <a href="dashboard.html" class="nav-link">Home</a>
-            <a href="peca.html" class="nav-link">Design</a>
-            <a href="statuspedido.html" class="nav-link">Acompanhamento</a>
-            <a href="historico.html" class="nav-link">Histórico</a>
-        </nav>
+            <nav class="main-nav">
+                <a href="dashboard.html" class="nav-link">Home</a>
+                <a href="peca.html" class="nav-link">Design</a>
+                <a href="statuspedido.html" class="nav-link">Acompanhamento</a>
+                <a href="historico.html" class="nav-link">Histórico</a>
+                <a href="meuspedidos.html" class="nav-link">Meus Pedidos</a>
+            </nav>
 
-        <button class="botao-logout" onclick="logout()">
-            Sair
-        </button>
-    </div>
-</header>
+            <button class="botao-logout" onclick="logout()">
+                Sair
+            </button>
+        </div>
+    </header>
 
+    <main class="conteudo-principal">
         
-        <h1>Meus pedidos</h1>
-   
+        <section class="barra-titulo">
+            <button class="botao-voltar-conta">Minha conta</button>
+            <h1 class="titulo-pagina">Meus pedidos</h1>
+        </section>
 
-    <main class="container-principal">
-        <div id="lista-pedidos" class="lista-pedidos">
-            </div>
+        <section class="lista-pedidos" id="lista-pedidos-container">
+            <p style="text-align: center; color: gray;">Carregando seus pedidos...</p>
+        </section>
+
     </main>
 
     <footer id="main-footer">
@@ -56,52 +60,72 @@
     </footer>
 
     <script>
-        // 1. Simulação do Banco de Dados (JSON)
-const bancoDeDadosPedidos = [
-    { numero: '010', status: 'EM ANDAMENTO', concluido: false },
-    { numero: '009', status: 'CONCLUÍDO',    concluido: true },
-    { numero: '008', status: 'CONCLUÍDO',    concluido: true },
-    { numero: '007', status: 'CONCLUÍDO',    concluido: true }
-];
+        document.addEventListener('DOMContentLoaded', () => {
+            
+           
+            const dadosDoBanco = [
+                { numero: '010', status: 'EM ANDAMENTO', finalizado: false },
+                { numero: '009', status: 'CONCLUÍDO', finalizado: true },
+                { numero: '008', status: 'CONCLUÍDO', finalizado: true },
+                { numero: '007', status: 'CONCLUÍDO', finalizado: true }
+            ];
 
-// 2. Selecionar onde vamos colocar os pedidos na tela
-const listaContainer = document.getElementById('lista-pedidos');
+            const container = document.getElementById('lista-pedidos-container');
 
-// 3. Função para desenhar os pedidos na tela
-function carregarPedidos() {
-    listaContainer.innerHTML = ''; // Limpa antes de começar
+            
+            function renderizarPedidos() {
+                container.innerHTML = ''; 
 
-    bancoDeDadosPedidos.forEach(pedido => {
-        // Cria a div do cartão
-        const divPedido = document.createElement('div');
-        divPedido.className = 'cartao-pedido';
+                dadosDoBanco.forEach(pedido => {
+         
+                    const cartao = document.createElement('div');
+                    cartao.classList.add('cartao-pedido');
 
-        // Lógica: Decide o que mostrar na direita (Botão ou Texto)
-        let htmlLadoDireito = '';
-        
-        if (pedido.concluido === false) {
-            // Se NÃO está concluído, mostra botão Acompanhar
-            htmlLadoDireito = `<button class="btn-acompanhar">ACOMPANHAR</button>`;
-        } else {
-            // Se está concluído, mostra texto Finalizado
-            htmlLadoDireito = `<span class="texto-finalizado">FINALIZADO ✓</span>`;
-        }
+            
+                    let conteudoAcao = '';
+                    if (pedido.finalizado) {
+                        conteudoAcao = `
+                            <div class="area-acao">
+                                <span class="texto-finalizado">FINALIZADO <span class="check">✔</span></span>
+                            </div>
+                        `;
+                    } else {
+                                    conteudoAcao = `
+                                    <div class="area-acao">
+                            <a href="statuspedido.html?id=${pedido.numero}" class="botao-acompanhar">
+                             ACOMPANHAR
+                                    </a>
+                                </div>
+                            `;
+                        }
 
-        // Monta o HTML interno do cartão
-        divPedido.innerHTML = `
-            <div class="etiqueta-branca">Nº ${pedido.numero}</div>
-            <div class="etiqueta-branca">Status: ${pedido.status}</div>
-            <div>${htmlLadoDireito}</div>
-        `;
+          
+                    cartao.innerHTML = `
+                        <div class="grupo-esquerda">
+                            <span class="pilula-branca negrito link-numero">Nº ${pedido.numero}</span>
+                        </div>
+                        
+                        <div class="grupo-centro">
+                            <span class="pilula-branca">Status: ${pedido.status}</span>
+                        </div>
 
-        // Adiciona na tela
-        listaContainer.appendChild(divPedido);
-    });
-}
+                        ${conteudoAcao}
+                    `;
 
-// 4. Executa a função ao carregar
-carregarPedidos();
-    </script>
+      
+                    container.appendChild(cartao);
+                });
+            }
+
     
+            renderizarPedidos();
+        });
+
+ 
+        function acompanharPedido(numero) {
+            alert(`Redirecionando para o rastreamento do pedido Nº ${numero}...`);
+            
+        }
+    </script>
 </body>
 </html>

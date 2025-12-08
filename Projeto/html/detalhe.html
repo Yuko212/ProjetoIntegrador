@@ -23,6 +23,7 @@
                 <a href="peca.html" class="nav-link">Design</a>
                 <a href="statuspedido.html" class="nav-link">Acompanhamento</a>
                 <a href="historico.html" class="nav-link">Histórico</a>
+                <a href="meuspedidos.html" class="nav-link">Meus Pedidos</a>
             </nav>
 
             <button class="botao-logout" onclick="logout()">
@@ -136,8 +137,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             
-            // SIMULAÇÃO DO BANCO DE DADOS
-            // Imagine que estes dados vieram do servidor baseados no login do usuário
+           
             const dadosDoBanco = {
                 pedido: {
                     numero: "062",
@@ -149,14 +149,14 @@
                     email: "mary.dev@cibertech.com"
                 },
                 peca: {
-                    tipo: "Bloco Duplo", // Poderia ser "Bloco Simples"
+                    tipo: "Bloco Duplo", 
                     imagemUrl: "caminho/para/imagem-cubo.png",
                     pino1: {
                         forma1: "Óctogno",
                         forma2: "Quadrado",
                         forma3: "Círculo"
                     },
-                    pino2: { // Se for simples, isso viria vazio ou null
+                    pino2: { 
                         forma1: "Círculo",
                         forma2: "Círculo",
                         forma3: "Quadrado"
@@ -164,30 +164,30 @@
                 }
             };
 
-            // FUNÇÃO PARA PREENCHER A TELA
+           
             function carregarDetalhes() {
-                // 1. Cabeçalho
+                
                 document.getElementById('id-pedido').innerText = dadosDoBanco.pedido.numero;
 
-                // 2. Bloco e Quantidade
+                
                 document.getElementById('nome-bloco').innerText = dadosDoBanco.peca.tipo;
                 document.getElementById('quantidade-peca').innerText = dadosDoBanco.pedido.quantidade;
 
-                // 3. Informações Pessoais
+               
                 document.getElementById('info-endereco').innerText = dadosDoBanco.cliente.endereco;
                 document.getElementById('info-email').innerText = dadosDoBanco.cliente.email;
                 document.getElementById('info-data').innerText = dadosDoBanco.pedido.data;
 
-                // 4. Ordem - Pino 1
+               
                 document.getElementById('p1-forma1').innerText = dadosDoBanco.peca.pino1.forma1;
                 document.getElementById('p1-forma2').innerText = dadosDoBanco.peca.pino1.forma2;
                 document.getElementById('p1-forma3').innerText = dadosDoBanco.peca.pino1.forma3;
 
-                // 5. Ordem - Pino 2 (Lógica para esconder se for simples)
+                
                 const containerPino2 = document.getElementById('container-pino-2');
                 
                 if (dadosDoBanco.peca.tipo === "Bloco Simples" || !dadosDoBanco.peca.pino2) {
-                    containerPino2.style.display = 'none'; // Esconde o 2º pino se for simples
+                    containerPino2.style.display = 'none'; 
                 } else {
                     containerPino2.style.display = 'block';
                     document.getElementById('p2-forma1').innerText = dadosDoBanco.peca.pino2.forma1;
@@ -196,7 +196,7 @@
                 }
             }
 
-            // Executa a função
+            
             carregarDetalhes();
         });
     </script>

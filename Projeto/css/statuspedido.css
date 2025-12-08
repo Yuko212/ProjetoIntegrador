@@ -11,9 +11,14 @@ body {
     padding: 0;
     font-family: 'Arial', sans-serif;
     background-color: #fcfcfc; 
+    display: flex;             
+    flex-direction: column;
    
 }
 
+main {
+    flex-grow: 1; 
+}
 
 .barra-topo-pedido {
     background-color: #6a4c7c; 
@@ -45,6 +50,10 @@ body {
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.botao-branco-arredondado:hover{
+    background-color: #bcaaa4;
 }
 
 .caixa-numero-pedido {

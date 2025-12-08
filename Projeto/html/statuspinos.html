@@ -24,6 +24,7 @@
                 <a href="peca.html" class="nav-link">Design</a>
                 <a href="statuspedido.html" class="nav-link">Acompanhamento</a>
                 <a href="historico.html" class="nav-link">Histórico</a>
+                <a href="meuspedidos.html" class="nav-link">Meus Pedidos</a>
             </nav>
 
             <button class="botao-logout" onclick="logout()">
@@ -101,9 +102,6 @@
 
     </main>
 
-        
-    
-
     <footer id="main-footer">
         <div class="container footer-container">
             <div class="footer-top">
@@ -122,10 +120,10 @@
 
 
     <script>
-        // --- SIMULAÇÃO DO BANCO DE DADOS ---
+        
         const dadosPinos = {
-            pino1: 70, // 70% concluído
-            pino2: 0   // 0% concluído
+            pino1: 70, 
+            pino2: 0   
         };
 
         window.onload = function() {
@@ -133,21 +131,20 @@
         };
 
         function atualizarPinos() {
-            // Pino 1
+           
             const barra1 = document.getElementById('barra-pino-1');
             const texto1 = document.getElementById('texto-pino-1');
-            
-            // Pino 2
+           
             const barra2 = document.getElementById('barra-pino-2');
             const texto2 = document.getElementById('texto-pino-2');
 
-            // Animação com pequeno atraso
+           
             setTimeout(() => {
-                // Atualiza visualmente o Pino 1
+                
                 barra1.style.width = dadosPinos.pino1 + "%";
                 texto1.innerText = dadosPinos.pino1 + "%";
 
-                // Atualiza visualmente o Pino 2
+                
                 barra2.style.width = dadosPinos.pino2 + "%";
                 texto2.innerText = dadosPinos.pino2 + "%";
             }, 100);

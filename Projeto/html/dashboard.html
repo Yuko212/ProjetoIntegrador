@@ -21,6 +21,7 @@
                 <a href="peca.html" class="nav-link">Design</a>
                 <a href="statuspedido.html" class="nav-link">Acompanhamento</a>
                 <a href="historico.html" class="nav-link">Histórico</a>
+                <a href="meuspedidos.html" class="nav-link">Meus Pedidos</a>
             </nav>
 
             <button class="botao-logout" onclick="logout()">
@@ -118,10 +119,8 @@
                         return;
                     }
 
-                    // Aqui sim: salvar os dados completos para edição
                     dadosUsuario = dados;
 
-                    // Preenchendo campos do dashboard
                     document.querySelector('#campo-nome .valor-info').textContent = dados.nome;
                     document.querySelector('#campo-email .valor-info').textContent = dados.email;
 
@@ -157,9 +156,9 @@
                 }
             });
     
-            //Editar campos
-                let campoAtual = null; // para saber qual campo está sendo editado
-                let dadosUsuario = null; // salvar os dados carregados
+         
+                let campoAtual = null; 
+                let dadosUsuario = null; 
 
                 function abrirEdicao(campo, valorInicial) {
                     campoAtual = campo;
@@ -171,7 +170,6 @@
                     document.getElementById("modal-edicao").style.display = "none";
                 }
 
-                // Clique nos campos para editar
                 document.querySelector('#campo-nome').addEventListener("click", () => {
                     abrirEdicao("nome", dadosUsuario.nome);
                 });
@@ -184,7 +182,7 @@
                     abrirEdicao("senha", dadosUsuario.senha);
                 });
 
-                // Botões do modal
+       
                 document.getElementById("fechar-edicao").addEventListener("click", fecharModal);
 
                 document.getElementById("salvar-edicao").addEventListener("click", async () => {
@@ -195,7 +193,7 @@
                         return;
                     }
 
-                    dadosUsuario[campoAtual] = novoValor; // atualiza localmente
+                    dadosUsuario[campoAtual] = novoValor; 
 
                     try {
                         const resposta = await fetch("http://localhost:1880/atualizarUsuario", {
@@ -209,7 +207,6 @@
                         if (data.status === "ok") {
                             alert("Atualizado com sucesso!");
 
-                            // Atualizar tela
                             document.querySelector('#campo-nome .valor-info').textContent = dadosUsuario.nome;
                             document.querySelector('#campo-email .valor-info').textContent = dadosUsuario.email;
                             document.querySelector('#campo-senha .valor-info').textContent = "*".repeat(dadosUsuario.senha.length);

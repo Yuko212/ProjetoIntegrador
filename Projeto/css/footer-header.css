@@ -67,14 +67,25 @@
     border-radius: 0.75rem; 
 }
 
+main {
+    flex-grow: 1; 
+}
 
 #main-footer {
     background-color: #280446;
     box-shadow: 0 4px 6px -1px ; 
     color: #fff;
-    padding-top: 2rem;    
+    padding-top: 2rem;     
     padding-bottom: 2rem;
+
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    z-index: 1000; 
+    
 }
+
 .footer-container {
     text-align: center;
 }

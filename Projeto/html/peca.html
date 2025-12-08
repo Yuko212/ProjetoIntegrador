@@ -23,6 +23,7 @@
                 <a href="peca.html" class="nav-link">Design</a>
                 <a href="statuspedido.html" class="nav-link">Acompanhamento</a>
                 <a href="historico.html" class="nav-link">Histórico</a>
+                <a href="meuspedidos.html" class="nav-link">Meus Pedidos</a>
             </nav>
 
             <button class="botao-logout" onclick="logout()">
@@ -222,7 +223,7 @@
         verificarLogin();
         document.addEventListener('DOMContentLoaded', function() {
             
-            // --- 1. LÓGICA DE EXIBIR/OCULTAR COLUNA DUPLA ---
+           
             const radioSimples = document.getElementById('simples');
             const radioDupla = document.getElementById('dupla');
             const coluna2 = document.getElementById('coluna-pino-2');
@@ -244,14 +245,10 @@
             radioSimples.addEventListener('change', atualizarLayout);
             radioDupla.addEventListener('change', atualizarLayout);
             
-            // Executa ao carregar para garantir o estado correto
+           
             atualizarLayout();
 
 
-            // --- 2. LÓGICA DOS DROPDOWNS (COM ESCOPO POR PINO) ---
-            
-            // Esta função inicializa a lógica para uma coluna específica (pino 1 ou pino 2)
-            // assim o que acontece no pino 1 não bloqueia o pino 2.
             function iniciarLogicaPino(idColuna) {
                 const coluna = document.getElementById(idColuna);
                 const formGroups = coluna.querySelectorAll('.form-grupo');
@@ -278,12 +275,12 @@
                     });
                 }
             
-                // Configurar eventos para cada dropdown DENTRO desta coluna
+               
                 formGroups.forEach(group => {
                     const container = group.querySelector('.dropdown-container');
                     const selectElement = group.querySelector('.dropdown-select');
                     const dropdownOpcoes = group.querySelector('.dropdown-opcoes');
-                    const clearBtn = group.querySelector('.clear-btn'); // <-- AGORA EXISTE
+                    const clearBtn = group.querySelector('.clear-btn'); 
 
                     container.addEventListener('click', function(event) {
                         event.stopPropagation();
@@ -302,7 +299,7 @@
                             const textoDisplay = container.querySelector('.dropdown-text');
                             selectElement.value = item.dataset.value;
 
-                            // ATUALIZA O TEXTO VISUAL DO DROPDOWN
+                            
                             textoDisplay.textContent = item.textContent;
 
                             dropdownOpcoes.style.display = 'none';
@@ -310,7 +307,7 @@
                         });
                     });
 
-                    // ------ BOTÃO X ------
+                 
                     if (clearBtn) {
                         clearBtn.addEventListener('click', function(event) {
                                 event.stopPropagation();
@@ -324,7 +321,7 @@
                 });
             }
 
-            // Inicializa a lógica independente para cada coluna
+          
             iniciarLogicaPino('coluna-pino-1');
             iniciarLogicaPino('coluna-pino-2');
 
@@ -335,17 +332,17 @@
                 });
             });
 
-            // --- 3. LÓGICA DE ATUALIZAÇÃO DO PNG DO PREVIEW ---
+            
             const previewImg = document.getElementById("preview-peca");
 
-            // Mapeamento dos valores dos dropdowns para letras do arquivo
+          
             const mapaLetras = {
                 "circulo": "C",
                 "quadrado": "Q",
                 "octogono": "O"
             };
 
-            // Atualiza a imagem conforme as escolhas do Pino 1
+          
             function atualizarPreviewPino1() {
                 const pino1 = document.getElementById("coluna-pino-1");
                 const selects = pino1.querySelectorAll(".dropdown-select");
@@ -358,20 +355,19 @@
                     }
                 });
 
-                // Se nada foi selecionado → volta imagem base
+              
                 if (ordem === "") {
                     previewImg.src = "../img/pngs/Base.png";
                     return;
                 }
 
-                // Montar caminho da imagem correspondente
+               
                 const novoPNG = `../img/pngs/${ordem}.png`;
 
-                // Atualizar imagem
+              
                 previewImg.src = novoPNG;
             }
 
-            // --- 4. LÓGICA DE ATUALIZAÇÃO DO PNG DO 2º PINO ---
             const previewImg2 = document.getElementById("preview-peca-2");
 
             function atualizarPreviewPino2() {
@@ -395,22 +391,21 @@
                 previewImg2.src = novoPNG2;
             }
 
-            // Monitorar itens do dropdown (seleção)
+          
             document.querySelectorAll("#coluna-pino-2 .dropdown-item").forEach(item => {
                 item.addEventListener("click", atualizarPreviewPino2);
             });
 
-            // Monitorar botões X
+          
             document.querySelectorAll("#coluna-pino-2 .clear-btn").forEach(btn => {
                 btn.addEventListener("click", atualizarPreviewPino2);
             });
 
-            // Monitorar mudanças de TODOS os dropdowns do pino 1
+           
             document.querySelectorAll("#coluna-pino-1 .dropdown-item").forEach(item => {
                 item.addEventListener("click", atualizarPreviewPino1);
             });
 
-            // Monitorar clique no botão de limpar (X)
             document.querySelectorAll("#coluna-pino-1 .clear-btn").forEach(btn => {
                 btn.addEventListener("click", atualizarPreviewPino1);
             });

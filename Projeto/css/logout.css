@@ -9,6 +9,7 @@
     cursor: pointer;
     transition: 0.25s;
     font-family: 'Inter', sans-serif;
+    margin-right: 10px;
 }
 
 .botao-logout:hover {
